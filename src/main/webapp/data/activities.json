@@ -1,0 +1,10 @@
+{
+    success: true,
+    activities: [
+        {id: 1, navn: 'Glattkjøringsdemo', kategori: 'Demo'},
+        {id: 2, navn: 'Glattkjøringskurs', kategori: 'Kurs'},
+        {id: 3, navn: 'Trafikksikkerhetsdemo', kategori: 'Demo'},
+        {id: 4, navn: 'Trafikksikkerhetskurs', kategori: 'Kurs'},
+        {id: 5, navn: 'Trafikaltgrunnkurs', kategori: 'Kurs'}
+    ]
+}
