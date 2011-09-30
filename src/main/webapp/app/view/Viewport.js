@@ -1,19 +1,20 @@
 Ext.define('NAF.view.Viewport', {
     extend: 'Ext.container.Viewport',
 
-    requires: [
-        'NAF.view.activity.List'
-    ],
+    requires: ['NAF.view.activity.Detail','NAF.view.activity.List' ],
 
-    layout: 'fit',
-
+    layout: 'border',
     items: [
         {
-            title: 'NAF: 0 - 100',
-            xtype: 'activitylist'
+            region: 'north',
+            xtype: 'activitylist',
+            height: 220
+        },
+        {
+            region: 'center',
+            xtype: 'activitydetail'
         }
     ]
-
 
 
 

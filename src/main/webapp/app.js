@@ -4,8 +4,8 @@ Ext.application({
     controllers: [
         'Activities'
     ],
-    autoCreateViewport: true,
-    launch: function() {
 
+    launch: function() {
+        Ext.create('NAF.view.Viewport');
     }
 });

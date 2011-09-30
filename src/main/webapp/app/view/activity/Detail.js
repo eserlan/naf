@@ -1,7 +1,16 @@
-/**
- * Created by IntelliJ IDEA.
- * User: espen
- * Date: 9/29/11
- * Time: 12:01 PM
- * To change this template use File | Settings | File Templates.
- */
+Ext.define('NAF.view.activity.Detail', {
+    extend: 'Ext.panel.Panel',
+    bodyPadding: 5,  // Don't want content to crunch against the borders
+    collapsible: true,
+    alias: 'widget.activitydetail',
+    title: 'Mer informasjon om ',
+
+
+    items: [{
+        xtype: 'datefield',
+        fieldLabel: 'Start date'
+    }, {
+        xtype: 'datefield',
+        fieldLabel: 'End date'
+    }]
+});

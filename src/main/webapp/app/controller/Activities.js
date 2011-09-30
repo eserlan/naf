@@ -6,13 +6,22 @@ Ext.define('NAF.controller.Activities', {
 
     views: [
         'activity.List',
-        'activity.Edit'
+        'activity.Edit',
+        'activity.Detail'
+    ],
+
+    refs: [
+        {
+            ref: 'activityDetail',
+            selector: 'activitydetail'
+        }
     ],
     init: function() {
         console.log('Initialized Activities! This happens before the Application launch function is called');
         this.control({
             'viewport > activitylist': {
-                itemdblclick: this.editActivity
+                itemdblclick: this.editActivity,
+                select: this.changeDetail
             },
             'activityedit button[action=save]':{
                 click: this.updateActivity
@@ -37,6 +46,15 @@ Ext.define('NAF.controller.Activities', {
         record.set(values);
         win.close();
         this.getActivitiesStore().sync();
+    },
+
+    changeDetail: function(grid, record) {
+        var title = record.get('navn');
+
+        var ad = this.getActivityDetail();
+        ad.setTitle('Mer informasjon om ' + title);
+
+
     }
 
 });

@@ -2,6 +2,7 @@ Ext.define('NAF.view.activity.List' ,{
     extend: 'Ext.grid.Panel',
     alias : 'widget.activitylist',
     store: 'Activities',
+    collapsible: true,
 
     title : 'Alle aktiviteter',
 
