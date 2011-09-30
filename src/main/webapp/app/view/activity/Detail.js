@@ -8,6 +8,12 @@ Ext.define('NAF.view.activity.Detail', {
     defaultType: 'textfield',
 
     items: [{
+        name: 'dato',
+        dataIndex: 'dato',
+        xtype: 'datefield',
+        format: 'd.m.Y',
+        fieldLabel: 'Dato'
+    }, {
         name: 'navn',
         dataIndex: 'navn',
         fieldLabel: 'Navn'
@@ -15,5 +21,11 @@ Ext.define('NAF.view.activity.Detail', {
         name: 'kategori',
         dataIndex: 'kategori',
         fieldLabel: 'Kategori'
-    }]
+    },{
+        name: 'beskrivelse',
+        dataIndex: 'beskrivelse',
+        fieldLabel: 'Beskrivelse'
+    } ]
+
+
 });

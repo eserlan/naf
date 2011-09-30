@@ -10,6 +10,7 @@ Ext.define('NAF.view.activity.List' ,{
 
 
         this.columns = [
+            {header: 'Dato',  dataIndex: 'dato',  width:70, shrinkToFit:true},
             {header: 'Navn',  dataIndex: 'navn',  flex: 1},
             {header: 'Kategori', dataIndex: 'kategori', flex: 1}
         ];
