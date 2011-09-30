@@ -50,9 +50,10 @@ Ext.define('NAF.controller.Activities', {
 
     changeDetail: function(grid, record) {
         var title = record.get('navn');
-
         var ad = this.getActivityDetail();
         ad.setTitle('Mer informasjon om ' + title);
+
+        ad.loadRecord(record);
 
 
     }
