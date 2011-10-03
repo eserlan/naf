@@ -7,6 +7,10 @@ Ext.define('NAF.view.activity.Detail', {
 
     defaultType: 'textfield',
 
+    buttons: [
+        {text: 'Lagre'}
+    ],
+
     items: [{
         name: 'dato',
         dataIndex: 'dato',
@@ -23,6 +27,8 @@ Ext.define('NAF.view.activity.Detail', {
         fieldLabel: 'Kategori'
     },{
         name: 'beskrivelse',
+        xtype: 'textareafield',
+        grow: 'true',
         dataIndex: 'beskrivelse',
         fieldLabel: 'Beskrivelse'
     } ]
