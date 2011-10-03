@@ -25,7 +25,6 @@ Ext.define('NAF.controller.Activities', {
             },
             'activityedit button[action=save]':{
                 click: this.updateActivity
-
             }
         });
     },
@@ -51,7 +50,11 @@ Ext.define('NAF.controller.Activities', {
     changeDetail: function(grid, record) {
         var title = record.get('navn');
         var ad = this.getActivityDetail();
-        ad.setTitle('Mer informasjon om ' + title);
+        var di = ad.getDockedItems();
+        var tbar = di[0];
+        var tbInfo = tbar.getComponent('tbInfo');
+        tbInfo.setText('Mer informasjon om ' + title);
+        console.log(tbInfo);
 
         ad.loadRecord(record);
 

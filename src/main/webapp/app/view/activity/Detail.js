@@ -2,14 +2,22 @@ Ext.define('NAF.view.activity.Detail', {
     extend: 'Ext.form.Panel',
     bodyPadding: 5,  // Don't want content to crunch against the borders
     alias: 'widget.activitydetail',
-    title: 'Mer informasjon om ',
     store: 'Activities',
+    preventHeader: true,
 
     defaultType: 'textfield',
 
-    buttons: [
-        {text: 'Lagre'}
+    tbar: [
+        {
+            xtype    : 'tbtext',
+            id       : 'tbInfo',
+            text     : 'Mer informasjon om ',
+            style    : {'font-weight': 'bold', 'color': '#04408C !important'}
+        },
+        '->',
+        {xtype: 'button', text:'Lagre', disabled: true}
     ],
+
 
     items: [{
         name: 'dato',
