@@ -1,6 +1,7 @@
 Ext.define('NAF.store.Activities', {
     extend: 'Ext.data.Store',
     model: 'NAF.model.Activity',
+    storeId: 'activityStore',
     autoLoad: true,
 
     proxy: {

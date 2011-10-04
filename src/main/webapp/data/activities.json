@@ -5,6 +5,7 @@
             id: 1,
             navn: 'Glattkjøringsdemo',
             kategori: 'Demo',
+            sted: 'Oslo',
             dato: '11.09.2011',
             beskrivelse: 'beskrivelse her 11'
         },
@@ -12,12 +13,14 @@
             id: 2,
             navn: 'Glattkjøringskurs',
             kategori: 'Kurs',
+            sted: 'Oslo',
             dato: '12.09.2011',
             beskrivelse: 'beskrivelse her 12'
         },
         {
             id: 3,
             navn: 'Trafikksikkerhetsdemo',
+            sted: 'Drammen',
             kategori: 'Demo',
             dato: '13.09.2011',
             beskrivelse: 'beskrivelse her 13'

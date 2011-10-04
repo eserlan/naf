@@ -23,7 +23,7 @@ Ext.define('NAF.controller.Activities', {
                 itemdblclick: this.editActivity,
                 select: this.changeDetail
             },
-            'activityedit button[action=save]':{
+            'activitydetail button[action=save]':{
                 click: this.updateActivity
             }
         });
@@ -37,13 +37,12 @@ Ext.define('NAF.controller.Activities', {
 
     updateActivity: function (button) {
         console.log('Lagre knapp trykket!');
-        var win = button.up('window'),
-            form = win.down('form'),
-            record = form.getRecord(),
-            values = form.getValues();
+        var win = button.up('activitydetail');
+        var form = win.getForm();
+        var record = form.getRecord();
+        var values = form.getValues();
 
         record.set(values);
-        win.close();
         this.getActivitiesStore().sync();
     },
 

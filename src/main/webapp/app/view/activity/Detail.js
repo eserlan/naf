@@ -15,31 +15,41 @@ Ext.define('NAF.view.activity.Detail', {
             style    : {'font-weight': 'bold', 'color': '#04408C !important'}
         },
         '->',
-        {xtype: 'button', text:'Lagre', disabled: true}
+        {xtype: 'button', text:'Lagre', action: 'save'}
     ],
 
 
-    items: [{
-        name: 'dato',
-        dataIndex: 'dato',
-        xtype: 'datefield',
-        format: 'd.m.Y',
-        fieldLabel: 'Dato'
-    }, {
-        name: 'navn',
-        dataIndex: 'navn',
-        fieldLabel: 'Navn'
-    }, {
-        name: 'kategori',
-        dataIndex: 'kategori',
-        fieldLabel: 'Kategori'
-    },{
-        name: 'beskrivelse',
-        xtype: 'textareafield',
-        grow: 'true',
-        dataIndex: 'beskrivelse',
-        fieldLabel: 'Beskrivelse'
-    } ]
+    items: [
+        {
+            name: 'dato',
+            dataIndex: 'dato',
+            xtype: 'datefield',
+            format: 'd.m.Y',
+            fieldLabel: 'Dato'
+        },
+        {
+            name: 'navn',
+            dataIndex: 'navn',
+            fieldLabel: 'Navn'
+        },
+        {
+            name: 'kategori',
+            dataIndex: 'kategori',
+            fieldLabel: 'Kategori'
+        },
+        {
+            name: 'beskrivelse',
+            xtype: 'textareafield',
+            grow: 'true',
+            dataIndex: 'beskrivelse',
+            fieldLabel: 'Beskrivelse'
+        },
+        {
+            name: 'sted',
+            dataIndex: 'sted',
+            fieldLabel: 'Sted'
+        },
+    ]
 
 
 });

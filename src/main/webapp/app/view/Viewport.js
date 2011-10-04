@@ -1,7 +1,8 @@
 Ext.define('NAF.view.Viewport', {
     extend: 'Ext.container.Viewport',
 
-    requires: ['NAF.view.activity.Detail','NAF.view.activity.List' ],
+    url: 'aktivitet',
+
 
     layout: 'border',
     items: [
