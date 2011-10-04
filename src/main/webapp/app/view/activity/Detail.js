@@ -2,7 +2,7 @@ Ext.define('NAF.view.activity.Detail', {
     extend: 'Ext.form.Panel',
     bodyPadding: 5,  // Don't want content to crunch against the borders
     alias: 'widget.activitydetail',
-    store: 'Activities',
+    store: ['Activities'],
     preventHeader: true,
 
     defaultType: 'textfield',
@@ -17,7 +17,6 @@ Ext.define('NAF.view.activity.Detail', {
         '->',
         {xtype: 'button', text:'Lagre', action: 'save'}
     ],
-
 
     items: [
         {
@@ -46,9 +45,12 @@ Ext.define('NAF.view.activity.Detail', {
         },
         {
             name: 'sted',
-            dataIndex: 'sted',
+            xtype: 'combo',
+            store: 'Locations',
+            displayField: 'name',
+            typeAhead: true,
             fieldLabel: 'Sted'
-        },
+        }
     ]
 
 

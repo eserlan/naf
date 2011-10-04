@@ -1,12 +1,11 @@
 Ext.define('NAF.controller.Activities', {
     extend: 'Ext.app.Controller',
 
-    stores: ['Activities'],
-    models: ['Activity'],
+    stores: ['Activities', 'Locations'],
+    models: ['Activity', 'Location'],
 
     views: [
         'activity.List',
-        'activity.Edit',
         'activity.Detail'
     ],
 
@@ -29,14 +28,9 @@ Ext.define('NAF.controller.Activities', {
         });
     },
 
-    editActivity: function (grid, record) {
-        console.log('Dblclik: ' + record.get('navn'));
-        var view = Ext.widget('activityedit');
-        view.down('form').loadRecord(record);
-    },
+
 
     updateActivity: function (button) {
-        console.log('Lagre knapp trykket!');
         var win = button.up('activitydetail');
         var form = win.getForm();
         var record = form.getRecord();
@@ -53,11 +47,7 @@ Ext.define('NAF.controller.Activities', {
         var tbar = di[0];
         var tbInfo = tbar.getComponent('tbInfo');
         tbInfo.setText('Mer informasjon om ' + title);
-        console.log(tbInfo);
-
         ad.loadRecord(record);
-
-
     }
 
 });
