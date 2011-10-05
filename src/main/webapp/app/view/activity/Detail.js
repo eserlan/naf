@@ -15,7 +15,12 @@ Ext.define('NAF.view.activity.Detail', {
             style    : {'font-weight': 'bold', 'color': '#04408C !important'}
         },
         '->',
-        {xtype: 'button', text:'Lagre', action: 'save'}
+        {
+            xtype: 'button',
+            text:'Lagre',
+            disabled:true,
+            action: 'save'
+        }
     ],
 
     items: [
@@ -45,7 +50,10 @@ Ext.define('NAF.view.activity.Detail', {
         },
         {
             name: 'sted',
+//            matchFieldWidth: false,
             xtype: 'combo',
+            width: 350,
+            valueField: '_id',
             store: 'Locations',
             displayField: 'name',
             typeAhead: true,

@@ -1,6 +1,6 @@
 {
-    success: true,
-    locations: [
+    "success": "true",
+    "locations": [
 
         {
             "_id":"4e89af11381db80006000001",

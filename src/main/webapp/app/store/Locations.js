@@ -5,9 +5,11 @@ Ext.define('NAF.store.Locations', {
     autoLoad: true,
 
     proxy: {
-        type: 'ajax',
+//        type: 'ajax',
+        type: 'jsonp',
         api: {
-            read: 'data/locations.json',
+            read: 'http://naf.herokuapp.com/locations.json',
+//            read: 'data/locations.json',
             update: 'data/updateLocation.json'
         },
         reader: {
