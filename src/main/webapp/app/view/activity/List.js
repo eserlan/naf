@@ -10,9 +10,9 @@ Ext.define('NAF.view.activity.List' ,{
 
 
         this.columns = [
-            {header: 'Dato',  dataIndex: 'dato',  width:70, shrinkToFit:true},
-            {header: 'Navn',  dataIndex: 'navn',  flex: 1},
-            {header: 'Kategori', dataIndex: 'kategori', flex: 1}
+            {header: 'Dato',  dataIndex: 'dtstart',  flex:1, shrinkToFit:true},
+            {header: 'Navn',  dataIndex: 'summary',  flex: 2},
+            {header: 'Kategori', dataIndex: 'category', flex: 2}
         ];
 
         this.callParent(arguments);

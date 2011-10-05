@@ -1,0 +1,85 @@
+{
+    "VCALENDAR": {
+        "X-WR-CALNAME": "NAF Aktiviteter",
+        "VTIMEZONE": [
+            {
+                "TZID": "Europe/Oslo"
+            }
+        ],
+        "VEVENT": [
+            {
+                "UID": "LFMEVENT-2051971",
+                "CATEGORIES": "Kurs/opplæring",
+                "SUMMARY": "Glattkjøringsdemo",
+                "DESCRIPTION": "beskrivelse her 11",
+                "LOCATION": "Lokalavdeling Voss og Omland",
+                "GEO": "60.62296;60.62296",
+                "DTSTART": "20111014T210000",
+                "DTEND": "20111014T235900",
+                "X-AUDIENCE" : "Voksen",
+                "X-AGE" : "18 - 60",
+                "DURATION": "P3H59M",
+                "X-PRICE": "100",
+                "CONTACT": "Ola Nordman\, NAF Voss og Omland",
+                "ATTENDEE": "Ola Nordman\, NAF Voss og Omland",
+                "CONTACT": "Kari Nordman\, NAF Voss og Omland",
+                "X-SUPERVISOR-INCLUDED": "Ja",
+                "X-VEHICLE" : "Bil",
+                "X-OWN-VEHICLE" : "Nei",
+                "X-RESPONSIBILITY" : "Å møte opp i tide",
+                "X-IMAGE" : "images/img1.png",
+                "X-IMAGE" : "images/img2.png",
+                "X-VIDEO" : "http://youtube.com/naf/voss/gkd",
+                "URL" : "http://naf.no/voss/20111014/"
+
+            }
+
+        ],
+        "VERSION": "2.0",
+        "X-WR-CALDESC": "Event listing - supplied by http://www.Last.fm",
+        "PRODID": "-//Last.fm Limited Event Feeds//NONSGML//EN"
+    }
+}
+{
+success: true,
+activities: [
+{
+id: 1,
+navn: 'Glattkjøringsdemo',
+kategori: 'Demo',
+sted: 'Oslo',
+dato: '11.09.2011',
+beskrivelse: 'beskrivelse her 11'
+},
+{
+id: 2,
+navn: 'Glattkjøringskurs',
+kategori: 'Kurs',
+sted: 'Oslo',
+dato: '12.09.2011',
+beskrivelse: 'beskrivelse her 12'
+},
+{
+id: 3,
+navn: 'Trafikksikkerhetsdemo',
+sted: 'Drammen',
+kategori: 'Demo',
+dato: '13.09.2011',
+beskrivelse: 'beskrivelse her 13'
+},
+{
+id: 4,
+navn: 'Trafikksikkerhetskurs',
+kategori: 'Kurs',
+dato: '14.09.2011',
+beskrivelse: 'beskrivelse her 14'
+},
+{
+id: 5,
+navn: 'Trafikaltgrunnkurs',
+kategori: 'Kurs',
+dato: '15.09.2011',
+beskrivelse: 'beskrivelse her 15'
+}
+]
+}

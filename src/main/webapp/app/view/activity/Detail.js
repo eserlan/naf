@@ -25,35 +25,56 @@ Ext.define('NAF.view.activity.Detail', {
 
     items: [
         {
-            name: 'dato',
-            dataIndex: 'dato',
+            name: 'dtstart',
+            dataIndex: 'dtstart',
             xtype: 'datefield',
-            format: 'd.m.Y',
+            format: 'Y-m-d\\TG:m:sP',
+
             fieldLabel: 'Dato'
         },
         {
-            name: 'navn',
-            dataIndex: 'navn',
+            name: 'summary',
+            dataIndex: 'summary',
             fieldLabel: 'Navn'
-        },
+        }
+        ,
+         {
+            name: 'category2',
+            id: 'categoryCombo',
+            xtype: 'combo',
+            valueField: '_id',
+            dataIndex: 'category',
+            store: 'Categories',
+            displayField: 'name',
+            typeAhead: true,
+            fieldLabel: 'Kategori'
+         }
+        ,
         {
-            name: 'kategori',
-            dataIndex: 'kategori',
+            name: 'category',
+            dataIndex: 'category',
             fieldLabel: 'Kategori'
         },
         {
-            name: 'beskrivelse',
+            name: 'description',
             xtype: 'textareafield',
             grow: 'true',
-            dataIndex: 'beskrivelse',
+            dataIndex: 'description',
             fieldLabel: 'Beskrivelse'
-        },
+        }
+        ,
         {
-            name: 'sted',
-//            matchFieldWidth: false,
+            name: 'location',
+            dataIndex: 'location',
+            fieldLabel: 'Sted'
+        }
+        ,
+        {
+            name: 'location2',
             xtype: 'combo',
             width: 350,
             valueField: '_id',
+            dataIndex: 'location',
             store: 'Locations',
             displayField: 'name',
             typeAhead: true,

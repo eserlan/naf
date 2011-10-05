@@ -7,7 +7,7 @@ Ext.define('NAF.store.Activities', {
     proxy: {
         type: 'ajax',
         api: {
-            read: 'data/activities.json',
+            read: 'data/activities3.json',
             update: 'data/updateActivities.json'
         },
         reader: {
