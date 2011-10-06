@@ -34,7 +34,12 @@ Ext.define('NAF.controller.Activities', {
             },
             'activitydetail combobox#categoryCombo':{
                 select: this.selectCategory
+            },
+            'activitydetail combobox#locationCombo':{
+                select: this.selectLocation
             }
+
+
         });
     },
 
@@ -61,7 +66,6 @@ Ext.define('NAF.controller.Activities', {
     },
 
     selectCategory: function(combo, selectedRecords) {
-        console.log('selection: ' + selectedRecords);
         var ad = combo.up();
         if (ad != null) {
             var activity = ad.getRecord();
@@ -74,8 +78,21 @@ Ext.define('NAF.controller.Activities', {
 //            this.getActivitiesStore().sync();
 
         }
+    },
 
+    selectLocation: function(combo, selectedRecords) {
+        var ad = combo.up();
+        if (ad != null) {
+            var activity = ad.getRecord();
+            var newId = selectedRecords[0].get('_id');
+            var newLocationName = selectedRecords[0].get('name');
+            activity.set('location_id', newId);
+            activity.set('location', newLocationName);
+            ad.loadRecord(activity);
+//            todo
+//            this.getActivitiesStore().sync();
+
+        }
     }
 
-})
-    ;
+});
