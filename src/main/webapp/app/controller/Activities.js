@@ -17,13 +17,14 @@ Ext.define('NAF.controller.Activities', {
     ],
     init: function() {
 
-        var dt = new Date('2011-10-10T09:05:25+00:00');
-        console.log(Ext.Date.format(dt, 'Y-m-d'));                          // 2007-01-10
-        console.log(Ext.Date.format(dt, 'F j, Y, g:i a'));                  // January 10, 2007, 3:05 pm
-        console.log(Ext.Date.format(dt, 'l, \\t\\he jS \\of F Y h:i:s A')); // Wednesday, the 10th of January 2007 03:05:01 PM
-        console.log(Ext.Date.format(dt, 'Y-m-d\\TG:m:sP')); // Wednesday, the 10th of January 2007 03:05:01 PM
+//        var dt = new Date('2011-10-10T09:05:25+00:00');
+//        console.log(Ext.Date.format(dt, 'Y-m-d'));                          // 2007-01-10
+//        console.log(Ext.Date.format(dt, 'F j, Y, g:i a'));                  // January 10, 2007, 3:05 pm
+//        console.log(Ext.Date.format(dt, 'l, \\t\\he jS \\of F Y h:i:s A')); // Wednesday, the 10th of January 2007 03:05:01 PM
+//        console.log(Ext.Date.format(dt, 'Y-m-d\\TG:m:sP')); // Wednesday, the 10th of January 2007 03:05:01 PM
 
-//        console.log('Initialized Activities! This happens before the Application launch function is called');
+
+        []//        console.log('Initialized Activities! This happens before the Application launch function is called');
         this.control({
             'viewport > activitylist': {
                 select: this.changeDetail
@@ -31,7 +32,7 @@ Ext.define('NAF.controller.Activities', {
             'activitydetail button[action=save]':{
                 click: this.updateActivity
             },
-            'activitydetail combo[id=categoryCombo]':{
+            'activitydetail combobox#categoryCombo':{
                 select: this.selectCategory
             }
         });
@@ -59,9 +60,22 @@ Ext.define('NAF.controller.Activities', {
         ad.loadRecord(record);
     },
 
-    selectCategory: function(combo, records, opts){
-        console.log('combo selected: ' + records);
+    selectCategory: function(combo, selectedRecords) {
+        console.log('selection: ' + selectedRecords);
+        var ad = combo.up();
+        if (ad != null) {
+            var activity = ad.getRecord();
+            var newId = selectedRecords[0].get('_id');
+            var newCategory = selectedRecords[0].get('name');
+            activity.set('category_id', newId);
+            activity.set('category', newCategory);
+            ad.loadRecord(activity);
+//            todo
+//            this.getActivitiesStore().sync();
+
+        }
 
     }
 
-});
+})
+    ;

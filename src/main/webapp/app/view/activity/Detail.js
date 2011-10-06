@@ -18,7 +18,7 @@ Ext.define('NAF.view.activity.Detail', {
         {
             xtype: 'button',
             text:'Lagre',
-            disabled:true,
+//            disabled:true,
             action: 'save'
         }
     ],
