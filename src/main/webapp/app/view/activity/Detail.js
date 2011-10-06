@@ -17,6 +17,7 @@ Ext.define('NAF.view.activity.Detail', {
         '->',
         {
             xtype: 'button',
+            id: 'activityDetailSaveButton',
             text:'Lagre',
 //            disabled:true,
             action: 'save'
@@ -50,11 +51,11 @@ Ext.define('NAF.view.activity.Detail', {
             fieldLabel: 'Kategori'
          }
         ,
-        {
-            name: 'category',
-            dataIndex: 'category',
-            fieldLabel: 'Kategori'
-        },
+//        {
+//            name: 'category',
+//            dataIndex: 'category',
+//            fieldLabel: 'Kategori'
+//        },
         {
             name: 'description',
             xtype: 'textareafield',
@@ -63,12 +64,12 @@ Ext.define('NAF.view.activity.Detail', {
             fieldLabel: 'Beskrivelse'
         }
         ,
-        {
-            name: 'location',
-            dataIndex: 'location',
-            fieldLabel: 'Sted'
-        }
-        ,
+//        {
+//            name: 'location',
+//            dataIndex: 'location',
+//            fieldLabel: 'Sted'
+//        }
+//        ,
         {
             name: 'location2',
             id: 'locationCombo',

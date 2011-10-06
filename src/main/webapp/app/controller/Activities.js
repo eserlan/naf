@@ -9,10 +9,15 @@ Ext.define('NAF.controller.Activities', {
         'activity.Detail'
     ],
 
+
     refs: [
         {
             ref: 'activityDetail',
             selector: 'activitydetail'
+        },
+        {
+            ref: 'activityDetailSaveButton',
+            selector: 'activitydetail button#activityDetailSaveButton'
         }
     ],
     init: function() {
@@ -35,6 +40,9 @@ Ext.define('NAF.controller.Activities', {
             'activitydetail combobox#categoryCombo':{
                 select: this.selectCategory
             },
+            'activitydetail > textfield':{
+                change : this.enableSaveButton
+            },
             'activitydetail combobox#locationCombo':{
                 select: this.selectLocation
             }
@@ -43,6 +51,13 @@ Ext.define('NAF.controller.Activities', {
         });
     },
 
+    enableSaveButton: function() {
+        var btn = this.getActivityDetailSaveButton();
+//      todo   console.log(btn);
+        btn.setDisabled(false);
+
+
+    },
 
 
     updateActivity: function (button) {
@@ -63,6 +78,11 @@ Ext.define('NAF.controller.Activities', {
         var tbInfo = tbar.getComponent('tbInfo');
         tbInfo.setText('Mer informasjon om ' + title);
         ad.loadRecord(record);
+        var cat = ad.getComponent('categoryCombo');
+        cat.setValue(record.get('category_id'));
+        var loc = ad.getComponent('locationCombo');
+        loc.setValue(record.get('location_id'));
+
     },
 
     selectCategory: function(combo, selectedRecords) {

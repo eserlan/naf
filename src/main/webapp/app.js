@@ -1,11 +1,15 @@
 Ext.application({
     name: 'NAF',
-    appFolder: 'app',
     controllers: [
         'Activities'
     ],
 
+    defaultUrl : '/admin',
+
+    autoCreateViewport: true,
+
     launch: function() {
-        Ext.create('NAF.view.Viewport');
+        var activityDetailSaveButtonEnabled = false;
+
     }
 });

@@ -24,4 +24,5 @@ Ext.define('NAF.store.Activities', {
         }
     }
 
+
 });
