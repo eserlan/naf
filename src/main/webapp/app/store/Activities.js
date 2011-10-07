@@ -6,16 +6,15 @@ Ext.define('NAF.store.Activities', {
 
     proxy: {
 //        type: 'ajax',
-        type: 'jsonp',
-        url: 'http://naf.herokuapp.com/',
-//        url: 'http://localhost:9090/aktivits-admin/data/activities3.json',
+        type: 'rest',
+        url: 'http://localhost:9090/aktivitets-admin/rest/activities',
         api: {
 //            read: 'data/activities3.json',
-            read: 'http://naf.herokuapp.com/activities.json'
+            read: 'rest/activities'
             ,
 //            update: 'http://naf.herokuapp.com/activities.json'
 //            ,
-            update: 'http://naf.herokuapp.com/activities'
+            update: 'rest/activities'
         },
         reader: {
             type: 'json',

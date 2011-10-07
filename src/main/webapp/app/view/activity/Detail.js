@@ -27,22 +27,22 @@ Ext.define('NAF.view.activity.Detail', {
 
 //        var fs = this.getComponent('fieldStore');
 //
-        var fs = Ext.data.StoreManager.lookup('Fields');
-
-        console.log(fs);
-
-        var d = fs.data;
-
-
-        console.log(d);
-
-//        var btn = Ext.create('Ext.button.Split');
-//        btn.setText('valgene er: '
-//        );
-
-//        var btn = Ext.widget('button');
-
-        console.log(d.items.length);
+//        var fs = Ext.data.StoreManager.lookup('Fields');
+//
+//        console.log(fs);
+//
+//        var d = fs.data;
+//
+//
+//        console.log(d);
+//
+////        var btn = Ext.create('Ext.button.Split');
+////        btn.setText('valgene er: '
+////        );
+//
+////        var btn = Ext.widget('button');
+//
+//        console.log(d.items.length);
 
 
 
@@ -120,7 +120,67 @@ Ext.define('NAF.view.activity.Detail', {
             text: 'Legg til',
             scope: this,
             menu : [{
-                text: 'aaa',
+                text: 'Navn',
+                handler: function(){console.log('abc')}
+            },
+            {
+                text: 'Sted',
+                handler: function(){console.log('abc')}
+            },
+            {
+                text: 'Målgruppe',
+                handler: function(){console.log('abc')}
+            },
+            {
+                text: 'Kategori',
+                handler: function(){console.log('abc')}
+            },
+            {
+                text: 'Beskrivelse',
+                handler: function(){console.log('abc')}
+            },
+            {
+                text: 'Kontaktinformasjon',
+                handler: function(){console.log('abc')}
+            },
+            {
+                text: 'Link til registrering',
+                handler: function(){console.log('abc')}
+            },
+            {
+                text: 'Link til nettside',
+                handler: function(){console.log('abc')}
+            },
+            {
+                text: 'Starter',
+                handler: function(){console.log('abc')}
+            },
+            {
+                text: 'Avslutter',
+                handler: function(){console.log('abc')}
+            },
+            {
+                text: 'Pris',
+                handler: function(){console.log('abc')}
+            },
+            {
+                text: 'Link til video (youtupe)',
+                handler: function(){console.log('abc')}
+            },
+            {
+                text: 'Kjøretøy',
+                handler: function(){console.log('abc')}
+            },
+            {
+                text: 'Deltager trenger eget kjøretøy',
+                handler: function(){console.log('abc')}
+            },
+            {
+                text: 'Instruktør på stedet',
+                handler: function(){console.log('abc')}
+            },
+            {
+                text: 'Tags',
                 handler: function(){console.log('abc')}
             }]
         }

@@ -104,7 +104,7 @@ Ext.define('NAF.controller.Activities', {
     changeDetail: function(grid, record) {
 
 
-        this.btnAdded();
+        //this.btnAdded();
 
 //        var fs = Ext.data.StoreManager.lookup('Fields');
 //        console.log(fs);
