@@ -10,7 +10,7 @@ Ext.define('NAF.view.activity.List' ,{
 
 
         this.columns = [
-            {header: 'Dato',  dataIndex: 'dtstart',  flex:1, shrinkToFit:true},
+            {header: 'Dato',  dataIndex: 'dtstart',  flex:1, format: 'c'},
             {header: 'Navn',  dataIndex: 'summary',  flex: 2},
             {header: 'Kategori', dataIndex: 'category', flex: 2}
         ];
