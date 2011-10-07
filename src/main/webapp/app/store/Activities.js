@@ -15,13 +15,21 @@ Ext.define('NAF.store.Activities', {
             ,
 //            update: 'http://naf.herokuapp.com/activities.json'
 //            ,
-            update: 'updateActivities.json'
+            update: 'http://naf.herokuapp.com/activities'
         },
         reader: {
             type: 'json',
             root: 'activities',
             successProperty: 'success'
+        },
+        writer: {
+            type: 'json',
+            root: 'activities',
+            successProperty: 'success',
+            writeAllFields: false
         }
+
+
     }
 
 

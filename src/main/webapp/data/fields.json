@@ -1,0 +1,115 @@
+[
+    {
+        "nb":"Navn",
+        "en":"summary",
+        "type":"text_field"
+    },
+    {
+        "nb":"Sted",
+        "en":"location_id",
+        "type":"select_box"
+    },
+    {
+        "nb":"M\u00e5lgruppe",
+        "en":"target",
+        "type":"select_box",
+        "values":["Barn 0 - 14","Ung 15 - 24","Voksen 25 - 65","Eldre 65 +"]
+    },
+    {
+        "nb":"Kategori",
+        "en":"category_id",
+        "type":"select_box",
+        "values":[
+            {
+                "_id":"4e8c42014eea890006000001",
+                "name":"Kurs/oppl\u00e6ring"
+            },
+            {
+                "_id":"4e8c42014eea890006000002",
+                "name":"NAF tester"
+            },
+            {
+                "_id":"4e8c42014eea890006000003",
+                "name":"Aksjoner og konkurranser"
+            },
+            {
+                "_id":"4e8c42014eea890006000004",
+                "name":"Seminar og foredrag"
+            },
+            {
+                "_id":"4e8c42014eea890006000005",
+                "name":"Politisk p\u00e5virkningsarbeid"
+            },
+            {
+                "_id":"4e8c42014eea890006000006",
+                "name":"Motorsport"
+            }
+        ]
+    },
+    {
+        "nb":"Beskrivelse",
+        "en":"description",
+        "type":"text_area"
+    },
+    {
+        "nb":"Kontaktinformasjon",
+        "en":"contact",
+        "type":"text_area"
+    },
+    {
+        "nb":"Link til registrering",
+        "en":"attendee",
+        "type":"text_field"
+    },
+    {
+        "nb":"Link til nettside",
+        "en":"url",
+        "type":"text_field"
+    },
+    {
+        "nb":"Starter",
+        "en":"dtstart",
+        "type":"datepicker"
+    },
+    {
+        "nb":"Avslutter",
+        "en":"dtend",
+        "type":"datepicker"
+    },
+    {
+        "nb":"Pris",
+        "en":"price",
+        "type":"text_field"
+    },
+    {
+        "nb":"Link til video (Youtube)",
+        "en":"video",
+        "type":"text_field"
+    },
+    {
+        "nb":"Deltakerene m\u00e5 huske",
+        "en":"responsibility",
+        "type":"text_area"
+    },
+    {
+        "nb":"Kj\u00f8ret\u00f8y",
+        "en":"veichle",
+        "type":"select_box",
+        "values":["Bil","Moped","Motorsykkel","Tungt kj\u00f8ret\u00f8y","ATV","Buss","Sykkel"]
+    },
+    {
+        "nb":"Deltaker trenger eget kj\u00f8ret\u00f8y",
+        "en":"own_veichle",
+        "type":"check_box"
+    },
+    {
+        "nb":"Instrukt\u00f8r p\u00e5 stedet",
+        "en":"supervisor_included",
+        "type":"check_box"
+    },
+    {
+        "nb":"Tags",
+        "en":"tags",
+        "type":"text_field"
+    }
+]

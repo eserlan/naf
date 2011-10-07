@@ -1,8 +1,8 @@
 Ext.define('NAF.controller.Activities', {
     extend: 'Ext.app.Controller',
 
-    stores: ['Activities', 'Locations', 'Categories'],
-    models: ['Activity', 'Location', 'Category'],
+    stores: ['Activities', 'Locations', 'Categories', 'Fields' ],
+    models: ['Activity', 'Location', 'Category', 'Field'],
 
     views: [
         'activity.List',
@@ -29,7 +29,7 @@ Ext.define('NAF.controller.Activities', {
 //        console.log(Ext.Date.format(dt, 'Y-m-d\\TG:m:sP')); // Wednesday, the 10th of January 2007 03:05:01 PM
 
 
-        []//        console.log('Initialized Activities! This happens before the Application launch function is called');
+        //        console.log('Initialized Activities! This happens before the Application launch function is called');
         this.control({
             'viewport > activitylist': {
                 select: this.changeDetail
@@ -40,15 +40,46 @@ Ext.define('NAF.controller.Activities', {
             'activitydetail combobox#categoryCombo':{
                 select: this.selectCategory
             },
-            'activitydetail > textfield':{
-                change : this.enableSaveButton
+            'activitydetail splitbutton#addBtn':{
+//                beforerender: this.btnAdded
+//                ,
+                click: this.btnAddClick
             },
+//            'activitydetail > textfield':{
+//                chnge : this.enableSaveButton
+//            },
             'activitydetail combobox#locationCombo':{
                 select: this.selectLocation
             }
 
 
         });
+    },
+
+    btnAdded: function() {
+        console.log('button added');
+
+        var fs = this.getFieldsStore();
+
+        console.log(fs);
+
+        var d = fs.data;
+
+        console.log(d);
+
+        var i = d.items;
+
+        console.log(i);
+
+
+
+
+
+
+    },
+
+    btnAddClick: function() {
+        console.log('button add click');
     },
 
     enableSaveButton: function() {
@@ -71,6 +102,15 @@ Ext.define('NAF.controller.Activities', {
     },
 
     changeDetail: function(grid, record) {
+
+
+        this.btnAdded();
+
+//        var fs = Ext.data.StoreManager.lookup('Fields');
+//        console.log(fs);
+//
+//        fs.each(function(field){console.log(field)});
+
         var title = record.get('summary');
         var ad = this.getActivityDetail();
         var di = ad.getDockedItems();

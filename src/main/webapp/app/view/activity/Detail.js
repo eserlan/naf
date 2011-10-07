@@ -2,7 +2,6 @@ Ext.define('NAF.view.activity.Detail', {
     extend: 'Ext.form.Panel',
     bodyPadding: 5,  // Don't want content to crunch against the borders
     alias: 'widget.activitydetail',
-    store: ['Activities'],
     preventHeader: true,
 
     defaultType: 'textfield',
@@ -24,12 +23,44 @@ Ext.define('NAF.view.activity.Detail', {
         }
     ],
 
+    initComponent: function () {
+
+//        var fs = this.getComponent('fieldStore');
+//
+        var fs = Ext.data.StoreManager.lookup('Fields');
+
+        console.log(fs);
+
+        var d = fs.data;
+
+
+        console.log(d);
+
+//        var btn = Ext.create('Ext.button.Split');
+//        btn.setText('valgene er: '
+//        );
+
+//        var btn = Ext.widget('button');
+
+        console.log(d.items.length);
+
+
+
+//        this.add(btn);
+
+
+
+        this.callParent();
+
+
+    },
+
     items: [
         {
             name: 'dtstart',
             dataIndex: 'dtstart',
             xtype: 'datefield',
-            format: 'Y-m-d\\TG:m:sP',
+            format: 'c',
 
             fieldLabel: 'Dato'
         },
@@ -39,7 +70,7 @@ Ext.define('NAF.view.activity.Detail', {
             fieldLabel: 'Navn'
         }
         ,
-         {
+        {
             name: 'category2',
             id: 'categoryCombo',
             xtype: 'combo',
@@ -49,7 +80,7 @@ Ext.define('NAF.view.activity.Detail', {
             displayField: 'name',
             typeAhead: true,
             fieldLabel: 'Kategori'
-         }
+        }
         ,
 //        {
 //            name: 'category',
@@ -82,6 +113,18 @@ Ext.define('NAF.view.activity.Detail', {
             typeAhead: true,
             fieldLabel: 'Sted'
         }
+        ,
+        {
+            xtype: 'splitbutton',
+            id: 'addBtn',
+            text: 'Legg til',
+            scope: this,
+            menu : [{
+                text: 'aaa',
+                handler: function(){console.log('abc')}
+            }]
+        }
+
     ]
 
 
