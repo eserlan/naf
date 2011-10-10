@@ -16,16 +16,12 @@ Ext.define('NAF.view.activity.List', {
     ],
 
     initComponent: function() {
-
-
         this.columns = [
             {header: 'Dato',  dataIndex: 'dtstart',  flex:1, format: 'c'},
             {header: 'Navn',  dataIndex: 'summary',  flex: 2},
             {header: 'Kategori', dataIndex: 'category_id', flex: 2, renderer: this.findCategoryName
             }
         ];
-
-
         this.callParent(arguments);
     },
 
