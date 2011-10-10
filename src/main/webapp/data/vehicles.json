@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Bil"
+    },
+    {
+        "name": "Moped"
+    },
+    {
+        "name": "Motorsykkel"
+    },
+    {
+        "name": "Tungt kjøretøy"
+    },
+    {
+        "name": "ATV"
+    },
+    {
+        "name": "Buss"
+    },
+    {
+        "name": "Sykkel"
+    }
+]

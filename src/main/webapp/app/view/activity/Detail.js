@@ -138,6 +138,27 @@ Ext.define('NAF.view.activity.Detail', {
             dataIndex: 'tags',
             emptyText: 'Stikkord',
             width: 350
+        },
+        {
+            name: 'price',
+            fieldLabel: 'Pris',
+            id: 'price',
+            dataIndex: 'price',
+            emptyText: 'Pris',
+            width: 350
+        }
+        ,
+        {
+            name: 'vehicle2',
+            id: 'vehicleCombo',
+            xtype: 'combo',
+            width: 350,
+            valueField: 'name',
+            dataIndex: 'vehicle',
+            store: 'Vehicles',
+            displayField: 'name',
+            typeAhead: true,
+            fieldLabel: 'Kjøretøy'
         }
         ,
         {
