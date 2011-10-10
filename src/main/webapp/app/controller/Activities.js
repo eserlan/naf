@@ -43,7 +43,7 @@ Ext.define('NAF.controller.Activities', {
 //            'activitydetail > fieldcontainer > field':{
 //                change : this.updateList
 //            },
-            'activitydetail > textfield':{
+            'activitydetail textfield':{
                 keyup : this.updateList
             },
             'activitydetail combobox#locationCombo':{
@@ -75,15 +75,6 @@ Ext.define('NAF.controller.Activities', {
     },
 
     changeDetail: function(grid, record) {
-
-
-        //this.btnAdded();
-
-//        var fs = Ext.data.StoreManager.lookup('Fields');
-//        console.log(fs);
-//
-//        fs.each(function(field){console.log(field)});
-
         var title = record.get('summary');
         var ad = this.getActivityDetail();
         var di = ad.getDockedItems();
@@ -95,7 +86,6 @@ Ext.define('NAF.controller.Activities', {
         cat.setValue(record.get('category_id'));
         var loc = ad.getComponent('locationCombo');
         loc.setValue(record.get('location_id'));
-
     },
 
     selectCategory: function(combo, selectedRecords) {
@@ -106,7 +96,7 @@ Ext.define('NAF.controller.Activities', {
             var newCategory = selectedRecords[0].get('name');
             activity.set('category_id', newId);
             activity.set('category', newCategory);
-            ad.loadRecord(activity);
+//            ad.loadRecord(activity);
 //            todo
 //            this.getActivitiesStore().sync();
 
@@ -121,7 +111,7 @@ Ext.define('NAF.controller.Activities', {
             var newLocationName = selectedRecords[0].get('name');
             activity.set('location_id', newId);
             activity.set('location', newLocationName);
-            ad.loadRecord(activity);
+//            ad.loadRecord(activity);
 //            todo
 //            this.getActivitiesStore().sync();
 

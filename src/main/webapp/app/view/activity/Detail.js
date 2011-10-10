@@ -85,7 +85,7 @@ Ext.define('NAF.view.activity.Detail', {
             id: 'categoryCombo',
             xtype: 'combo',
             valueField: '_id',
-            dataIndex: 'category',
+//            dataIndex: 'category',
             store: 'Categories',
             displayField: 'name',
             typeAhead: true,
@@ -168,9 +168,18 @@ Ext.define('NAF.view.activity.Detail', {
                     name      : 'own_vehicle',
                     dataIndex : 'own_vehicle',
                     inputValue: 'true',
-                    id        : 'checkbox1'
+                    id        : 'own_vehicle'
                 }
             ]
+        }
+        ,
+        {
+            name: 'responsibility',
+            xtype: 'textareafield',
+            grow: 'true',
+            width: 350,
+            dataIndex: 'responsibility',
+            fieldLabel: 'Brukeren har selv ansvar for'
         }
         ,
         {
