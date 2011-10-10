@@ -15,6 +15,27 @@ Ext.define('NAF.view.activity.Detail', {
         },
         '->',
         {
+            xtype: 'combo',
+            store: 'Activities',
+            id: 'activitiesSearchCombo',
+            displayField: 'summary',
+            typeAhead: false,
+            hideLabel: true,
+            hideTrigger:true,
+            anchor: '100%',
+            queryParam: 'text',
+            emptyText: 'Søk etter aktiviteter...',
+//            matchFieldWidth: false,
+
+            listConfig: {
+                loadingText: 'Søker...',
+                emptyText: 'Ingen treff.',
+                width: 400
+
+            },
+            pageSize: 10
+        },
+        {
             xtype: 'button',
             id: 'activityDetailSaveButton',
             text:'Lagre',

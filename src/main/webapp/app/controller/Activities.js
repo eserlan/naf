@@ -48,10 +48,28 @@ Ext.define('NAF.controller.Activities', {
             },
             'activitydetail combobox#locationCombo':{
                 select: this.selectLocation
+            },
+            'activitydetail combobox#activitiesSearchCombo':{
+                select: this.selectActivity
             }
 
 
         });
+    },
+
+    selectActivity: function(combo, records){
+        var record = records[0];
+        var title = record.get('summary');
+        var ad = this.getActivityDetail();
+        var di = ad.getDockedItems();
+        var tbar = di[0];
+        var tbInfo = tbar.getComponent('tbInfo');
+        tbInfo.setText('Mer informasjon om ' + title);
+        ad.loadRecord(record);
+        var cat = ad.getComponent('categoryCombo');
+        cat.setValue(record.get('category_id'));
+        var loc = ad.getComponent('locationCombo');
+        loc.setValue(record.get('location_id'));
     },
 
     updateList: function(field) {

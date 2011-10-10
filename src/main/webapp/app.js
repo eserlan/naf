@@ -7,6 +7,10 @@ Ext.application({
 
     defaultUrl : '/admin',
 
-    autoCreateViewport: true
+    autoCreateViewport: true,
+
+    onLaunch: function() {
+        Ext.QuickTip.init();
+    }
 
 });

@@ -18,9 +18,12 @@ public class Activities {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getActivities(@Context UriInfo ui) {
+        System.out.println("activities GET");
         MultivaluedMap<String, String> qp = ui.getQueryParameters();
-        WebResource r = client.resource("http://naf.herokuapp.com/activities");
+        WebResource r = client.resource("http://naf.herokuapp.com/activities/search");
         r = r.queryParams(qp);
+
+//        System.out.println("r = " + r);
         return r.get(String.class);
 
     }
