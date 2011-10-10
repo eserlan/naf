@@ -1,11 +1,14 @@
 package no.naf.aktivitetsadmin.rest;
 
 
-import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import static no.naf.aktivitetsadmin.ClientContainer.client;
 
 @Path("/categories")
 public class Categories {
@@ -14,10 +17,7 @@ public class Categories {
     @Produces(MediaType.APPLICATION_JSON)
     public String getCategories() {
         System.out.println("categories GET");
-
-        Client c = new Client();
-        WebResource r = c.resource("http://naf.herokuapp.com/categories");
-        c.destroy();
+        WebResource r = client.resource("http://naf.herokuapp.com/categories");
         return r.get(String.class);
 
     }

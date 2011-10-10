@@ -1,24 +1,26 @@
 package no.naf.aktivitetsadmin.rest;
 
 
-import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.UriInfo;
+
+import static no.naf.aktivitetsadmin.ClientContainer.client;
 
 @Path("/activities")
 public class Activities {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getActivities() {
-        System.out.println("activities GET");
-
-        Client c = new Client();
-        WebResource r = c.resource("http://naf.herokuapp.com/activities");
-        c.destroy();
+    public String getActivities(@Context UriInfo ui) {
+        MultivaluedMap<String, String> qp = ui.getQueryParameters();
+        WebResource r = client.resource("http://naf.herokuapp.com/activities");
+        r = r.queryParams(qp);
         return r.get(String.class);
 
     }
@@ -41,8 +43,7 @@ public class Activities {
 
 //        System.out.println("nc = " + nc);
 
-        Client c = new Client();
-        WebResource r = c.resource("http://naf.herokuapp.com/activities/" + id);
+        WebResource r = client.resource("http://naf.herokuapp.com/activities/" + id);
         String res = r.
                 type(MediaType.APPLICATION_JSON_TYPE).
                 accept(MediaType.APPLICATION_JSON_TYPE).
