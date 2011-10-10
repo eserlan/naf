@@ -6,6 +6,13 @@ Ext.define('NAF.view.activity.List' ,{
 
     title : 'Alle aktiviteter',
 
+    dockedItems: [{
+        xtype: 'pagingtoolbar',
+        store: 'Activities',   // same store GridPanel is using
+        dock: 'bottom',
+        displayInfo: true
+    }],
+
     initComponent: function() {
 
 

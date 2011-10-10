@@ -3,6 +3,7 @@ Ext.define('NAF.store.Activities', {
     model: 'NAF.model.Activity',
     storeId: 'activityStore',
     autoLoad: true,
+    pageSize: 25,
 
     proxy: {
         type: 'rest',

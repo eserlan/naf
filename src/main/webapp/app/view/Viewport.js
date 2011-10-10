@@ -9,7 +9,7 @@ Ext.define('NAF.view.Viewport', {
         {
             region: 'north',
             xtype: 'activitylist',
-            height: 220
+            height: 320
         },
         {xtype: 'splitter'},
         {

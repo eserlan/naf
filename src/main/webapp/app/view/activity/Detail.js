@@ -123,6 +123,7 @@ Ext.define('NAF.view.activity.Detail', {
             store: 'Locations',
             displayField: 'name',
             typeAhead: true,
+
             fieldLabel: 'Sted'
         }
         ,
@@ -135,14 +136,35 @@ Ext.define('NAF.view.activity.Detail', {
             width: 350
         },
         {
-            name: 'price',
-            fieldLabel: 'Pris',
-            id: 'price',
-            dataIndex: 'price',
-            emptyText: 'Pris',
-            width: 350
+            xtype: 'fieldcontainer',
+            layout: 'hbox',
+            items: [
+                {
+                    name: 'price',
+                    fieldLabel: 'Pris',
+                    xtype: 'textfield',
+                    id: 'price',
+                    dataIndex: 'price',
+                    emptyText: 'Pris',
+                    width: 350
+                }
+                ,
+                {
+                    xtype: 'splitter'
+                },
+                {
+                    xtype: 'checkboxfield',
+                    boxLabel  : 'Veileder  inkl',
+                    name      : 'supervisor_included',
+                    dataIndex : 'supervisor_included',
+                    inputValue: 'true',
+                    uncheckedValue : 'false',
+                    id        : 'supervisor_included'
+                }
+            ]
         }
         ,
+
         {
             xtype: 'fieldcontainer',
             layout: 'hbox',
@@ -167,6 +189,7 @@ Ext.define('NAF.view.activity.Detail', {
                     boxLabel  : 'Eget kjøretøy',
                     name      : 'own_vehicle',
                     dataIndex : 'own_vehicle',
+                    uncheckedValue : 'false',
                     inputValue: 'true',
                     id        : 'own_vehicle'
                 }
