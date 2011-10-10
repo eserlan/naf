@@ -25,6 +25,17 @@ Ext.define('NAF.view.activity.Detail', {
 
     items: [
         {
+            name: 'summary',
+            id: 'summary',
+            dataIndex: 'summary',
+            emptyText: 'Aktivitets navn',
+            height: 30,
+            width: 400,
+            enableKeyEvents: true,
+            fieldStyle: {'font-weight': 'bold'}
+        }
+        ,
+        {
             xtype: 'fieldcontainer',
 //            labelWidth: 100,
 
@@ -73,12 +84,7 @@ Ext.define('NAF.view.activity.Detail', {
         },
 
 
-        {
-            name: 'summary',
-            dataIndex: 'summary',
-            fieldLabel: 'Navn'
-        }
-        ,
+
         {
             name: 'category2',
             id: 'categoryCombo',
@@ -88,6 +94,7 @@ Ext.define('NAF.view.activity.Detail', {
             store: 'Categories',
             displayField: 'name',
             typeAhead: true,
+            width: 350,
             fieldLabel: 'Kategori'
         }
         ,
@@ -100,6 +107,7 @@ Ext.define('NAF.view.activity.Detail', {
             name: 'description',
             xtype: 'textareafield',
             grow: 'true',
+            width: 350,
             dataIndex: 'description',
             fieldLabel: 'Beskrivelse'
         }
@@ -121,6 +129,15 @@ Ext.define('NAF.view.activity.Detail', {
             displayField: 'name',
             typeAhead: true,
             fieldLabel: 'Sted'
+        }
+        ,
+        {
+            name: 'tags',
+            fieldLabel: 'Stikkord',
+            id: 'tags',
+            dataIndex: 'tags',
+            emptyText: 'Stikkord',
+            width: 350
         }
         ,
         {

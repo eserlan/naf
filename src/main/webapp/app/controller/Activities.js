@@ -40,14 +40,12 @@ Ext.define('NAF.controller.Activities', {
             'activitydetail combobox#categoryCombo':{
                 select: this.selectCategory
             },
-            'activitydetail splitbutton#addBtn':{
-//                beforerender: this.btnAdded
-//                ,
-                click: this.btnAddClick
-            },
-//            'activitydetail > textfield':{
-//                chnge : this.enableSaveButton
+//            'activitydetail > fieldcontainer > field':{
+//                change : this.updateList
 //            },
+            'activitydetail > textfield':{
+                keyup : this.updateList
+            },
             'activitydetail combobox#locationCombo':{
                 select: this.selectLocation
             }
@@ -56,40 +54,15 @@ Ext.define('NAF.controller.Activities', {
         });
     },
 
-    btnAdded: function() {
-        console.log('button added');
-
-        var fs = this.getFieldsStore();
-
-        console.log(fs);
-
-        var d = fs.data;
-
-        console.log(d);
-
-        var i = d.items;
-
-        console.log(i);
-
-
-
-
-
-
+    updateList: function(field) {
+        var id = field.getId();
+        var win = field.up('activitydetail');
+        var form = win.getForm();
+        var record = form.getRecord();
+        var values = form.getValues();
+        var val = values[id];
+        record.set(id, val);
     },
-
-    btnAddClick: function() {
-        console.log('button add click');
-    },
-
-    enableSaveButton: function() {
-        var btn = this.getActivityDetailSaveButton();
-//      todo   console.log(btn);
-        btn.setDisabled(false);
-
-
-    },
-
 
     updateActivity: function (button) {
         var win = button.up('activitydetail');

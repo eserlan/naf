@@ -37,7 +37,7 @@ public class Activities {
     public void updateActivity(String content, @PathParam("id") String id) {
         System.out.println("activities PUT");
 
-        System.out.println("id = " + id);
+//        System.out.println("id = " + id);
 
         String nc = StringUtils.substringBeforeLast(StringUtils.substringAfter(content, "\":"), "}");
 
@@ -47,7 +47,7 @@ public class Activities {
 
         nc = "{\"activity\":" + nc + "}";
 
-        System.out.println("nc = " + nc);
+//        System.out.println("nc = " + nc);
 
         Client c = new Client();
         WebResource r = c.resource("http://naf.herokuapp.com/activities/" + id);
@@ -58,7 +58,7 @@ public class Activities {
                 put(String.class);
 //                put(String.class, nc);
 
-        System.out.println("res = " + res);
+//        System.out.println("res = " + res);
 
 
     }
