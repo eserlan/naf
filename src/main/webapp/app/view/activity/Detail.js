@@ -37,10 +37,6 @@ Ext.define('NAF.view.activity.Detail', {
         ,
         {
             xtype: 'fieldcontainer',
-//            labelWidth: 100,
-
-            // The body area will contain three text fields, arranged
-            // horizontally, separated by draggable splitters.
             layout: 'hbox',
             items: [
                 {
@@ -82,7 +78,6 @@ Ext.define('NAF.view.activity.Detail', {
                 }
             ]
         },
-
 
 
         {
@@ -149,16 +144,33 @@ Ext.define('NAF.view.activity.Detail', {
         }
         ,
         {
-            name: 'vehicle2',
-            id: 'vehicleCombo',
-            xtype: 'combo',
-            width: 350,
-            valueField: 'name',
-            dataIndex: 'vehicle',
-            store: 'Vehicles',
-            displayField: 'name',
-            typeAhead: true,
-            fieldLabel: 'Kjøretøy'
+            xtype: 'fieldcontainer',
+            layout: 'hbox',
+            items: [
+                {
+                    name: 'vehicle2',
+                    id: 'vehicleCombo',
+                    xtype: 'combo',
+                    width: 350,
+                    valueField: 'name',
+                    dataIndex: 'vehicle',
+                    store: 'Vehicles',
+                    displayField: 'name',
+                    typeAhead: true,
+                    fieldLabel: 'Kjøretøy'
+                },
+                {
+                    xtype: 'splitter'
+                },
+                {
+                    xtype: 'checkboxfield',
+                    boxLabel  : 'Eget kjøretøy',
+                    name      : 'own_vehicle',
+                    dataIndex : 'own_vehicle',
+                    inputValue: 'true',
+                    id        : 'checkbox1'
+                }
+            ]
         }
         ,
         {
