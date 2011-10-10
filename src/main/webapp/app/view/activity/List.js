@@ -22,6 +22,7 @@ Ext.define('NAF.view.activity.List', {
             {header: 'Kategori', dataIndex: 'category_id', flex: 2, renderer: this.findCategoryName
             }
         ];
+
         this.callParent(arguments);
     },
 

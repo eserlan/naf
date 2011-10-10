@@ -5,12 +5,10 @@ Ext.define('NAF.store.Categories', {
     autoLoad: true,
 
     proxy: {
-//        type: 'ajax',
-        type: 'jsonp',
+        type: 'rest',
+        url: 'http://localhost:9090/aktivitets-admin/rest/categories',
         api: {
-            read: 'http://naf.herokuapp.com/categories.json',
-//            read: 'data/locations.json',
-            update: 'data/updateLocation.json'
+            read: 'rest/categories'
         },
         reader: {
             type: 'json',

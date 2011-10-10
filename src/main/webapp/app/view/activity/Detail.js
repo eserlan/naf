@@ -119,12 +119,15 @@ Ext.define('NAF.view.activity.Detail', {
             xtype: 'combo',
             width: 350,
             valueField: '_id',
-            dataIndex: 'location',
             store: 'Locations',
             displayField: 'name',
-            typeAhead: true,
+            typeAhead: false,
 
-            fieldLabel: 'Sted'
+            fieldLabel: 'Sted',
+
+            listConfig: {
+                   loadingText: 'Leter...'
+            }
         }
         ,
         {
