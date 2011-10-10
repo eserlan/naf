@@ -3,9 +3,6 @@ Ext.define('NAF.view.activity.List', {
     alias : 'widget.activitylist',
     store: 'Activities',
     collapsible: true,
-    tools: [
-        {type: 'search', handler: this.search}
-    ],
 
     title : 'Alle aktiviteter',
 
@@ -36,11 +33,5 @@ Ext.define('NAF.view.activity.List', {
         var store = Ext.getStore('Categories');
         var category = store.getById(value);
         return category.get('name');
-    },
-
-
-    search: function() {
-        console.log('search');
     }
-
 });
