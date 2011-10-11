@@ -12,6 +12,8 @@ Ext.define('NAF.store.Activities', {
             read: 'rest/activities'
             ,
             update: 'rest/activities'
+            ,
+            create: 'rest/activities'
         },
         reader: {
             type: 'json',

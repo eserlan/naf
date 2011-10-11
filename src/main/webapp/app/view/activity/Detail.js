@@ -37,6 +37,14 @@ Ext.define('NAF.view.activity.Detail', {
         },
         {
             xtype: 'button',
+            id: 'createButton',
+            text:'Opprett',
+            tooltip: 'Opprett ny aktivitet basert på den valgte',
+//            disabled:true,
+            action: 'create'
+        },
+        {
+            xtype: 'button',
             id: 'activityDetailSaveButton',
             text:'Lagre',
 //            disabled:true,

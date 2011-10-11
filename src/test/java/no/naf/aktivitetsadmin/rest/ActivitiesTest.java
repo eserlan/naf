@@ -37,5 +37,13 @@ public class ActivitiesTest {
 
     }
 
+    @Test
+    public void testCreateActivity(){
+         String c = "{\"activities\":{\"_id\":\"ext-record-1\",\"attendee\":\"Bookinglink til aktivitet 0\",\"category_id\":\"4e8c42014eea890006000001\",\"contact\":\"Kontaktinfo for aktivitet 0\",\"description\":\"Beskrivelse aktivitet 0\",\"dtstart\":\"2011-10-13T11:12:37+02:00\",\"dtend\":\"2011-10-15T17:12:37+02:00\",\"location_id\":\"4e89af11381db80006000051\",\"own_vehicle\":\"false\",\"price\":\"500\",\"responsibility\":\"Bring helmet to aktivitet 0\",\"summary\":\"Kopi av Oppsummering aktivitet 0\",\"supervisor_included\":\"true\",\"tags\":\"kurs, norge\",\"url\":\"http://www.naf.no/#aktivitet0\",\"vehicle\":\"Bil\",\"video\":\"http://youtu.be/T4yjrkdOxfw\",\"location\":\"NAF Senter Finnsnes\"}}";
+
+        a.createActivity(c, null, "abc");
+
+    }
+
 
 }

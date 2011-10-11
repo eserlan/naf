@@ -41,6 +41,9 @@ Ext.define('NAF.controller.Activities', {
             'activitydetail button[action=save]':{
                 click: this.updateActivity
             },
+            'activitydetail button[action=create]':{
+                click: this.createActivity
+            },
             'activitydetail combobox#categoryCombo':{
                 select: this.selectCategory
             },
@@ -64,7 +67,7 @@ Ext.define('NAF.controller.Activities', {
         });
     },
 
-    selectActivity: function(combo, records){
+    selectActivity: function(combo, records) {
         var record = records[0];
         var title = record.get('summary');
         var ad = this.getActivityDetail();
@@ -94,8 +97,27 @@ Ext.define('NAF.controller.Activities', {
         var form = win.getForm();
         var record = form.getRecord();
         var values = form.getValues();
-
         record.set(values);
+        this.getActivitiesStore().sync();
+    },
+    createActivity: function (button) {
+        var ad = this.getActivityDetail();
+        var form = ad.getForm();
+        var record = form.getRecord();
+        var values = form.getValues();
+        record.set(values);
+
+        var newActivity = record.copy();
+        var id = Ext.data.Model.id(newActivity);
+        newActivity.set('_id', id);
+        newActivity.set('summary', 'Kopi av ' + record.get('summary'));
+
+
+
+//        newActivity.save();
+        this.getActivitiesStore().add(newActivity);
+
+
         this.getActivitiesStore().sync();
     },
 
@@ -123,9 +145,6 @@ Ext.define('NAF.controller.Activities', {
             var newCategory = selectedRecords[0].get('name');
             activity.set('category_id', newId);
             activity.set('category', newCategory);
-//            ad.loadRecord(activity);
-//            todo
-//            this.getActivitiesStore().sync();
 
         }
     },
@@ -138,9 +157,6 @@ Ext.define('NAF.controller.Activities', {
             var newLocationName = selectedRecords[0].get('name');
             activity.set('location_id', newId);
             activity.set('location', newLocationName);
-//            ad.loadRecord(activity);
-//            todo
-//            this.getActivitiesStore().sync();
 
         }
     },
@@ -151,9 +167,6 @@ Ext.define('NAF.controller.Activities', {
             var activity = ad.getRecord();
             var vehicle = selectedRecords[0].get('name');
             activity.set('vehicle', vehicle);
-//            ad.loadRecord(activity);
-//            todo
-//            this.getActivitiesStore().sync();
 
         }
     }
