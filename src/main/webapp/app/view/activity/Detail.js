@@ -191,6 +191,7 @@ Ext.define('NAF.view.activity.Detail', {
 
         {
             xtype: 'fieldcontainer',
+            id: 'fcVechicle',
             layout: 'hbox',
             items: [
                 {

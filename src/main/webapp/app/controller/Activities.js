@@ -18,6 +18,10 @@ Ext.define('NAF.controller.Activities', {
         {
             ref: 'activityDetailSaveButton',
             selector: 'activitydetail button#activityDetailSaveButton'
+        },
+        {
+            ref: 'vehicleCombo',
+            selector: '#vehicleCombo'
         }
     ],
     init: function() {
@@ -51,6 +55,9 @@ Ext.define('NAF.controller.Activities', {
             },
             'activitydetail combobox#activitiesSearchCombo':{
                 select: this.selectActivity
+            },
+            'activitydetail #vehicleCombo':{
+                select: this.selectVehicle
             }
 
 
@@ -104,6 +111,8 @@ Ext.define('NAF.controller.Activities', {
         cat.setValue(record.get('category_id'));
         var loc = ad.getComponent('locationCombo');
         loc.setValue(record.get('location_id'));
+        var v = this.getVehicleCombo();
+        v.setValue(record.get('vehicle'));
     },
 
     selectCategory: function(combo, selectedRecords) {
@@ -129,6 +138,19 @@ Ext.define('NAF.controller.Activities', {
             var newLocationName = selectedRecords[0].get('name');
             activity.set('location_id', newId);
             activity.set('location', newLocationName);
+//            ad.loadRecord(activity);
+//            todo
+//            this.getActivitiesStore().sync();
+
+        }
+    },
+
+    selectVehicle: function(combo, selectedRecords) {
+        var ad = this.getActivityDetail();
+        if (ad != null) {
+            var activity = ad.getRecord();
+            var vehicle = selectedRecords[0].get('name');
+            activity.set('vehicle', vehicle);
 //            ad.loadRecord(activity);
 //            todo
 //            this.getActivitiesStore().sync();

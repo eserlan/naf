@@ -23,7 +23,7 @@ public class Activities {
         WebResource r = client.resource("http://naf.herokuapp.com/activities/search");
         r = r.queryParams(qp);
 
-//        System.out.println("r = " + r);
+        System.out.println("r = " + r);
         return r.get(String.class);
 
     }
