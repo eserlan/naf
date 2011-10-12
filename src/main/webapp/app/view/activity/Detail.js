@@ -14,9 +14,17 @@ Ext.define('NAF.view.activity.Detail', {
             style    : {'font-weight': 'bold', 'color': '#04408C !important'}
         },
         '->',
+
+        {
+            xtype: 'checkboxfield',
+            boxLabel  : 'Søk inaktive',
+            inputValue: 'true',
+            uncheckedValue : 'false',
+            id        : 'inactiveIncludedInSearch'
+        },
         {
             xtype: 'combo',
-            store: 'Activities',
+            store: 'ActivitiesSearch',
             id: 'activitiesSearchCombo',
             displayField: 'summary',
             typeAhead: false,
@@ -161,7 +169,7 @@ Ext.define('NAF.view.activity.Detail', {
             fieldLabel: 'Sted',
 
             listConfig: {
-                   loadingText: 'Leter...'
+                loadingText: 'Leter...'
             }
         }
         ,

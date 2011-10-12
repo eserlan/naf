@@ -1,7 +1,7 @@
 Ext.define('NAF.controller.Activities', {
     extend: 'Ext.app.Controller',
 
-    stores: ['Activities', 'Locations', 'Categories', 'Vehicles' ],
+    stores: ['Activities','ActivitiesSearch', 'Locations', 'Categories', 'Vehicles' ],
     models: ['Activity', 'Location', 'Category', 'Vehicle'],
 
     views: [
@@ -60,7 +60,8 @@ Ext.define('NAF.controller.Activities', {
                 select: this.selectLocation
             },
             'activitydetail combobox#activitiesSearchCombo':{
-                select: this.selectActivity
+                select: this.selectActivity,
+                beforequery: this.appendQueryParam
             },
             'activitydetail #vehicleCombo':{
                 select: this.selectVehicle
@@ -83,6 +84,13 @@ Ext.define('NAF.controller.Activities', {
         cat.setValue(record.get('category_id'));
         var loc = ad.getComponent('locationCombo');
         loc.setValue(record.get('location_id'));
+    },
+
+    appendQueryParam: function(queryEvent){
+
+        console.log('searching');
+        console.log('searching');
+
     },
 
     updateList: function(field) {
@@ -129,6 +137,7 @@ Ext.define('NAF.controller.Activities', {
 //         var id = 'random' + Math.floor(Math.random()*1111111);
         var id = Ext.data.Model.id(newActivity);
         newActivity.set('_id', id);
+        newActivity.set('id', id);
         newActivity.set('summary', 'Kopi av ' + record.get('summary'));
 
         this.getActivitiesStore().insert(index+1,newActivity);
