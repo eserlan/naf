@@ -1,8 +1,8 @@
 Ext.define('NAF.controller.Activities', {
     extend: 'Ext.app.Controller',
 
-    stores: ['Activities','ActivitiesSearch', 'Locations', 'Categories', 'Vehicles' ],
-    models: ['Activity', 'Location', 'Category', 'Vehicle'],
+    stores: ['Activities','ActivitiesSearch', 'Locations', 'Categories', 'Vehicles', 'Regions' ],
+    models: ['Activity', 'Location', 'Category', 'Vehicle', 'Region'],
 
     views: [
         'activity.List',
@@ -22,8 +22,13 @@ Ext.define('NAF.controller.Activities', {
         {
             ref: 'vehicleCombo',
             selector: '#vehicleCombo'
+        },
+        {
+            ref: 'regionCombo',
+            selector: '#regionCombo'
         }
     ],
+
     init: function() {
 
 //        var dt = new Date('2011-10-10T09:05:25+00:00');
@@ -47,16 +52,19 @@ Ext.define('NAF.controller.Activities', {
             'activitydetail button[action=remove]':{
                 click: this.removeActivity
             },
-            'activitydetail combobox#categoryCombo':{
+            'activitydetail #categoryCombo':{
                 select: this.selectCategory
             },
             'activitydetail textfield':{
                 keyup : this.updateList
             },
-            'activitydetail combobox#locationCombo':{
+            'activitydetail #locationCombo':{
                 select: this.selectLocation
             },
-            'activitydetail combobox#activitiesSearchCombo':{
+            'activitydetail #regionCombo':{
+                select: this.selectRegion
+            },
+            'activitydetail #activitiesSearchCombo':{
                 select: this.selectActivity
             },
             'activitydetail #vehicleCombo':{
@@ -146,6 +154,8 @@ Ext.define('NAF.controller.Activities', {
         loc.setValue(record.get('location_id'));
         var v = this.getVehicleCombo();
         v.setValue(record.get('vehicle'));
+        var r = this.getRegionCombo();
+        r.setValue(record.get('region'));
     },
 
     selectCategory: function(combo, selectedRecords) {
@@ -178,6 +188,16 @@ Ext.define('NAF.controller.Activities', {
             var activity = ad.getRecord();
             var vehicle = selectedRecords[0].get('name');
             activity.set('vehicle', vehicle);
+
+        }
+    },
+
+    selectRegion: function(combo, selectedRecords) {
+        var ad = this.getActivityDetail();
+        if (ad != null) {
+            var activity = ad.getRecord();
+            var region = selectedRecords[0].get('name');
+            activity.set('region', region);
 
         }
     }

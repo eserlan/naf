@@ -2,7 +2,7 @@ Ext.define('NAF.store.ActivitiesSearch', {
     extend: 'Ext.data.Store',
     model: 'NAF.model.Activity',
     storeId: 'activitySearchStore',
-    autoLoad: true,
+    autoLoad: false,
     pageSize: 25,
 
     proxy: {

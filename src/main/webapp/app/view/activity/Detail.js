@@ -115,7 +115,20 @@ Ext.define('NAF.view.activity.Detail', {
                     format: 'H:i'
                 }
             ]
-        },
+        }
+        ,
+
+
+        {
+            xtype: 'checkboxfield',
+            fieldLabel  : 'Aktiv',
+            name      : 'active',
+            dataIndex : 'active',
+            inputValue: 'true',
+            uncheckedValue : 'false',
+            id        : 'active'
+        }
+        ,
 
         {
             name: 'category2',
@@ -150,6 +163,22 @@ Ext.define('NAF.view.activity.Detail', {
             typeAhead: false,
 
             fieldLabel: 'Sted',
+
+            listConfig: {
+                loadingText: 'Leter...'
+            }
+        }
+        ,
+        {
+            id: 'regionCombo',
+            xtype: 'combo',
+            width: 350,
+            valueField: 'name',
+            store: 'Regions',
+            displayField: 'name',
+            typeAhead: false,
+
+            fieldLabel: 'Region',
 
             listConfig: {
                 loadingText: 'Leter...'
@@ -233,16 +262,16 @@ Ext.define('NAF.view.activity.Detail', {
             width: 350,
             dataIndex: 'responsibility',
             fieldLabel: 'Brukeren har selv ansvar for'
-        },
+        }
+        ,
         {
-                    xtype: 'checkboxfield',
-                    boxLabel  : 'Aktiv',
-                    name      : 'active',
-                    dataIndex : 'active',
-                    inputValue: 'true',
-                    uncheckedValue : 'false',
-                    id        : 'active'
-                }
+            name: 'url',
+            xtype: 'textfield',
+            width: 350,
+            dataIndex: 'url',
+            fieldLabel: 'Link til aktiviteten'
+
+        }
         ,
         {
             xtype: 'splitbutton',
