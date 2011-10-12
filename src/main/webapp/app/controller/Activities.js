@@ -1,7 +1,7 @@
 Ext.define('NAF.controller.Activities', {
     extend: 'Ext.app.Controller',
 
-    stores: ['Activities','ActivitiesSearch', 'Locations', 'Categories', 'Vehicles', 'Regions' ],
+    stores: ['Activities','ActivitiesSearch', 'Locations', 'Categories', 'Vehicles', 'Regions'],
     models: ['Activity', 'Location', 'Category', 'Vehicle', 'Region'],
 
     views: [
@@ -88,6 +88,11 @@ Ext.define('NAF.controller.Activities', {
         cat.setValue(record.get('category_id'));
         var loc = ad.getComponent('locationCombo');
         loc.setValue(record.get('location_id'));
+        var v = this.getVehicleCombo();
+        v.setValue(record.get('vehicle'));
+        var r = this.getRegionCombo();
+        r.setValue(record.get('region'));
+
     },
 
     updateList: function(field) {
@@ -198,7 +203,6 @@ Ext.define('NAF.controller.Activities', {
             var activity = ad.getRecord();
             var region = selectedRecords[0].get('name');
             activity.set('region', region);
-
         }
     }
 

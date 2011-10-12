@@ -3,6 +3,7 @@ Ext.define('NAF.view.activity.Detail', {
     bodyPadding: 5,  // Don't want content to crunch against the borders
     alias: 'widget.activitydetail',
     preventHeader: true,
+    autoScroll: true,
 
     defaultType: 'textfield',
 
@@ -23,7 +24,6 @@ Ext.define('NAF.view.activity.Detail', {
             typeAhead: false,
             hideLabel: true,
             hideTrigger:true,
-            anchor: '100%',
             queryParam: 'admin:true&text',
             emptyText: 'Søk etter aktiviteter...',
 //            matchFieldWidth: false,
@@ -31,7 +31,10 @@ Ext.define('NAF.view.activity.Detail', {
             listConfig: {
                 loadingText: 'Søker...',
                 emptyText: 'Ingen treff.',
-                width: 400
+//                maxHeight: 400,
+                width: 400,
+                minHeight: 200,
+                autoScroll: true
 
             }
         },
@@ -118,15 +121,64 @@ Ext.define('NAF.view.activity.Detail', {
         }
         ,
 
-
         {
-            xtype: 'checkboxfield',
-            fieldLabel  : 'Aktiv',
-            name      : 'active',
-            dataIndex : 'active',
-            inputValue: 'true',
-            uncheckedValue : 'false',
-            id        : 'active'
+            xtype: 'fieldcontainer',
+            layout: 'hbox',
+            items: [
+                {
+                    xtype: 'checkboxfield',
+                    fieldLabel  : 'Aktiv',
+                    name      : 'active',
+                    dataIndex : 'active',
+                    inputValue: 'true',
+                    uncheckedValue : 'false',
+                    id        : 'active'
+                },
+                {
+                    xtype: 'splitter'
+                },
+                {
+                    xtype: 'label',
+                    text: 'Alder fra'
+                }
+                ,
+                {
+                    xtype: 'splitter'
+                }
+                ,
+                {
+                    id: 'ageFrom',
+                    xtype: 'numberfield',
+                    valueField: 'ageFrom',
+                    minValue:0,
+                    maxValue:100,
+                    value:18,
+                    width: 50
+                }
+                ,
+                {
+                    xtype: 'splitter'
+                }
+                ,
+                {
+                    xtype: 'label',
+                    text: 'til'
+                }
+                ,
+                {
+                    xtype: 'splitter'
+                }
+                ,
+                {
+                    id: 'ageTo',
+                    xtype: 'numberfield',
+                    valueField: 'ageTo',
+                    minValue:0,
+                    maxValue:100,
+                    value:67,
+                    width: 50
+                }
+            ]
         }
         ,
 
@@ -151,7 +203,23 @@ Ext.define('NAF.view.activity.Detail', {
             fieldLabel: 'Beskrivelse'
         }
         ,
-
+        {
+            name: 'contact',
+            xtype: 'textareafield',
+            grow: 'true',
+            width: 350,
+            dataIndex: 'contact',
+            fieldLabel: 'Kontakt informasjon'
+        }
+        ,
+        {
+            name: 'attendee',
+            xtype: 'textfield',
+            width: 350,
+            dataIndex: 'attendee',
+            fieldLabel: 'Påmeldingslink'
+        }
+        ,
         {
             name: 'location2',
             id: 'locationCombo',
@@ -274,10 +342,37 @@ Ext.define('NAF.view.activity.Detail', {
         }
         ,
         {
+            name: 'video',
+            xtype: 'textfield',
+            width: 350,
+            dataIndex: 'video',
+            fieldLabel: 'Link til video'
+
+        }
+        ,
+        {
+            xtype: 'filefield',
+            name: 'photo',
+            fieldLabel: 'Photo',
+            labelWidth: 50,
+            msgTarget: 'side',
+            allowBlank: false,
+            anchor: '100%',
+            buttonText: 'Velg foto...'
+        },
+
+        {
+            xtype: 'splitter',
+            height: 40
+        }
+
+        ,
+        {
             xtype: 'splitbutton',
             id: 'addBtn',
             text: 'Legg til',
             scope: this,
+            margin: '0 0 0 50' ,
             menu : [
                 {
                     text: 'Navn',
