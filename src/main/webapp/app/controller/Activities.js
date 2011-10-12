@@ -35,7 +35,7 @@ Ext.define('NAF.controller.Activities', {
 
         //        console.log('Initialized Activities! This happens before the Application launch function is called');
         this.control({
-            'viewport > activitylist': {
+            'activitylist': {
                 select: this.changeDetail
             },
             'activitydetail button[action=save]':{
@@ -50,9 +50,6 @@ Ext.define('NAF.controller.Activities', {
             'activitydetail combobox#categoryCombo':{
                 select: this.selectCategory
             },
-//            'activitydetail > fieldcontainer > field':{
-//                change : this.updateList
-//            },
             'activitydetail textfield':{
                 keyup : this.updateList
             },
@@ -60,8 +57,7 @@ Ext.define('NAF.controller.Activities', {
                 select: this.selectLocation
             },
             'activitydetail combobox#activitiesSearchCombo':{
-                select: this.selectActivity,
-                beforequery: this.appendQueryParam
+                select: this.selectActivity
             },
             'activitydetail #vehicleCombo':{
                 select: this.selectVehicle
@@ -84,13 +80,6 @@ Ext.define('NAF.controller.Activities', {
         cat.setValue(record.get('category_id'));
         var loc = ad.getComponent('locationCombo');
         loc.setValue(record.get('location_id'));
-    },
-
-    appendQueryParam: function(queryEvent){
-
-        console.log('searching');
-        console.log('searching');
-
     },
 
     updateList: function(field) {
@@ -118,10 +107,8 @@ Ext.define('NAF.controller.Activities', {
         var record = form.getRecord();
         var values = form.getValues();
         record.set(values);
-        record.set('active', false);
-
+        this.getActivitiesStore().remove(record);
         this.getActivitiesStore().sync();
-        this.getActivitiesStore().filter('active', true);
     },
 
     createActivity: function (button) {

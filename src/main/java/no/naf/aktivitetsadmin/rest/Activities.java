@@ -34,6 +34,22 @@ public class Activities {
     public String getSearchActivities(@Context UriInfo ui) {
         System.out.println("search activities GET");
         MultivaluedMap<String, String> qp = ui.getQueryParameters();
+        String keyToRemove = null;
+        String searchQuery = null;
+        for (String key : qp.keySet()) {
+            if (key.contains("admin")) {
+                keyToRemove = key;
+                searchQuery = qp.get(key).get(0);
+                break;
+            }
+        }
+        if (keyToRemove != null)
+            qp.remove(keyToRemove);
+        qp.add("admin", "true");
+        qp.add("text", searchQuery);
+        qp.remove("limit");
+        qp.remove("page");
+
         WebResource r = client.resource("http://naf.herokuapp.com/activities/search");
         r = r.queryParams(qp);
 
@@ -69,8 +85,11 @@ public class Activities {
     @DELETE
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void deleteActivity(String content, @PathParam("id") String id) {
-        System.out.println("swallowing activities DELETE");
+    public void deleteActivity(@PathParam("id") String id) {
+        System.out.println("activities DELETE");
+        WebResource r = client.resource("http://naf.herokuapp.com/activities/" + id);
+        System.out.println("r = " + r);
+        r.delete();
 
     }
 

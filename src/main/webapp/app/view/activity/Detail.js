@@ -16,13 +16,6 @@ Ext.define('NAF.view.activity.Detail', {
         '->',
 
         {
-            xtype: 'checkboxfield',
-            boxLabel  : 'Søk inaktive',
-            inputValue: 'true',
-            uncheckedValue : 'false',
-            id        : 'inactiveIncludedInSearch'
-        },
-        {
             xtype: 'combo',
             store: 'ActivitiesSearch',
             id: 'activitiesSearchCombo',
@@ -31,7 +24,7 @@ Ext.define('NAF.view.activity.Detail', {
             hideLabel: true,
             hideTrigger:true,
             anchor: '100%',
-            queryParam: 'text',
+            queryParam: 'admin:true&text',
             emptyText: 'Søk etter aktiviteter...',
 //            matchFieldWidth: false,
 
@@ -40,14 +33,13 @@ Ext.define('NAF.view.activity.Detail', {
                 emptyText: 'Ingen treff.',
                 width: 400
 
-            },
-            pageSize: 10
+            }
         },
         {
             xtype: 'button',
             id: 'removeButton',
-            text:'Fjern',
-            tooltip: 'Fjern valgte aktivitet',
+            text:'Slett',
+            tooltip: 'Sletter valgt aktivitet',
             action: 'remove'
         },
         {
@@ -67,6 +59,7 @@ Ext.define('NAF.view.activity.Detail', {
     ],
 
     items: [
+
         {
             name: 'summary',
             id: 'summary',
@@ -78,6 +71,8 @@ Ext.define('NAF.view.activity.Detail', {
             fieldStyle: {'font-weight': 'bold'}
         }
         ,
+
+
         {
             xtype: 'fieldcontainer',
             layout: 'hbox',
@@ -122,13 +117,11 @@ Ext.define('NAF.view.activity.Detail', {
             ]
         },
 
-
         {
             name: 'category2',
             id: 'categoryCombo',
             xtype: 'combo',
             valueField: '_id',
-//            dataIndex: 'category',
             store: 'Categories',
             displayField: 'name',
             typeAhead: true,
@@ -136,11 +129,6 @@ Ext.define('NAF.view.activity.Detail', {
             fieldLabel: 'Kategori'
         }
         ,
-//        {
-//            name: 'category',
-//            dataIndex: 'category',
-//            fieldLabel: 'Kategori'
-//        },
         {
             name: 'description',
             xtype: 'textareafield',
@@ -150,12 +138,7 @@ Ext.define('NAF.view.activity.Detail', {
             fieldLabel: 'Beskrivelse'
         }
         ,
-//        {
-//            name: 'location',
-//            dataIndex: 'location',
-//            fieldLabel: 'Sted'
-//        }
-//        ,
+
         {
             name: 'location2',
             id: 'locationCombo',
@@ -250,7 +233,16 @@ Ext.define('NAF.view.activity.Detail', {
             width: 350,
             dataIndex: 'responsibility',
             fieldLabel: 'Brukeren har selv ansvar for'
-        }
+        },
+        {
+                    xtype: 'checkboxfield',
+                    boxLabel  : 'Aktiv',
+                    name      : 'active',
+                    dataIndex : 'active',
+                    inputValue: 'true',
+                    uncheckedValue : 'false',
+                    id        : 'active'
+                }
         ,
         {
             xtype: 'splitbutton',

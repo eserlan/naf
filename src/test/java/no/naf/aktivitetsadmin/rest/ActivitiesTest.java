@@ -46,5 +46,17 @@ public class ActivitiesTest {
 
     }
 
+    @Test
+    @Ignore
+    public void testDeleteActivity(){
+
+
+        a.deleteActivity("4e955d459b8e800001000003");
+
+    }
+
+
+
+
 
 }
