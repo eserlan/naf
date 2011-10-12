@@ -8,13 +8,7 @@ Ext.define('NAF.store.Activities', {
     proxy: {
         type: 'rest',
         url: 'http://localhost:9090/aktivitets-admin/rest/activities',
-        api: {
-            read: 'rest/activities'
-            ,
-            update: 'rest/activities'
-            ,
-            create: 'rest/activities'
-        },
+
         reader: {
             type: 'json',
             root: 'activities',
