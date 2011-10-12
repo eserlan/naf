@@ -44,6 +44,9 @@ Ext.define('NAF.controller.Activities', {
             'activitydetail button[action=create]':{
                 click: this.createActivity
             },
+            'activitydetail button[action=remove]':{
+                click: this.removeActivity
+            },
             'activitydetail combobox#categoryCombo':{
                 select: this.selectCategory
             },
@@ -100,6 +103,19 @@ Ext.define('NAF.controller.Activities', {
         record.set(values);
         this.getActivitiesStore().sync();
     },
+
+    removeActivity: function (button) {
+        var win = button.up('activitydetail');
+        var form = win.getForm();
+        var record = form.getRecord();
+        var values = form.getValues();
+        record.set(values);
+        record.set('active', false);
+
+        this.getActivitiesStore().sync();
+        this.getActivitiesStore().filter('active', true);
+    },
+
     createActivity: function (button) {
         var ad = this.getActivityDetail();
         var form = ad.getForm();
@@ -107,18 +123,17 @@ Ext.define('NAF.controller.Activities', {
         var values = form.getValues();
         record.set(values);
 
+        var index = this.getActivitiesStore().indexOf(record);
+
         var newActivity = record.copy();
+//         var id = 'random' + Math.floor(Math.random()*1111111);
         var id = Ext.data.Model.id(newActivity);
         newActivity.set('_id', id);
         newActivity.set('summary', 'Kopi av ' + record.get('summary'));
 
-
-
-//        newActivity.save();
-        this.getActivitiesStore().add(newActivity);
-
-
+        this.getActivitiesStore().insert(index+1,newActivity);
         this.getActivitiesStore().sync();
+        this.changeDetail(null, newActivity)
     },
 
     changeDetail: function(grid, record) {
