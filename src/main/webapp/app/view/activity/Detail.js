@@ -5,6 +5,11 @@ Ext.define('NAF.view.activity.Detail', {
     preventHeader: true,
     autoScroll: true,
 
+    videoTpl: [
+        '{video}'
+
+    ],
+
     defaultType: 'textfield',
 
     tbar: [
@@ -349,23 +354,48 @@ Ext.define('NAF.view.activity.Detail', {
             fieldLabel: 'Link til video'
 
         }
+// TODO: Finn ut av!
+//        ,
+//        {
+//            xtype: 'displayfield',
+//            value: 'video',
+//            tpl: new Ext.XTemplate(this.videoTpl)
+//        }
+
+
         ,
         {
-            xtype: 'filefield',
-            name: 'photo',
-            fieldLabel: 'Photo',
-            labelWidth: 50,
-            msgTarget: 'side',
-            allowBlank: false,
-            anchor: '100%',
-            buttonText: 'Velg foto...'
-        },
-
+            xtype: 'fieldcontainer',
+            layout: 'hbox',
+            items: [
+                {
+                    xtype: 'filefield',
+                    name: 'photo',
+                    id: 'fileUpload',
+                    fieldLabel: 'Finn bilde',
+                    tooltip: 'får vi noe her?',
+                    msgTarget: 'side',
+                    width: 350,
+                    allowBlank: false,
+                    buttonText: 'Velg foto...'
+                },
+                {
+                    xtype: 'splitter'
+                }
+                ,
+                {
+                    xtype: 'button',
+                    id: 'uploadBtn',
+                    text : 'Last opp',
+                    action: 'upload'
+                }
+            ]
+        }
+        ,
         {
             xtype: 'splitter',
             height: 40
         }
-
         ,
         {
             xtype: 'splitbutton',

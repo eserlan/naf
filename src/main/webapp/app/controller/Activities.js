@@ -26,6 +26,10 @@ Ext.define('NAF.controller.Activities', {
         {
             ref: 'regionCombo',
             selector: '#regionCombo'
+        },
+        {
+            ref: 'fileUpload',
+            selector: '#fileUpload'
         }
     ],
 
@@ -51,6 +55,9 @@ Ext.define('NAF.controller.Activities', {
             },
             'activitydetail button[action=remove]':{
                 click: this.removeActivity
+            },
+            'activitydetail #uploadBtn':{
+                click: this.uploadPhoto
             },
             'activitydetail #categoryCombo':{
                 select: this.selectCategory
@@ -103,6 +110,31 @@ Ext.define('NAF.controller.Activities', {
         var values = form.getValues();
         var val = values[id];
         record.set(id, val);
+    },
+
+    uploadPhoto: function(button){
+
+        console.log('hallo!?');
+        var win = button.up('activitydetail');
+        var form = win.getForm();
+        var hasUpload = form.hasUpload();
+        var fu = this.getFileUpload();
+        var v = fu.getValue();
+
+        var proxy = new Ext.data.proxy.Rest({
+            url: '/aktivitets-admin/rest/file/upload'
+
+        });
+
+//        proxy.
+
+//        form.submit({
+//            url: '/aktivitets-admin/rest/file/upload',
+//            waitMsg: 'Bildet lastes opp...'
+//        });
+
+
+
     },
 
     updateActivity: function (button) {
