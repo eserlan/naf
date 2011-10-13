@@ -48,13 +48,13 @@ Ext.define('NAF.controller.Activities', {
                 select: this.changeDetail
             },
             'activitydetail button[action=save]':{
-                click: this.updateActivity
+                click: this.saveActivities
             },
-            'activitydetail button[action=create]':{
-                click: this.createActivity
+            'activitydetail button[action=copy]':{
+                click: this.copyActivity
             },
-            'activitydetail button[action=remove]':{
-                click: this.removeActivity
+            'activitydetail button[action=delete]':{
+                click: this.confirmDeleteActivity
             },
             'activitydetail #uploadBtn':{
                 click: this.uploadPhoto
@@ -137,7 +137,7 @@ Ext.define('NAF.controller.Activities', {
 
     },
 
-    updateActivity: function (button) {
+    saveActivities: function (button) {
         var win = button.up('activitydetail');
         var form = win.getForm();
         var record = form.getRecord();
@@ -146,9 +146,13 @@ Ext.define('NAF.controller.Activities', {
         this.getActivitiesStore().sync();
     },
 
-    removeActivity: function (button) {
-        var win = button.up('activitydetail');
-        var form = win.getForm();
+    confirmDeleteActivity: function(button){
+        Ext.MessageBox.confirm('Bekreft sletting', 'Bekreft at du ønsker å slette aktiviteten for godt?', this.deleteActivity(button));
+    },
+
+    deleteActivity: function (button) {
+        var ad = button.up('activitydetail');
+        var form = ad.getForm();
         var record = form.getRecord();
         var values = form.getValues();
         record.set(values);
@@ -156,7 +160,7 @@ Ext.define('NAF.controller.Activities', {
         this.getActivitiesStore().sync();
     },
 
-    createActivity: function (button) {
+    copyActivity: function (button) {
         var ad = this.getActivityDetail();
         var form = ad.getForm();
         var record = form.getRecord();
