@@ -150,7 +150,7 @@ Ext.define('NAF.controller.Activities', {
     },
 
     deleteActivity: function (button) {
-        if (button = 'yes') {
+        if (button === 'yes') {
             var ad = this.getActivityDetail();
             var form = ad.getForm();
             var record = form.getRecord();
