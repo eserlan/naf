@@ -208,7 +208,6 @@ Ext.define('NAF.controller.Activities', {
             var newCategory = selectedRecords[0].get('name');
             activity.set('category_id', newId);
             activity.set('category', newCategory);
-
         }
     },
 
