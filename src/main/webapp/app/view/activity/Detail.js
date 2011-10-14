@@ -71,7 +71,6 @@ Ext.define('NAF.view.activity.Detail', {
         {
             name: 'summary',
             id: 'summary',
-            dataIndex: 'summary',
             emptyText: 'Aktivitets navn',
             height: 30,
             width: 400,
@@ -87,7 +86,6 @@ Ext.define('NAF.view.activity.Detail', {
             items: [
                 {
                     name: 'dtstart',
-                    dataIndex: 'dtstart',
                     xtype: 'datefield',
                     format: 'c'
                 },
@@ -96,9 +94,8 @@ Ext.define('NAF.view.activity.Detail', {
                 },
                 {
                     xtype: 'timefield',
-                    dataIndex: 'dtstart',
                     width: 70,
-                    name: 'in',
+                    name: 'dtstart',
                     increment: 30,
                     format: 'H:i'
                 },
@@ -107,7 +104,6 @@ Ext.define('NAF.view.activity.Detail', {
                 },
                 {
                     name: 'dtend',
-                    dataIndex: 'dtend',
                     xtype: 'datefield',
                     format: 'c'
                 },
@@ -116,9 +112,8 @@ Ext.define('NAF.view.activity.Detail', {
                 },
                 {
                     xtype: 'timefield',
-                    dataIndex: 'dtend',
                     width: 70,
-                    name: 'out',
+                    name: 'dtend',
                     increment: 30,
                     format: 'H:i'
                 }
@@ -134,7 +129,6 @@ Ext.define('NAF.view.activity.Detail', {
                     xtype: 'checkboxfield',
                     fieldLabel  : 'Aktiv',
                     name      : 'active',
-                    dataIndex : 'active',
                     inputValue: 'true',
                     uncheckedValue : 'false',
                     id        : 'active'
@@ -154,10 +148,9 @@ Ext.define('NAF.view.activity.Detail', {
                 {
                     id: 'ageFrom',
                     xtype: 'numberfield',
-                    valueField: 'ageFrom',
+                    name : 'age_from',
                     minValue:0,
                     maxValue:100,
-                    value:18,
                     width: 50
                 }
                 ,
@@ -177,10 +170,9 @@ Ext.define('NAF.view.activity.Detail', {
                 {
                     id: 'ageTo',
                     xtype: 'numberfield',
-                    valueField: 'ageTo',
+                    name : 'age_to',
                     minValue:0,
                     maxValue:100,
-                    value:67,
                     width: 50
                 }
             ]
@@ -204,7 +196,6 @@ Ext.define('NAF.view.activity.Detail', {
             xtype: 'textareafield',
             grow: 'true',
             width: 350,
-            dataIndex: 'description',
             fieldLabel: 'Beskrivelse'
         }
         ,
@@ -213,7 +204,6 @@ Ext.define('NAF.view.activity.Detail', {
             xtype: 'textareafield',
             grow: 'true',
             width: 350,
-            dataIndex: 'contact',
             fieldLabel: 'Kontakt informasjon'
         }
         ,
@@ -221,7 +211,6 @@ Ext.define('NAF.view.activity.Detail', {
             name: 'attendee',
             xtype: 'textfield',
             width: 350,
-            dataIndex: 'attendee',
             fieldLabel: 'Påmeldingslink'
         }
         ,
@@ -262,7 +251,6 @@ Ext.define('NAF.view.activity.Detail', {
             name: 'tags',
             fieldLabel: 'Stikkord',
             id: 'tags',
-            dataIndex: 'tags',
             emptyText: 'Stikkord',
             width: 350
         },
@@ -275,7 +263,6 @@ Ext.define('NAF.view.activity.Detail', {
                     fieldLabel: 'Pris',
                     xtype: 'textfield',
                     id: 'price',
-                    dataIndex: 'price',
                     emptyText: 'Pris',
                     width: 350
                 }
@@ -287,7 +274,6 @@ Ext.define('NAF.view.activity.Detail', {
                     xtype: 'checkboxfield',
                     boxLabel  : 'Veileder  inkl',
                     name      : 'supervisor_included',
-                    dataIndex : 'supervisor_included',
                     inputValue: 'true',
                     uncheckedValue : 'false',
                     id        : 'supervisor_included'
@@ -307,7 +293,6 @@ Ext.define('NAF.view.activity.Detail', {
                     xtype: 'combo',
                     width: 350,
                     valueField: 'name',
-                    dataIndex: 'vehicle',
                     store: 'Vehicles',
                     displayField: 'name',
                     typeAhead: true,
@@ -320,7 +305,6 @@ Ext.define('NAF.view.activity.Detail', {
                     xtype: 'checkboxfield',
                     boxLabel  : 'Eget kjøretøy',
                     name      : 'own_vehicle',
-                    dataIndex : 'own_vehicle',
                     uncheckedValue : 'false',
                     inputValue: 'true',
                     id        : 'own_vehicle'
@@ -333,7 +317,6 @@ Ext.define('NAF.view.activity.Detail', {
             xtype: 'textareafield',
             grow: 'true',
             width: 350,
-            dataIndex: 'responsibility',
             fieldLabel: 'Brukeren har selv ansvar for'
         }
         ,
@@ -341,7 +324,6 @@ Ext.define('NAF.view.activity.Detail', {
             name: 'url',
             xtype: 'textfield',
             width: 350,
-            dataIndex: 'url',
             fieldLabel: 'Link til aktiviteten'
 
         }
@@ -350,7 +332,6 @@ Ext.define('NAF.view.activity.Detail', {
             name: 'video',
             xtype: 'textfield',
             width: 350,
-            dataIndex: 'video',
             fieldLabel: 'Link til video'
 
         }
