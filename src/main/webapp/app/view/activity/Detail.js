@@ -391,6 +391,7 @@ Ext.define('NAF.view.activity.Detail', {
                 }
             ]
         }
+
         ,
         {
             xtype: 'form',
@@ -440,6 +441,38 @@ Ext.define('NAF.view.activity.Detail', {
                     xtype: 'textareafield',
                     width: 350,
                     fieldLabel: 'Enda bedre om'
+
+                }
+            ]
+        }
+
+        ,
+        {
+            xtype: 'form',
+            title: 'Media',
+            bodyPadding: 5,
+            collapsible: true,
+            collapsed: true,
+            items: [
+                {
+                    name: 'media_title',
+                    xtype: 'textfield',
+                    width: 350,
+                    fieldLabel: 'Tittel på sak'
+
+                },
+                {
+                    name: 'media_outlet',
+                    xtype: 'textfield',
+                    width: 350,
+                    fieldLabel: 'Medie'
+
+                },
+                {
+                    name: 'media_url',
+                    xtype: 'textfield',
+                    width: 350,
+                    fieldLabel: 'Link til sak'
 
                 }
             ]
