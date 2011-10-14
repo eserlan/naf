@@ -1,331 +1,37 @@
 {"activities":[
     {
-        "_id":"4e8c5996f295f80006000006",
-        "attendee":"Bookinglink til aktivitet 5",
-        "categories":[
-            {
-                "_id":"4e8c42014eea890006000006",
-                "name":"Motorsport"
-            }
-        ],
-        "category_id":"4e8c42014eea890006000006",
-        "contact":"Kontaktinfo for aktivitet 5",
-        "description":"Beskrivelse aktivitet 5",
-        "dtend":"2011-10-10T13:20:22+00:00",
-        "dtstart":"2011-10-09T22:00:00+00:00",
-        "location":{
-            "_id":"4e89af11381db8000600003d",
-            "latitude":60.35034,
-            "longitude":5.278772,
-            "name":"Motorsport Bergen"
-        },
-        "location_id":"4e89af11381db8000600003d",
-        "own_vehicle":true,
-        "own_veichle":true,
-        "price":50.0,
-        "responsibility":"Ta med sikkerhetshefte",
-        "summary":"Aktivitet 5",
-        "supervisor_included":true,
-        "tags":"kurs, norge, bergen",
-        "url":"http://www.naf.no/#aktivitet5",
-        "veichle":"Motorsykkel,",
-        "video":"http://youtu.be/T4yjrkdOxfw"
-    },
-    {
-        "_id":"4e8c5996f295f80006000005",
-        "attendee":"Bookinglink til aktivitet 4",
-        "categories":[
-            {
-                "_id":"4e8c42014eea890006000003",
-                "name":"Aksjoner og konkurranser"
-            }
-        ],
-        "category_id":"4e8c42014eea890006000003",
-        "contact":"Kontaktinfo for aktivitet 4",
-        "description":"Beskrivelse aktivitet 4",
-        "dtend":"2011-10-10T13:20:22+00:00",
-        "dtstart":"2011-10-08T13:20:22+00:00",
-        "location":{
-            "_id":"4e89af11381db8000600006a",
-            "latitude":59.9135,
-            "longitude":10.64441,
-            "name":"NAF Senter Oslo-Sollerud"
-        },
-        "location_id":"4e89af11381db8000600006a",
-        "own_vehicle":false,
-        "own_veichle":true,
-        "price":500.0,
-        "responsibility":"Bring helmet to aktivitet 4",
-        "summary":"Oppsummering aktivitet 4",
-        "supervisor_included":true,
-        "tags":"kurs, norge",
-        "url":"http://www.naf.no/#aktivitet4",
-        "veichle":"Tungt",
-        "video":"http://youtu.be/T4yjrkdOxfw"
-    },
-    {
-        "_id":"4e8c5996f295f80006000009",
-        "attendee":"Bookinglink til aktivitet 8",
-        "categories":[
-            {
-                "_id":"4e8c42014eea890006000004",
-                "name":"Seminar og foredrag"
-            }
-        ],
-        "category":"Seminar og foredrag",
-        "category_id":"4e8c42014eea890006000004",
-        "contact":"Kontaktinfo for aktivitet 8",
-        "description":"Beskrivelse aktivitet 8",
-        "dtend":"2011-10-10T13:20:22+00:00",
-        "dtstart":"2011-10-08T13:20:22+00:00",
-        "location":{
-            "_id":"4e89af11381db80006000050",
-            "latitude":60.87799,
-            "longitude":11.54692,
-            "name":"NAF Senter Elverum"
-        },
-        "location_id":"4e89af11381db80006000050",
-        "own_vehicle":false,
-        "own_veichle":true,
-        "price":500.0,
-        "responsibility":"Bring helmet to aktivitet 8",
-        "summary":"Oppsummering aktivitet 8",
-        "supervicoer_included":"",
-        "supervisor_included":true,
-        "tags":"kurs, norge",
-        "url":"http://www.naf.no/#aktivitet8",
-        "vehicle":"",
-        "veichle":"Motorsykkel,",
-        "video":"http://youtu.be/T4yjrkdOxfw"
-    },
-    {
-        "_id":"4e8c5996f295f80006000001",
-        "attendee":"Bookinglink til aktivitet 0",
-        "categories":[
-            {
-                "_id":"4e8c42014eea890006000002",
-                "name":"NAF tester"
-            }
-        ],
-        "category":"Kurs/oppl\u00e6ring",
-        "category_id":"4e8c42014eea890006000001",
-        "contact":"Kontaktinfo for aktivitet 0",
-        "description":"Beskrivelse aktivitet 0",
-        "dtend":"2011-10-10T13:20:22+00:00",
-        "dtstart":"2011-10-08T13:20:22+00:00",
-        "location":{
-            "_id":"4e89af11381db80006000023",
-            "latitude":63.4678,
-            "longitude":10.9176,
-            "name":"Lokalavdeling Stj\u00f8rdal"
-        },
-        "location_id":"4e89af11381db80006000023",
-        "own_vehicle":false,
-        "own_veichle":true,
-        "price":500.0,
-        "responsibility":"Bring helmet to aktivitet 0",
-        "summary":"Aktivitet 0",
-        "supervisor_included":true,
-        "tags":"kurs, norge",
-        "url":"http://www.naf.no/#aktivitet0",
-        "veichle":"Motorsykkel,",
-        "video":"http://youtu.be/T4yjrkdOxfw"
-    },
-    {
-        "_id":"4e8c5996f295f80006000002",
-        "attendee":"Bookinglink til aktivitet 1",
-        "categories":[
-            {
-                "_id":"4e8c42014eea890006000001",
-                "name":"Kurs/oppl\u00e6ring"
-            }
-        ],
-        "category":"Aksjoner og konkurranser",
-        "category_id":"4e8c42014eea890006000003",
-        "contact":"Kontaktinfo for aktivitet 1",
-        "description":"Beskrivelse aktivitet 1",
-        "dtend":"2011-10-05T22:00:00+00:00",
-        "dtstart":"2011-10-05T22:00:00+00:00",
-        "location":{
-            "_id":"4e89af11381db80006000045",
-            "latitude":59.92416,
-            "longitude":10.80463,
-            "name":"Motorsport Oslo og Omegn"
-        },
-        "location_id":"4e89af11381db80006000045",
-        "own_vehicle":false,
-        "own_veichle":true,
-        "price":500.0,
-        "responsibility":"Bring helmet to aktivitet 1",
-        "summary":"Aktivitet 12",
-        "supervisor_included":true,
-        "tags":"kurs, norge",
-        "url":"http://www.naf.no/#aktivitet1",
-        "veichle":"ATV,",
-        "video":"http://youtu.be/T4yjrkdOxfw"
-    },
-    {
-        "_id":"4e8c5996f295f80006000004",
-        "attendee":"Bookinglink til aktivitet 3",
-        "categories":[
-            {
-                "_id":"4e8c42014eea890006000005",
-                "name":"Politisk p\u00e5virkningsarbeid"
-            }
-        ],
-        "category":"Aksjoner og konkurranser",
-        "category_id":"4e8c42014eea890006000003",
-        "contact":"Kontaktinfo for aktivitet 3",
-        "description":"Beskrivelse aktivitet 3",
-        "dtend":"2011-10-10T13:20:22+00:00",
-        "dtstart":"2011-10-08T13:20:22+00:00",
-        "location":{
-            "_id":"4e89af11381db8000600004d",
-            "latitude":60.41166,
-            "longitude":5.321857,
-            "name":"NAF Senter Bergen-Sandviken"
-        },
-        "location_id":"4e89af11381db8000600004d",
-        "own_vehicle":false,
-        "own_veichle":true,
-        "price":500.0,
-        "responsibility":"Bring helmet to aktivitet 3",
-        "summary":"Oppsummering aktivitet 3",
-        "supervisor_included":true,
-        "tags":"kurs, norge",
-        "url":"http://www.naf.no/#aktivitet3",
-        "veichle":"Bil,",
-        "video":"http://youtu.be/T4yjrkdOxfw"
-    },
-    {
-        "_id":"4e8c5996f295f80006000003",
-        "attendee":"Bookinglink til aktivitet 2",
-        "categories":[
-            {
-                "_id":"4e8c42014eea890006000006",
-                "name":"Motorsport"
-            }
-        ],
-        "category_id":"4e8c42014eea890006000006",
-        "contact":"Kontaktinfo for aktivitet 2",
-        "description":"Beskrivelse aktivitet 2",
-        "dtend":"2011-10-10T13:20:22+00:00",
-        "dtstart":"2011-10-08T13:20:22+00:00",
-        "location":{
-            "_id":"4e89af11381db8000600001f",
-            "latitude":58.87864,
-            "longitude":5.719162,
-            "name":"Lokalavdeling Stavanger og Omegn "
-        },
-        "location_id":"4e89af11381db8000600001f",
-        "own_vehicle":false,
-        "own_veichle":true,
-        "price":500.0,
-        "responsibility":"Bring helmet to aktivitet 2",
-        "summary":"Oppsummering aktivitet 2",
-        "supervisor_included":true,
-        "tags":"kurs, norge, sss",
-        "url":"http://www.naf.no/#aktivitet2",
-        "veichle":"kj\u00f8ret\u00f8y,",
-        "video":"http://youtu.be/T4yjrkdOxfw"
-    },
-    {
-        "_id":"4e8c5997f295f8000600000a",
-        "attendee":"Bookinglink til aktivitet 9",
-        "categories":[
-            {
-                "_id":"4e8c42014eea890006000004",
-                "name":"Seminar og foredrag"
-            }
-        ],
-        "category":"NAF tester",
-        "category_id":"4e8c42014eea890006000002",
-        "contact":"Kontaktinfo for aktivitet 9",
-        "description":"Beskrivelse av aktivitet 9\nHer blir det \u00e5 skje spennende saker!",
-        "dtend":"2011-10-10T13:20:23+00:00",
-        "dtstart":"2011-10-08T13:20:23+00:00",
-        "location":{
-            "_id":"4e89af11381db80006000078",
-            "latitude":62.44444,
-            "longitude":6.361237,
-            "name":"NAF Senter \u00c5lesund"
-        },
-        "location_id":"4e89af11381db80006000078",
-        "own_vehicle":false,
-        "own_veichle":true,
-        "price":500.0,
-        "responsibility":"Bring helmet to aktivitet 9",
-        "summary":"Aktivitet 9",
-        "supervisor_included":true,
-        "tags":"kurs, norge",
-        "url":"http://www.naf.no/#aktivitet9",
-        "veichle":"Motorsykkel,",
-        "video":"http://youtu.be/T4yjrkdOxfw"
-    },
-    {
-        "_id":"4e8c5996f295f80006000007",
+        "_id":"4e955c5d31bd8a0006000007",
+        "active":true,
+        "age_from":0,
+        "age_to":100,
         "attendee":"Bookinglink til aktivitet 6",
-        "categories":[
-            {
-                "_id":"4e8c42014eea890006000002",
-                "name":"NAF tester"
-            }
-        ],
-        "category":"Seminar og foredrag",
-        "category_id":"4e8c42014eea890006000004",
+        "category_id":"4e8c42014eea890006000005",
         "contact":"Kontaktinfo for aktivitet 6",
-        "description":"Beskrivelse aktivitet 6",
-        "dtend":"2011-10-10T13:20:22+00:00",
-        "dtstart":"2011-10-08T13:20:22+00:00",
+        "description":"Eline, eline, eline?",
+        "dtend":"2011-10-17T09:22:37+00:00",
+        "dtstart":"2011-10-15T09:22:37+00:00",
         "location":{
-            "_id":"4e89af11381db8000600003b",
-            "latitude":60.57183,
-            "longitude":5.235713,
-            "name":"MC Nordhordland"
+            "_id":"4e89af11381db8000600007b",
+            "latitude":68.88229,
+            "longitude":18.40104,
+            "name":"\u00d8vingsbane Bardu"
         },
-        "location_id":"4e89af11381db80006000003",
+        "location_id":"4e89af11381db8000600007b",
         "own_vehicle":false,
         "own_veichle":true,
+        "participants_count":0,
         "price":500.0,
+        "region":"Nord",
         "responsibility":"Bring helmet to aktivitet 6",
-        "summary":"Aktivitet 6",
-        "supervisor_included":true,
-        "tags":"kurs, norge, \u00e5lesund",
-        "url":"http://www.naf.no/#aktivitet6",
-        "veichle":"Moped,",
-        "video":"http://youtu.be/T4yjrkdOxfw"
-    },
-    {
-        "_id":"4e8c5996f295f80006000008",
-        "attendee":"Bookinglink til aktivitet 7",
-        "categories":[
-            {
-                "_id":"4e8c42014eea890006000006",
-                "name":"Motorsport"
-            }
-        ],
-        "category":"NAF tester",
-        "category_id":"4e8c42014eea890006000002",
-        "contact":"Kontaktinfo for aktivitet 7",
-        "description":"Beskrivelse aktivitet 7\nfollo 2",
-        "dtend":"2011-10-10T13:20:22+00:00",
-        "dtstart":"2011-10-08T13:20:22+00:00",
-        "location":{
-            "_id":"4e89af11381db8000600001a",
-            "latitude":59.8184,
-            "longitude":10.78896,
-            "name":"Lokalavdeling Follo"
-        },
-        "location_id":"4e89af11381db8000600001a",
-        "own_vehicle":false,
-        "own_veichle":true,
-        "price":500.0,
-        "responsibility":"Bring helmet to aktivitet 7",
-        "summary":"Aktivitet 7",
+        "score":0,
+        "summary":"Oppsummering aktivitet 6",
         "supervisor_included":true,
         "tags":"kurs, norge",
-        "url":"http://www.naf.no/#aktivitet7",
-        "veichle":"Buss,",
-        "video":"http://youtu.be/T4yjrkdOxfw"
+        "target":"Eldre 65 +",
+        "url":"http://www.naf.no/#aktivitet6",
+        "vehicle":"Buss",
+        "video":"http://youtu.be/T4yjrkdOxfw",
+        "volunteers_involved_count":0,
+        "volunteers_used_count":0
     }
 ]}

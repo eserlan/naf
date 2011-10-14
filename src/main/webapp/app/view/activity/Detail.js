@@ -1,14 +1,9 @@
 Ext.define('NAF.view.activity.Detail', {
     extend: 'Ext.form.Panel',
-    bodyPadding: 5,  // Don't want content to crunch against the borders
+    bodyPadding: 5,
     alias: 'widget.activitydetail',
     preventHeader: true,
     autoScroll: true,
-
-    videoTpl: [
-        '{video}'
-
-    ],
 
     defaultType: 'textfield',
 
@@ -373,6 +368,84 @@ Ext.define('NAF.view.activity.Detail', {
             ]
         }
         ,
+        {
+            xtype: 'form',
+            title: 'Politisk aktivitet',
+            bodyPadding: 5,
+            collapsible: true,
+            collapsed: true,
+            items: [
+                {
+                    name: 'political_contact',
+                    xtype: 'textareafield',
+                    width: 350,
+                    fieldLabel: 'Kontakt med'
+
+                },
+                {
+                    name: 'response_result',
+                    xtype: 'textareafield',
+                    width: 350,
+                    fieldLabel: 'Respons/Resultat'
+
+                }
+            ]
+        }
+        ,
+        {
+            xtype: 'form',
+            title: 'Interninformasjon',
+            bodyPadding: 5,
+            collapsible: true,
+            collapsed: true,
+
+            items: [
+                {
+                    name: 'volunteers_involved_count',
+                    xtype: 'numberfield',
+                    width: 350,
+                    fieldLabel: 'Antall frivillige involvert'
+
+                },
+                {
+                    name: 'volunteers_used_count',
+                    xtype: 'numberfield',
+                    width: 350,
+                    fieldLabel: 'Antall frivilligtimer brukt'
+
+                },
+                {
+                    name: 'competence_needs',
+                    xtype: 'textareafield',
+                    width: 350,
+                    fieldLabel: 'Kompetansebehov'
+
+                },
+                {
+                    name: 'participants_count',
+                    xtype: 'numberfield',
+                    width: 350,
+                    fieldLabel: 'Antall deltakere'
+
+                },
+                {
+                    name: 'result',
+                    xtype: 'textareafield',
+                    width: 350,
+                    fieldLabel: 'Dette gikk bra'
+
+                },
+                {
+                    name: 'potential_improvements',
+                    xtype: 'textareafield',
+                    width: 350,
+                    fieldLabel: 'Enda bedre om'
+
+                }
+            ]
+        }
+        ,
+
         {
             xtype: 'splitter',
             height: 40
