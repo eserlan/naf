@@ -19,7 +19,7 @@ Ext.define('NAF.view.activity.List', {
         this.columns = [
             {header: 'Dato',  dataIndex: 'dtstart',  flex:1, format: 'c'},
             {header: 'Navn',  dataIndex: 'summary',  flex: 2},
-            {header: 'Sted',  dataIndex: 'location_id',  flex: 2, renderer: this.findLocationName},
+            {header: 'Sted',  dataIndex: 'location',  flex: 2},
             {header: 'Kategori', dataIndex: 'category_id', flex: 2, renderer: this.findCategoryName}
         ];
 
