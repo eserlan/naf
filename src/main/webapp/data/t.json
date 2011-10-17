@@ -33,5 +33,22 @@
         "video":"http://youtu.be/T4yjrkdOxfw",
         "volunteers_involved_count":0,
         "volunteers_used_count":0
+    },
+    {
+        "activity":{
+            "summary":"Oppsummering aktivitet 7 aaaa",
+            "dtstart":"2011-10-15T00:00:00",
+            "dtend":"2011-10-17T00:00:00",
+            "active":"true",
+            "age_from":"0",
+            "age_to":"100",
+            "price":"500",
+            "supervisor_included":"true",
+            "own_vehicle":"false",
+            "volunteers_involved_count":"0",
+            "volunteers_used_count":"0",
+            "participants_count":"0"
+        }
     }
 ]}
+

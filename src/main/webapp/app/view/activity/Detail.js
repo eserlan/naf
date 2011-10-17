@@ -66,6 +66,8 @@ Ext.define('NAF.view.activity.Detail', {
         {
             name: 'summary',
             id: 'summary',
+            allowBlank: false,
+            invalidText: 'Feltet må være utfylt.',
             emptyText: 'Aktivitets navn',
             height: 30,
             width: 400,
@@ -81,37 +83,50 @@ Ext.define('NAF.view.activity.Detail', {
             items: [
                 {
                     name: 'dtstart',
-                    xtype: 'datefield',
-                    format: 'c'
+                    width: 95,
+                    xtype: 'datefield'
+                    ,
+                    format: 'd.m.Y',
+                    altFormats: 'c'
                 },
                 {
                     xtype: 'splitter'
                 },
-                {
-                    xtype: 'timefield',
-                    width: 70,
-                    name: 'dtstart',
-                    increment: 30,
-                    format: 'H:i'
-                },
-                {
-                    xtype: 'splitter'
-                },
+//                {
+//                    xtype: 'timefield',
+//                    width: 65,
+//                    id: 'dtstart-time',
+//                    name: 'dtstart',
+//                    increment: 30
+//                    ,
+//                    format: 'H.i'
+////                    ,
+////                    value: new Date()
+//
+//                },
+//                {
+//                    xtype: 'splitter',
+//                    width: 20
+//                },
                 {
                     name: 'dtend',
-                    xtype: 'datefield',
-                    format: 'c'
-                },
-                {
-                    xtype: 'splitter'
-                },
-                {
-                    xtype: 'timefield',
-                    width: 70,
-                    name: 'dtend',
-                    increment: 30,
-                    format: 'H:i'
+                    width: 95,
+                    xtype: 'datefield'
+//                    ,
+//                    format: 'd.m.Y'
                 }
+//                ,
+//                {
+//                    xtype: 'splitter'
+//                }
+//                ,
+//                {
+//                    xtype: 'timefield',
+//                    width: 65,
+//                    name: 'dtend',
+//                    increment: 30,
+//                    format: 'H:i'
+//                }
             ]
         }
         ,

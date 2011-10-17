@@ -2,7 +2,7 @@ Ext.define('NAF.controller.Activities', {
     extend: 'Ext.app.Controller',
 
     stores: ['Categories','Locations','Activities','ActivitiesSearch','Vehicles','Regions'],
-    models: ['Activity', 'Location', 'Category', 'Vehicle', 'Region'],
+    models: ['Category', 'Activity', 'Location', 'Vehicle', 'Region'],
 
     views: [
         'activity.List',

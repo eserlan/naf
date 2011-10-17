@@ -18,9 +18,9 @@ Ext.define('NAF.view.activity.List', {
     initComponent: function() {
         this.columns = [
             {header: 'Starter',  dataIndex: 'dtstart', xtype: 'datecolumn',  format: 'd.m.Y H.i', width: 110},
-            {header: 'Navn',  dataIndex: 'summary',  flex: 2},
-            {header: 'Sted',  dataIndex: 'location',  flex: 2},
-            {header: 'Kategori', dataIndex: 'category_id', flex: 2, renderer: this.findCategoryName}
+            {header: 'Navn',  dataIndex: 'summary',  flex: 1},
+            {header: 'Sted',  dataIndex: 'location',  flex: 1},
+            {header: 'Kategori', dataIndex: 'category_id', flex: 1, renderer: this.findCategoryName}
         ];
 
         this.callParent(arguments);

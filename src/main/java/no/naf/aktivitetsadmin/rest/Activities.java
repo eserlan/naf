@@ -70,14 +70,21 @@ public class Activities {
             nc = StringUtils.substringBefore(nc, ",\"location\"") + "}";
 
         nc = "{\"activity\":" + nc + "}";
+        nc = nc.replace(id, "");
+        nc = nc.replace(",\"_id\":\"\"", "");
+
+
+        System.out.println("nc = " + nc);
 
         WebResource r = client.resource("http://naf.herokuapp.com/activities/" + id);
+
+        System.out.println("r = " + r);
         String res = r.
                 type(MediaType.APPLICATION_JSON_TYPE).
                 accept(MediaType.APPLICATION_JSON_TYPE).
                 entity(nc, MediaType.APPLICATION_JSON_TYPE).
                 put(String.class);
-//        System.out.println("res = " + res);
+        System.out.println("res = " + res);
 
 
     }
