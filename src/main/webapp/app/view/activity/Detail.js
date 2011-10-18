@@ -244,22 +244,6 @@ Ext.define('NAF.view.activity.Detail', {
         }
         ,
         {
-            id: 'regionCombo',
-            xtype: 'combo',
-            width: 350,
-            valueField: 'name',
-            store: 'Regions',
-            displayField: 'name',
-            typeAhead: false,
-
-            fieldLabel: 'Region',
-
-            listConfig: {
-                loadingText: 'Leter...'
-            }
-        }
-        ,
-        {
             name: 'tags',
             fieldLabel: 'Stikkord',
             id: 'tags',

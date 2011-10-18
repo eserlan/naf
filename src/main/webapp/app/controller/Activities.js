@@ -1,8 +1,8 @@
 Ext.define('NAF.controller.Activities', {
     extend: 'Ext.app.Controller',
 
-    stores: ['Categories','Locations','Activities','ActivitiesSearch','Vehicles','Regions'],
-    models: ['Category', 'Activity', 'Location', 'Vehicle', 'Region'],
+    stores: ['Categories','Locations','Activities','ActivitiesSearch','Vehicles'],
+    models: ['Category', 'Activity', 'Location', 'Vehicle'],
 
     views: [
         'activity.List',
@@ -26,10 +26,6 @@ Ext.define('NAF.controller.Activities', {
         {
             ref: 'dateEnd',
             selector: '#dtend'
-        },
-        {
-            ref: 'regionCombo',
-            selector: '#regionCombo'
         },
         {
             ref: 'fileUpload',
@@ -66,9 +62,6 @@ Ext.define('NAF.controller.Activities', {
             'activitydetail #locationCombo':{
                 select: this.selectLocation
             },
-            'activitydetail #regionCombo':{
-                select: this.selectRegion
-            },
             'activitydetail #activitiesSearchCombo':{
                 select: this.selectActivity
             },
@@ -95,8 +88,7 @@ Ext.define('NAF.controller.Activities', {
         loc.setValue(record.get('location_id'));
         var v = this.getVehicleCombo();
         v.setValue(record.get('vehicle'));
-        var r = this.getRegionCombo();
-        r.setValue(record.get('region'));
+
 
     },
 
@@ -223,8 +215,6 @@ Ext.define('NAF.controller.Activities', {
         loc.setValue(record.get('location_id'));
         var v = this.getVehicleCombo();
         v.setValue(record.get('vehicle'));
-        var r = this.getRegionCombo();
-        r.setValue(record.get('region'));
     },
 
     changeMinValueForDtend: function(field, newValue){
@@ -266,15 +256,6 @@ Ext.define('NAF.controller.Activities', {
             var vehicle = selectedRecords[0].get('name');
             activity.set('vehicle', vehicle);
 
-        }
-    },
-
-    selectRegion: function(combo, selectedRecords) {
-        var ad = this.getActivityDetail();
-        if (ad != null) {
-            var activity = ad.getRecord();
-            var region = selectedRecords[0].get('name');
-            activity.set('region', region);
         }
     }
 
