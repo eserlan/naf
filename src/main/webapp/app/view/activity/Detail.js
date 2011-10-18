@@ -92,41 +92,42 @@ Ext.define('NAF.view.activity.Detail', {
                 {
                     xtype: 'splitter'
                 },
-//                {
-//                    xtype: 'timefield',
-//                    width: 65,
-//                    id: 'dtstart-time',
-//                    name: 'dtstart',
-//                    increment: 30
+                {
+                    xtype: 'timefield',
+                    width: 65,
+                    id: 'dtstart-time',
+                    name: 'dtstart',
+                    increment: 30,
+                    format: 'H.i',
+                    altFormats: 'c'
 //                    ,
 //                    format: 'H.i'
-////                    ,
-////                    value: new Date()
-//
-//                },
-//                {
-//                    xtype: 'splitter',
-//                    width: 20
-//                },
+
+                },
+                {
+                    xtype: 'splitter',
+                    width: 20
+                },
                 {
                     name: 'dtend',
                     width: 95,
                     xtype: 'datefield'
-//                    ,
-//                    format: 'd.m.Y'
+                    ,
+                    format: 'd.m.Y'
                 }
-//                ,
-//                {
-//                    xtype: 'splitter'
-//                }
-//                ,
-//                {
-//                    xtype: 'timefield',
-//                    width: 65,
-//                    name: 'dtend',
-//                    increment: 30,
-//                    format: 'H:i'
-//                }
+                ,
+                {
+                    xtype: 'splitter'
+                }
+                ,
+                {
+                    xtype: 'timefield',
+                    width: 65,
+                    name: 'dtend-time',
+                    increment: 30,
+                    format: 'H.i',
+                    altFormats: 'c'
+                }
             ]
         }
         ,

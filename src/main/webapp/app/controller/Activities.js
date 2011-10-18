@@ -140,9 +140,16 @@ Ext.define('NAF.controller.Activities', {
         var win = button.up('activitydetail');
         var form = win.getForm();
         var record = form.getRecord();
+
+       // console.log(record.modified);
+
         var values = form.getValues();
+
+     //   console.log(values);
+
         record.set(values);
         this.getActivitiesStore().sync();
+        Ext.Msg.alert('Lagret', record.get('summary') + ' er lagret.');
     },
 
     confirmDeleteActivity: function(button) {
@@ -190,6 +197,20 @@ Ext.define('NAF.controller.Activities', {
         var tbInfo = tbar.getComponent('tbInfo');
         tbInfo.setText('Mer informasjon om ' + title);
         ad.loadRecord(record);
+        var dtstart = record.get('dtstart');
+
+        if (dtstart != null) {
+            var dtstartTime = new Date(dtstart.getTime());
+            record.set('dtstart-time', dtstartTime);
+        }
+
+        var dtend = record.get('dtend');
+
+        if (dtend != null) {
+            var dtendTime = new Date(dtend.getTime());
+            record.set('dtend-time', dtendTime);
+        }
+
         var cat = ad.getComponent('categoryCombo');
         cat.setValue(record.get('category_id'));
         var loc = ad.getComponent('locationCombo');
