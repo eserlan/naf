@@ -4,78 +4,37 @@ Ext.define('NAF.view.activity.Detail', {
     alias: 'widget.activitydetail',
     preventHeader: true,
     autoScroll: true,
+    disabled: true,
+
 
     defaultType: 'textfield',
 
-    tbar: [
-        {
-            xtype    : 'tbtext',
-            id       : 'tbInfo',
-            text     : 'Mer informasjon om ',
-            style    : {'font-weight': 'bold', 'color': '#04408C !important'}
-        },
-        '->',
 
+
+    items: [
         {
             xtype: 'combo',
             store: 'ActivitiesSearch',
-            id: 'activitiesSearchCombo',
+            id: 'activitiesSearchComboSummary',
             displayField: 'summary',
             typeAhead: false,
             hideLabel: true,
             hideTrigger:true,
+            emptyText: 'Aktivitets navn',
+            width: 350,
+            enableKeyEvents: true,
             queryParam: 'admin:true&text',
-            emptyText: 'Søk etter aktiviteter...',
-//            matchFieldWidth: false,
-
+            allowBlank: false,
+            invalidText: 'Feltet må være utfylt.',
+            fieldStyle: {'font-weight': 'bold', 'height' : 30, 'color' : 'black'},
             listConfig: {
                 loadingText: 'Søker...',
-                emptyText: 'Ingen treff.',
-//                maxHeight: 400,
+                emptyText: 'Finner ikke aktivitet med angitt navn. Tryck "ESC" tast for å gå videre.',
                 width: 400,
                 minHeight: 200,
                 autoScroll: true
-
             }
         },
-        {
-            xtype: 'button',
-            id: 'removeButton',
-            text:'Slett',
-            tooltip: 'Slett valgt aktivitet',
-            action: 'delete'
-        },
-        {
-            xtype: 'button',
-            id: 'createButton',
-            text:'Kopier',
-            tooltip: 'Kopier valgt aktivitet',
-            action: 'copy'
-        },
-        {
-            xtype: 'button',
-            id: 'activityDetailSaveButton',
-            text:'Lagre',
-//            disabled:true,
-            action: 'save'
-        }
-    ],
-
-    items: [
-
-        {
-            name: 'summary',
-            id: 'summary',
-            allowBlank: false,
-            invalidText: 'Feltet må være utfylt.',
-            emptyText: 'Aktivitets navn',
-            height: 30,
-            width: 350,
-            enableKeyEvents: true,
-            fieldStyle: {'font-weight': 'bold'}
-        }
-        ,
-
 
         {
             xtype: 'fieldcontainer',
@@ -609,7 +568,7 @@ Ext.define('NAF.view.activity.Detail', {
     ]
 
     ,
-    findMinValue: function(value){
+    findMinValue: function(value) {
         console.log('min value is: ' + value);
     }
 
