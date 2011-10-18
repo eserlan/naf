@@ -83,6 +83,7 @@ Ext.define('NAF.view.activity.Detail', {
             items: [
                 {
                     name: 'dtstart',
+                    id: 'dtstart',
                     width: 95,
                     xtype: 'datefield'
                     ,
@@ -110,9 +111,9 @@ Ext.define('NAF.view.activity.Detail', {
                 },
                 {
                     name: 'dtend',
+                    id: 'dtend',
                     width: 95,
-                    xtype: 'datefield'
-                    ,
+                    xtype: 'datefield',
                     format: 'd.m.Y'
                 }
                 ,
@@ -493,6 +494,7 @@ Ext.define('NAF.view.activity.Detail', {
                 }
             ]
         }
+
 //        ,
 //
 //        {
@@ -607,6 +609,11 @@ Ext.define('NAF.view.activity.Detail', {
 //        }
 
     ]
+
+    ,
+    findMinValue: function(value){
+        console.log('min value is: ' + value);
+    }
 
 
 });

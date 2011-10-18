@@ -24,6 +24,10 @@ Ext.define('NAF.controller.Activities', {
             selector: '#vehicleCombo'
         },
         {
+            ref: 'dateEnd',
+            selector: '#dtend'
+        },
+        {
             ref: 'regionCombo',
             selector: '#regionCombo'
         },
@@ -34,15 +38,6 @@ Ext.define('NAF.controller.Activities', {
     ],
 
     init: function() {
-
-//        var dt = new Date('2011-10-10T09:05:25+00:00');
-//        console.log(Ext.Date.format(dt, 'Y-m-d'));                          // 2007-01-10
-//        console.log(Ext.Date.format(dt, 'F j, Y, g:i a'));                  // January 10, 2007, 3:05 pm
-//        console.log(Ext.Date.format(dt, 'l, \\t\\he jS \\of F Y h:i:s A')); // Wednesday, the 10th of January 2007 03:05:01 PM
-//        console.log(Ext.Date.format(dt, 'Y-m-d\\TG:m:sP')); // Wednesday, the 10th of January 2007 03:05:01 PM
-
-
-        //        console.log('Initialized Activities! This happens before the Application launch function is called');
         this.control({
             'activitylist': {
                 select: this.changeDetail
@@ -58,6 +53,9 @@ Ext.define('NAF.controller.Activities', {
             },
             'activitydetail #uploadBtn':{
                 click: this.uploadPhoto
+            },
+            'activitydetail #dtstart':{
+                change: this.changeMinValueForDtend
             },
             'activitydetail #categoryCombo':{
                 select: this.selectCategory
@@ -143,13 +141,16 @@ Ext.define('NAF.controller.Activities', {
 
        // console.log(record.modified);
 
-        var dtstart = record.modified['dtstart'];
-        if (dtstart !== null)
+        var dtstart = record.get('dtstart');
+        if (typeof dtstart !== 'undefined' && dtstart !== null)
             console.log(dtstart);
 
         var values = form.getValues();
 
-     //   console.log(values);
+        var dtstartForm = values['dtstart'];
+
+        console.log(dtstartForm);
+
 
         record.set(values);
         this.getActivitiesStore().sync();
@@ -206,6 +207,7 @@ Ext.define('NAF.controller.Activities', {
         if (dtstart != null) {
             var dtstartTime = new Date(dtstart.getTime());
             record.set('dtstart-time', dtstartTime);
+            this.getDateEnd().setMinValue(dtstart);
         }
 
         var dtend = record.get('dtend');
@@ -224,6 +226,15 @@ Ext.define('NAF.controller.Activities', {
         var r = this.getRegionCombo();
         r.setValue(record.get('region'));
     },
+
+    changeMinValueForDtend: function(field, newValue){
+        var dtstart = newValue;
+        if (dtstart != null) {
+            var dtstartTime = new Date(dtstart.getTime());
+            this.getDateEnd().setMinValue(dtstart);
+        }
+    },
+
 
     selectCategory: function(combo, selectedRecords) {
         var ad = combo.up();
