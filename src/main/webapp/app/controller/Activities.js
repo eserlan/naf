@@ -181,6 +181,7 @@ Ext.define('NAF.controller.Activities', {
 
 
         this.getActivitiesStore().update(activity);
+        this.getActivitiesStore().sync();
 
         activity.commit();
 
