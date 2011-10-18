@@ -143,6 +143,10 @@ Ext.define('NAF.controller.Activities', {
 
        // console.log(record.modified);
 
+        var dtstart = record.modified['dtstart'];
+        if (dtstart !== null)
+            console.log(dtstart);
+
         var values = form.getValues();
 
      //   console.log(values);
