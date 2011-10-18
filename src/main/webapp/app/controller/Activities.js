@@ -74,7 +74,6 @@ Ext.define('NAF.controller.Activities', {
                 keyup : this.updateList
             },
             'activitydetail #activitiesSearchComboSummary':{
-                select: this.setSummarySelect,
                 blur: this.setSummaryBlur
             },
             'activitydetail #vehicleCombo':{
@@ -115,33 +114,12 @@ Ext.define('NAF.controller.Activities', {
 
     },
 
-    setSummarySelect: function(combo, records) {
-        console.log('endrer summary');
-        var selectedRecord = records[0];
-        var summary = selectedRecord.get('summary');
-        var ad = this.getActivityDetail();
-        var activeActivity = ad.getForm().getRecord();
-        activeActivity.set('summary', summary);
-        activeActivity.commit();
-
-
-        //todo få ferdig
-
-
-    },
     setSummaryBlur: function(field) {
-        console.log('endrer summary');
-        console.log(field);
         var summary = field.getRawValue();
         var ad = this.getActivityDetail();
         var activeActivity = ad.getForm().getRecord();
         activeActivity.set('summary', summary);
         activeActivity.commit();
-
-
-        //todo få ferdig
-
-
     },
 
     updateList: function(field) {
@@ -181,17 +159,16 @@ Ext.define('NAF.controller.Activities', {
     saveActivities: function (button) {
         var ad = this.getActivityDetail();
         var form = ad.getForm();
-        var record = form.getRecord();
-
+        var activity = form.getRecord();
         var values = form.getValues();
-        record.set(values);
+        activity.set(values);
 
         var dtstartForm = values['dtstart'];
 //        console.log(dtstartForm);
         if (typeof dtstartForm !== 'undefined' && dtstartForm !== null) {
             var dtstartTimeForm = values['dtstart-time'];
             var d = Ext.Date.parse(dtstartForm + ' ' + dtstartTimeForm, 'd.m.Y H.i');
-            record.set('dtstart', d);
+            activity.set('dtstart', d);
         }
 
         var dtendForm = values['dtend'];
@@ -199,15 +176,15 @@ Ext.define('NAF.controller.Activities', {
         if (typeof dtstartForm !== 'undefined' && dtstartForm !== null) {
             var dtendTimeForm = values['dtend-time'];
             var d = Ext.Date.parse(dtendForm + ' ' + dtendTimeForm, 'd.m.Y H.i');
-            record.set('dtend', d);
+            activity.set('dtend', d);
         }
 
 
-        this.getActivitiesStore().sync();
+        this.getActivitiesStore().update(activity);
 
-        record.commit();
+        activity.commit();
 
-        Ext.Msg.alert('Lagret', record.get('summary') + ' er lagret.');
+        Ext.Msg.alert('Lagret', activity.get('summary') + ' er lagret.');
     },
 
     confirmDeleteActivity: function(button) {
@@ -219,8 +196,6 @@ Ext.define('NAF.controller.Activities', {
             var ad = this.getActivityDetail();
             var form = ad.getForm();
             var record = form.getRecord();
-            var values = form.getValues();
-            record.set(values);
             this.getActivitiesStore().remove(record);
             this.getActivitiesStore().sync();
         }
