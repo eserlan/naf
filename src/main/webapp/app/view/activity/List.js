@@ -80,16 +80,14 @@ Ext.define('NAF.view.activity.List', {
             {header: 'Sted',  dataIndex: 'location',  flex: 1},
             {header: 'Kategori', dataIndex: 'category_id', flex: 1, renderer: this.findCategoryName}
         ];
-
         this.callParent(arguments);
     },
 
     findCategoryName: function(value) {
         var store = Ext.getStore('Categories');
         var category = store.getById(value);
-        if (category !== null)
-        return category.get('name');
-
+        if (typeof category !== 'undefined' && category  !== null)
+            return category.get('name');
         return '';
     }
 });
