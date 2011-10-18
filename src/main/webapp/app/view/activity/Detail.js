@@ -83,6 +83,7 @@ Ext.define('NAF.view.activity.Detail', {
             items: [
                 {
                     name: 'dtstart',
+                    id: 'dtstart',
                     width: 95,
                     xtype: 'datefield'
                     ,
