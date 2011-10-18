@@ -99,9 +99,6 @@ Ext.define('NAF.view.activity.Detail', {
                     increment: 30,
                     format: 'H.i',
                     altFormats: 'c'
-//                    ,
-//                    format: 'H.i'
-
                 },
                 {
                     xtype: 'splitter',
@@ -112,7 +109,8 @@ Ext.define('NAF.view.activity.Detail', {
                     id: 'dtend',
                     width: 95,
                     xtype: 'datefield',
-                    format: 'd.m.Y'
+                    format: 'd.m.Y',
+                    altFormats: 'c'
                 }
                 ,
                 {

@@ -32,12 +32,12 @@ Ext.define('NAF.store.Activities', {
 
     proxy: {
         type: 'rest',
-        url: '/aktivitets-admin/rest/activities',
+//        url: '/aktivitets-admin/rest/activities',
 
         api: {
             read: 'rest/activities',
             create: 'rest/activities',
-            update: 'rest/activities' ,
+            update: 'rest/activities',
             delete: 'rest/activities'
         },
 
