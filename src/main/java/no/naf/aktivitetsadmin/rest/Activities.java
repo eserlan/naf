@@ -138,7 +138,7 @@ public class Activities {
 //    @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public void createAllNewActivity(String content, @Context UriInfo ui) {
-        System.out.println("activity POST");
+        System.out.println("activity POST 2");
 
         System.out.println("ui = " + ui);
         MultivaluedMap<String, String> qp = null;
