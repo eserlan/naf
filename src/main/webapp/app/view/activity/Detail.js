@@ -83,7 +83,6 @@ Ext.define('NAF.view.activity.Detail', {
             items: [
                 {
                     name: 'dtstart',
-                    id: 'dtstart',
                     width: 95,
                     xtype: 'datefield'
                     ,
@@ -96,8 +95,7 @@ Ext.define('NAF.view.activity.Detail', {
                 {
                     xtype: 'timefield',
                     width: 65,
-                    id: 'dtstart-time',
-                    name: 'dtstart',
+                    name: 'dtstart-time',
                     increment: 30,
                     format: 'H.i',
                     altFormats: 'c'
@@ -227,7 +225,7 @@ Ext.define('NAF.view.activity.Detail', {
         }
         ,
         {
-            name: 'location2',
+            name: 'location',
             id: 'locationCombo',
             xtype: 'combo',
             width: 350,
@@ -237,6 +235,23 @@ Ext.define('NAF.view.activity.Detail', {
             typeAhead: false,
 
             fieldLabel: 'Sted',
+
+            listConfig: {
+                loadingText: 'Leter...'
+            }
+        }
+        ,
+        {
+            name: 'organizer',
+            id: 'organizerCombo',
+            xtype: 'combo',
+            width: 350,
+            valueField: '_id',
+            store: 'Locations',
+            displayField: 'name',
+            typeAhead: false,
+
+            fieldLabel: 'Arrangør',
 
             listConfig: {
                 loadingText: 'Leter...'

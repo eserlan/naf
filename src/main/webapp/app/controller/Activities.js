@@ -131,20 +131,21 @@ Ext.define('NAF.controller.Activities', {
         var form = win.getForm();
         var record = form.getRecord();
 
-       // console.log(record.modified);
-
-        var dtstart = record.get('dtstart');
-        if (typeof dtstart !== 'undefined' && dtstart !== null)
-            console.log(dtstart);
-
         var values = form.getValues();
+        record.set(values);
 
         var dtstartForm = values['dtstart'];
-
         console.log(dtstartForm);
+        if (typeof dtstartForm !== 'undefined' && dtstartForm !== null) {
+            var dtstartTimeForm = values['dtstart-time'];
+            var d = Ext.Date.parse(dtstartForm + ' ' + dtstartTimeForm, 'd.m.Y H.i');
+            record.set('dtstart', d);
+
+        }
 
 
-        record.set(values);
+
+
         this.getActivitiesStore().sync();
         Ext.Msg.alert('Lagret', record.get('summary') + ' er lagret.');
     },
