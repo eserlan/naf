@@ -70,7 +70,7 @@ Ext.define('NAF.view.activity.Detail', {
             invalidText: 'Feltet må være utfylt.',
             emptyText: 'Aktivitets navn',
             height: 30,
-            width: 400,
+            width: 350,
             enableKeyEvents: true,
             fieldStyle: {'font-weight': 'bold'}
         }

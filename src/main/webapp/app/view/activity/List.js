@@ -30,11 +30,5 @@ Ext.define('NAF.view.activity.List', {
         var store = Ext.getStore('Categories');
         var category = store.getById(value);
         return category.get('name');
-    },
-
-    findLocationName: function(value) {
-        var store = Ext.getStore('Locations');
-        var location = store.getById(value);
-        return location.get('name');
     }
 });
