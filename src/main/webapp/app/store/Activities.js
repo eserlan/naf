@@ -7,7 +7,8 @@ Ext.define('NAF.store.Activities', {
 
     proxy: {
         type: 'rest',
-        url: '/aktivitets-admin/rest/activities',
+//        url: '/aktivitets-admin/rest/activities',
+        url: '/rest/activities',
 
         api: {
             read: 'rest/activities',

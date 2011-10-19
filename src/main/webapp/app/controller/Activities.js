@@ -119,6 +119,8 @@ Ext.define('NAF.controller.Activities', {
         var ad = this.getActivityDetail();
         var activeActivity = ad.getForm().getRecord();
         activeActivity.set('summary', summary);
+        var values = ad.getForm().getValues();
+        values.push('summary', summary);
         activeActivity.commit();
     },
 
@@ -180,7 +182,7 @@ Ext.define('NAF.controller.Activities', {
         }
 
 
-        this.getActivitiesStore().update(activity);
+//        this.getActivitiesStore().update(activity);
         this.getActivitiesStore().sync();
 
         activity.commit();
@@ -226,6 +228,7 @@ Ext.define('NAF.controller.Activities', {
     changeDetail: function(grid, record) {
         var summary = record.get('summary');
         var ad = this.getActivityDetail();
+        //todo få inn sjekk på om bruker har lov å editere aktivitet
         ad.setDisabled(false);
         var di = ad.getDockedItems();
         var tbar = di[0];

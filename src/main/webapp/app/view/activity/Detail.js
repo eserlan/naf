@@ -180,7 +180,7 @@ Ext.define('NAF.view.activity.Detail', {
         }
         ,
         {
-            name: 'location',
+            name: 'location2',
             id: 'locationCombo',
             xtype: 'combo',
             width: 350,
