@@ -97,13 +97,12 @@ Ext.define('NAF.controller.Activities', {
 
     selectActivity: function(combo, records) {
         var record = records[0];
-        var title = record.get('summary');
+        var summary = record.get('summary');
         var ad = this.getActivityDetail();
-        var di = ad.getDockedItems();
-        var tbar = di[0];
-        var tbInfo = tbar.getComponent('tbInfo');
-        tbInfo.setText('Mer informasjon om ' + title);
+        ad.setDisabled(false);
         ad.loadRecord(record);
+        var summaryCmp = this.getSummary();
+        summaryCmp.setRawValue(summary);
         var cat = ad.getComponent('categoryCombo');
         cat.setValue(record.get('category_id'));
         var loc = ad.getComponent('locationCombo');
