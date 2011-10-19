@@ -1,7 +1,7 @@
 Ext.define('NAF.controller.Activities', {
     extend: 'Ext.app.Controller',
 
-    stores: ['AccessStore','Categories','Locations','Activities','ActivitiesSearch','Vehicles'],
+    stores: ['Accesses','Categories','Locations','Activities','ActivitiesSearch','Vehicles'],
     models: ['Access', 'Category', 'Activity', 'Location', 'Vehicle'],
 
     views: [
@@ -95,6 +95,10 @@ Ext.define('NAF.controller.Activities', {
         var summaryCmp = this.getSummary();
         summaryCmp.setRawValue('');
         ad.getForm().loadRecord(activity);
+
+        ad.setDisabled(false);
+
+
         this.getActivitiesStore().add(activity);
     },
 
@@ -230,10 +234,9 @@ Ext.define('NAF.controller.Activities', {
     changeDetail: function(grid, record) {
         var summary = record.get('summary');
         var ad = this.getActivityDetail();
-        //todo få inn sjekk på om bruker har lov å editere aktivitet
-        var as = this.getAccessStoreStore()
+        var as = this.getAccessesStore()
         var orgIdIdx = as.find('access_id', record.get('organizer_id'))
-        if (orgIdIdx >= 0) {
+        if (orgIdIdx >= 0 || as.find('access_id', 'super') > -1) {
             ad.setDisabled(false);
         } else {
             ad.setDisabled(true);

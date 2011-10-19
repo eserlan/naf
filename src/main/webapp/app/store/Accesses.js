@@ -1,4 +1,4 @@
-Ext.define('NAF.store.AccessStore', {
+Ext.define('NAF.store.Accesses', {
     extend: 'Ext.data.Store',
     model: 'NAF.model.Access',
     storeId: 'accessStore',
