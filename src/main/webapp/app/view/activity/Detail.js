@@ -166,6 +166,12 @@ Ext.define('NAF.view.activity.Detail', {
         }
         ,
         {
+            name: 'contact_name',
+            xtype: 'textfield',
+            width: 350,
+            fieldLabel: 'Kontakt navn'
+        }
+        ,{
             name: 'contact_email',
             xtype: 'textfield',
             width: 350,
@@ -184,7 +190,7 @@ Ext.define('NAF.view.activity.Detail', {
             xtype: 'textareafield',
             grow: 'true',
             width: 350,
-            fieldLabel: 'Kontakt informasjon'
+            fieldLabel: 'Kontakt info.'
         }
         ,
         {
@@ -222,6 +228,14 @@ Ext.define('NAF.view.activity.Detail', {
             listConfig: {
                 loadingText: 'Leter...'
             }
+        },
+
+        {
+            name: 'address',
+            xtype: 'textareafield',
+            grow: 'true',
+            width: 350,
+            fieldLabel: 'Adresse'
         },
 
         {
