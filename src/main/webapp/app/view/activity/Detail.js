@@ -221,32 +221,37 @@ Ext.define('NAF.view.activity.Detail', {
             width: 350
         },
         {
-            xtype: 'fieldcontainer',
-            layout: 'hbox',
-            items: [
-                {
-                    name: 'price',
-                    fieldLabel: 'Pris',
-                    xtype: 'textfield',
-                    id: 'price',
-                    emptyText: 'Pris',
-                    width: 350
-                }
-                ,
-                {
-                    xtype: 'splitter'
-                },
-                {
-                    xtype: 'checkboxfield',
-                    boxLabel  : 'Veileder  inkl',
-                    name      : 'supervisor_included',
-                    inputValue: 'true',
-                    uncheckedValue : 'false',
-                    id        : 'supervisor_included'
-                }
-            ]
+            name: 'price',
+            fieldLabel: 'Pris',
+            xtype: 'textfield',
+            id: 'price',
+            emptyText: 'Pris',
+            width: 350
+        }
+
+        ,
+        {
+            name: 'member_price',
+            fieldLabel: 'Medlemspris',
+            xtype: 'textfield',
+            emptyText: 'Medlemspris',
+            width: 350
         }
         ,
+
+        {
+            xtype: 'checkboxgroup',
+            fieldLabel: 'Annet',
+            // Arrange radio buttons into two columns, distributed vertically
+            columns: 1,
+            width: 350,
+            vertical: true,
+            items: [
+                { boxLabel: 'Inkl veileder', name: 'supervisor_included', inputValue: true, uncheckedValue: false },
+                { boxLabel: 'Gratis', name: 'free', inputValue: true, uncheckedValue: false },
+                { boxLabel: 'Inkl mva', name: 'mva', inputValue: true, uncheckedValue: false }
+            ]
+        },
 
         {
             xtype: 'fieldcontainer',
