@@ -72,8 +72,6 @@ Ext.define('NAF.controller.Activities', {
             },
             'activitydetail #locationCombo':{
                 select: this.selectLocation
-//                ,
-//                expand: this.clearLocationsFilter
             },
             'activitydetail #organizerCombo':{
                 select: this.selectOrganizer,

@@ -30,15 +30,12 @@ Ext.define('NAF.view.activity.List', {
                     hideTrigger:true,
                     queryParam: 'admin:true&text',
                     emptyText: 'Søk etter aktiviteter...',
-//            matchFieldWidth: false,
-
                     listConfig: {
                         loadingText: 'Søker...',
                         emptyText: 'Ingen treff.',
                         width: 400,
                         minHeight: 200,
                         autoScroll: true
-
                     }
                 },
 
