@@ -71,10 +71,12 @@ Ext.define('NAF.controller.Activities', {
                 keyup : this.updateList
             },
             'activitydetail #locationCombo':{
-                select: this.selectLocation
+                select: this.selectLocation,
+                expand: this.clearLocationsFilter
             },
             'activitydetail #organizerCombo':{
-                select: this.selectOrganizer
+                select: this.selectOrganizer,
+                expand: this.filterOrganizersByAccess
             },
             'activitylist #activitiesSearchCombo':{
                 select: this.selectActivity,
@@ -86,6 +88,23 @@ Ext.define('NAF.controller.Activities', {
             'activitydetail #vehicleCombo':{
                 select: this.selectVehicle
             }
+        });
+    },
+
+
+    clearLocationsFilter: function(){
+        var locationsStore = this.getLocationsStore();
+        locationsStore.clearFilter(true);
+        console.log('filters cleared');
+
+    },
+
+    filterOrganizersByAccess: function () {
+        var as = this.getAccessesStore();
+        var ls = this.getLocationsStore();
+        var accessIds = as.collect('access_id');
+        ls.filterBy(function (record, id){
+            if (accessIds.indexOf(id)>-1) return true;
         });
     },
 
@@ -234,7 +253,7 @@ Ext.define('NAF.controller.Activities', {
     changeDetail: function(grid, record) {
         var summary = record.get('summary');
         var ad = this.getActivityDetail();
-        var as = this.getAccessesStore()
+        var as = this.getAccessesStore();
         var orgIdIdx = as.find('access_id', record.get('organizer_id'))
         if (orgIdIdx >= 0 || as.find('access_id', 'super') > -1) {
             ad.setDisabled(false);
@@ -318,6 +337,7 @@ Ext.define('NAF.controller.Activities', {
             var newLocationName = selectedRecords[0].get('name');
             activity.set('organizer_id', newId);
             activity.set('organizer', newLocationName);
+            this.clearLocationsFilter();
         }
     },
 

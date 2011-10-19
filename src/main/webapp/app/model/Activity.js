@@ -6,6 +6,8 @@ Ext.define('NAF.model.Activity', {
         'attendee',
         'category_id',
         'contact',
+        'contact_email',
+        'contact_phone',
         'description',
         {name: 'dtstart', type:'date'},
         'dtstart-time',

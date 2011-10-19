@@ -166,6 +166,20 @@ Ext.define('NAF.view.activity.Detail', {
         }
         ,
         {
+            name: 'contact_email',
+            xtype: 'textfield',
+            width: 350,
+            fieldLabel: 'Kontakt epost'
+        }
+        ,
+        {
+            name: 'contact_phone',
+            xtype: 'textfield',
+            width: 350,
+            fieldLabel: 'Kontakt tlf.'
+        }
+        ,
+        {
             name: 'contact',
             xtype: 'textareafield',
             grow: 'true',
@@ -181,23 +195,6 @@ Ext.define('NAF.view.activity.Detail', {
         }
         ,
         {
-            name: 'location2',
-            id: 'locationCombo',
-            xtype: 'combo',
-            width: 350,
-            valueField: '_id',
-            store: 'Locations',
-            displayField: 'name',
-            typeAhead: false,
-
-            fieldLabel: 'Sted',
-
-            listConfig: {
-                loadingText: 'Leter...'
-            }
-        }
-        ,
-        {
             name: 'organizer2',
             id: 'organizerCombo',
             xtype: 'combo',
@@ -206,14 +203,27 @@ Ext.define('NAF.view.activity.Detail', {
             store: 'Locations',
             displayField: 'name',
             typeAhead: false,
-
             fieldLabel: 'Arrangør',
-
             listConfig: {
                 loadingText: 'Leter...'
             }
         }
         ,
+        {
+            name: 'location2',
+            id: 'locationCombo',
+            xtype: 'combo',
+            width: 350,
+            valueField: '_id',
+            store: 'Locations',
+            displayField: 'name',
+            typeAhead: false,
+            fieldLabel: 'Sted',
+            listConfig: {
+                loadingText: 'Leter...'
+            }
+        },
+
         {
             name: 'tags',
             fieldLabel: 'Stikkord',

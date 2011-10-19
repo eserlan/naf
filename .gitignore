@@ -3,3 +3,4 @@ aktivitets-admin.ipr
 aktivitets-admin.iws
 target
 src/main/webapp/extjs
+src/main/webapp/admin/access.json

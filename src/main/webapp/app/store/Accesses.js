@@ -5,7 +5,7 @@ Ext.define('NAF.store.Accesses', {
     autoLoad: true,
     proxy: {
         type: 'ajax',
-        url : 'data/access.json',
+        url : 'admin/access.json',
         reader: {
             type: 'json'
         }
