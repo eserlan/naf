@@ -1,8 +1,8 @@
 Ext.define('NAF.controller.Activities', {
     extend: 'Ext.app.Controller',
 
-    stores: ['Categories','Locations','Activities','ActivitiesSearch','Vehicles'],
-    models: ['Category', 'Activity', 'Location', 'Vehicle'],
+    stores: ['AccessStore','Categories','Locations','Activities','ActivitiesSearch','Vehicles'],
+    models: ['Access', 'Category', 'Activity', 'Location', 'Vehicle'],
 
     views: [
         'activity.List',
@@ -22,6 +22,10 @@ Ext.define('NAF.controller.Activities', {
         {
             ref: 'vehicleCombo',
             selector: '#vehicleCombo'
+        },
+        {
+            ref: 'organizerCombo',
+            selector: '#organizerCombo'
         },
         {
             ref: 'dateEnd',
@@ -91,10 +95,6 @@ Ext.define('NAF.controller.Activities', {
         var summaryCmp = this.getSummary();
         summaryCmp.setRawValue('');
         ad.getForm().loadRecord(activity);
-
-        ad.setDisabled(false);
-
-
         this.getActivitiesStore().add(activity);
     },
 
@@ -231,7 +231,14 @@ Ext.define('NAF.controller.Activities', {
         var summary = record.get('summary');
         var ad = this.getActivityDetail();
         //todo få inn sjekk på om bruker har lov å editere aktivitet
-        ad.setDisabled(false);
+        var as = this.getAccessStoreStore()
+        var orgIdIdx = as.find('access_id', record.get('organizer_id'))
+        if (orgIdIdx >= 0) {
+            ad.setDisabled(false);
+        } else {
+            ad.setDisabled(true);
+            return;
+        }
         var di = ad.getDockedItems();
         var tbar = di[0];
 //        var tbInfo = tbar.getComponent('tbInfo');
@@ -265,6 +272,8 @@ Ext.define('NAF.controller.Activities', {
         loc.setValue(record.get('location_id'));
         var v = this.getVehicleCombo();
         v.setValue(record.get('vehicle'));
+        var o = this.getOrganizerCombo();
+        o.setValue(record.get('organizer_id'));
     },
 
     changeMinValueForDtend: function(field, newValue) {
@@ -306,7 +315,6 @@ Ext.define('NAF.controller.Activities', {
             var newLocationName = selectedRecords[0].get('name');
             activity.set('organizer_id', newId);
             activity.set('organizer', newLocationName);
-
         }
     },
 
@@ -316,7 +324,6 @@ Ext.define('NAF.controller.Activities', {
             var activity = ad.getRecord();
             var vehicle = selectedRecords[0].get('name');
             activity.set('vehicle', vehicle);
-
         }
     }
 

@@ -26,7 +26,7 @@ Ext.define('NAF.model.Activity', {
         'location_id',
         {name: 'location', mapping: 'location.name'},
         'organizer_id',
-//        {name: 'organizer', mapping: 'organizer.name'},
+        {name: 'organizer', mapping: 'organizer.name'},
         'active',
         'region',
         'age_from',
