@@ -71,12 +71,14 @@ Ext.define('NAF.controller.Activities', {
                 keyup : this.updateList
             },
             'activitydetail #locationCombo':{
-                select: this.selectLocation,
-                expand: this.clearLocationsFilter
+                select: this.selectLocation
+//                ,
+//                expand: this.clearLocationsFilter
             },
             'activitydetail #organizerCombo':{
                 select: this.selectOrganizer,
-                expand: this.filterOrganizersByAccess
+                expand: this.filterOrganizersByAccess,
+                collapse: this.clearLocationsFilter
             },
             'activitylist #activitiesSearchCombo':{
                 select: this.selectActivity,
@@ -94,9 +96,7 @@ Ext.define('NAF.controller.Activities', {
 
     clearLocationsFilter: function(){
         var locationsStore = this.getLocationsStore();
-        locationsStore.clearFilter(true);
-        console.log('filters cleared');
-
+        locationsStore.clearFilter();
     },
 
     filterOrganizersByAccess: function () {
@@ -259,16 +259,9 @@ Ext.define('NAF.controller.Activities', {
             ad.setDisabled(false);
         } else {
             ad.setDisabled(true);
-            return;
         }
-        var di = ad.getDockedItems();
-        var tbar = di[0];
-//        var tbInfo = tbar.getComponent('tbInfo');
-//        tbInfo.setText('Mer informasjon om ' + summary);
-
         var summaryCmp = this.getSummary();
         summaryCmp.setRawValue(summary);
-
 
         ad.loadRecord(record);
         record.set('summary', summary);
