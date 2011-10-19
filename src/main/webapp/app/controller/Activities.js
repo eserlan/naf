@@ -69,6 +69,9 @@ Ext.define('NAF.controller.Activities', {
             'activitydetail #locationCombo':{
                 select: this.selectLocation
             },
+            'activitydetail #organizerCombo':{
+                select: this.selectOrganizer
+            },
             'activitylist #activitiesSearchCombo':{
                 select: this.selectActivity,
                 keyup : this.updateList
@@ -292,6 +295,17 @@ Ext.define('NAF.controller.Activities', {
             var newLocationName = selectedRecords[0].get('name');
             activity.set('location_id', newId);
             activity.set('location', newLocationName);
+
+        }
+    },
+    selectOrganizer: function(combo, selectedRecords) {
+        var ad = combo.up();
+        if (ad != null) {
+            var activity = ad.getRecord();
+            var newId = selectedRecords[0].get('_id');
+            var newLocationName = selectedRecords[0].get('name');
+            activity.set('organizer_id', newId);
+            activity.set('organizer', newLocationName);
 
         }
     },
