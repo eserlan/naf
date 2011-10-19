@@ -11,6 +11,7 @@ Ext.define('NAF.store.Activities', {
 
         api: {
             read: 'rest/activities',
+//            read: 'data/t.json',
             create: 'rest/activities',
             update: 'rest/activities',
             delete: 'rest/activities'

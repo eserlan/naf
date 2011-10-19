@@ -6,10 +6,7 @@ Ext.define('NAF.view.activity.Detail', {
     autoScroll: true,
     disabled: true,
 
-
     defaultType: 'textfield',
-
-
 
     items: [
         {
