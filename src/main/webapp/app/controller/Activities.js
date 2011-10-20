@@ -54,16 +54,16 @@ Ext.define('NAF.controller.Activities', {
             'activitylist': {
                 select: this.changeDetail
             },
-            'activitylist button[action=save]':{
+            'button[action=save]':{
                 click: this.saveActivities
             },
-            'activitylist button[action=copy]':{
+            'button[action=copy]':{
                 click: this.copyActivity
             },
-            'activitylist button[action=delete]':{
+            'button[action=delete]':{
                 click: this.confirmDeleteActivity
             },
-            'activitylist button[action=create]':{
+            'button[action=create]':{
                 click: this.createActivity
             },
             'activitydetail #uploadBtn':{
@@ -129,22 +129,6 @@ Ext.define('NAF.controller.Activities', {
         var btn = this.getToggleActiveBtn();
 
 //         btn.toggle(active);
-    },
-
-    accessControl: function(){
-        var as = this.getAccessesStore();
-        var accessIds = as.collect('access_id');
-        var ad = this.getActivityDetail();
-        var activity = ad.getForm().getRecord();
-        var orgId = activity.get('organizer_id');
-        if (accessIds.indexOf(orgId)>-1) {
-            this.getDeleteBtn().setDisabled(false);
-            this.getSaveBtn().setDisabled(false);
-        } else {
-            this.getDeleteBtn().setDisabled(true);
-            this.getSaveBtn().setDisabled(true);
-        }
-
     },
 
     clearLocationsFilter: function(){
@@ -303,11 +287,14 @@ Ext.define('NAF.controller.Activities', {
         var ad = this.getActivityDetail();
         var as = this.getAccessesStore();
         var orgIdIdx = as.find('access_id', record.get('organizer_id'))
+        var disabled = true;
         if (orgIdIdx >= 0 || as.find('access_id', 'super') > -1) {
-            ad.setDisabled(false);
-        } else {
-            ad.setDisabled(true);
+            disabled = false;
         }
+        ad.setDisabled(disabled);
+        this.getDeleteBtn().setDisabled(disabled);
+        this.getSaveBtn().setDisabled(disabled);
+
         var summaryCmp = this.getSummary();
         summaryCmp.setRawValue(summary);
 
@@ -337,7 +324,6 @@ Ext.define('NAF.controller.Activities', {
         v.setValue(record.get('vehicle'));
         var o = this.getOrganizerCombo();
         o.setValue(record.get('organizer_id'));
-        this.accessControl();
         this.setToggleActiveButtonState();
     },
 

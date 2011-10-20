@@ -13,9 +13,7 @@ Ext.define('NAF.view.activity.Detail', {
             xtype: 'toolbar',
             dock: 'top',
             items: [
-
                 '->',
-
                 {
                     xtype: 'button',
                     id: 'removeButton',
@@ -23,20 +21,6 @@ Ext.define('NAF.view.activity.Detail', {
                     disabled: true,
                     tooltip: 'Slett valgt aktivitet',
                     action: 'delete'
-                },
-                {
-                    xtype: 'button',
-                    id: 'createBtn',
-                    text:'Opprett',
-                    tooltip: 'Opprett ny aktivitet',
-                    action: 'create'
-                },
-                {
-                    xtype: 'button',
-                    id: 'copyButton',
-                    text:'Kopier',
-                    tooltip: 'Kopier valgt aktivitet',
-                    action: 'copy'
                 },
                 {
                     xtype: 'button',
@@ -386,14 +370,6 @@ Ext.define('NAF.view.activity.Detail', {
             fieldLabel: 'Link til video'
 
         }
-// TODO: Finn ut av!
-//        ,
-//        {
-//            xtype: 'displayfield',
-//            value: 'video',
-//            tpl: new Ext.XTemplate(this.videoTpl)
-//        }
-
 
         ,
         {
