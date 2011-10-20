@@ -17,6 +17,8 @@ Ext.define('NAF.view.activity.Detail', {
                 {
                     xtype: 'button',
                     id: 'removeButton',
+                    scale: 'medium',
+                    cls: 'nafMediumButton',
                     text:'Slett',
                     disabled: true,
                     tooltip: 'Slett valgt aktivitet',
@@ -24,6 +26,8 @@ Ext.define('NAF.view.activity.Detail', {
                 },
                 {
                     xtype: 'button',
+                    scale: 'medium',
+                    cls: 'nafMediumButton',
                     id: 'saveButton',
                     disabled: true,
                     text:'Lagre',

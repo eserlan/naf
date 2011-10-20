@@ -41,6 +41,8 @@ Ext.define('NAF.view.activity.List', {
                 {
                     xtype: 'button',
                     id: 'createBtn',
+                    scale: 'medium',
+                    cls: 'nafMediumButton',
                     text:'Opprett',
                     tooltip: 'Opprett ny aktivitet',
                     action: 'create'
@@ -48,6 +50,8 @@ Ext.define('NAF.view.activity.List', {
                 {
                     xtype: 'button',
                     id: 'copyButton',
+                    scale: 'medium',
+                    cls: 'nafMediumButton',
                     text:'Kopier',
                     tooltip: 'Kopier valgt aktivitet',
                     action: 'copy'
