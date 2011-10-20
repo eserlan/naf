@@ -8,7 +8,63 @@ Ext.define('NAF.view.activity.Detail', {
 
     defaultType: 'textfield',
 
+    dockedItems: [
+           {
+               xtype: 'toolbar',
+               dock: 'top',
+               items: [
+
+                    '->',
+
+                   {
+                       xtype: 'button',
+                       id: 'removeButton',
+                       text:'Slett',
+                       disabled: true,
+                       tooltip: 'Slett valgt aktivitet',
+                       action: 'delete'
+                   },
+                   {
+                       xtype: 'button',
+                       id: 'createBtn',
+                       text:'Opprett',
+                       tooltip: 'Opprett ny aktivitet',
+                       action: 'create'
+                   },
+                   {
+                       xtype: 'button',
+                       id: 'copyButton',
+                       text:'Kopier',
+                       tooltip: 'Kopier valgt aktivitet',
+                       action: 'copy'
+                   },
+                   {
+                       xtype: 'button',
+                       id: 'saveButton',
+                       disabled: true,
+                       text:'Lagre',
+                       action: 'save'
+                   }
+               ]
+           }
+       ],
+
+
     items: [
+        {
+            xtype: 'button',
+            id: 'toggleActiveButton',
+            text:'Aktiv',
+            enableToggle: true,
+            scale: 'large',
+            width: 350,
+            cls: 'activeButton',
+            tooltip: 'Skru av og på aktiviteten.'
+        },
+        {
+            xtype: 'splitter',
+            heigth: 7
+        },
         {
             xtype: 'combo',
             store: 'ActivitiesSearch',
@@ -92,45 +148,19 @@ Ext.define('NAF.view.activity.Detail', {
             layout: 'hbox',
             items: [
                 {
-                    xtype: 'checkboxfield',
-                    fieldLabel  : 'Aktiv',
-                    name      : 'active',
-                    inputValue: 'true',
-                    uncheckedValue : 'false',
-                    id        : 'active'
-                },
-                {
-                    xtype: 'splitter'
-                },
-                {
-                    xtype: 'label',
-                    text: 'Alder fra'
-                }
-                ,
-                {
-                    xtype: 'splitter'
-                }
-                ,
-                {
                     id: 'ageFrom',
                     xtype: 'numberfield',
                     name : 'age_from',
                     minValue:0,
                     maxValue:100,
-                    width: 50
-                }
-                ,
-                {
-                    xtype: 'splitter'
+                    width: 190,
+                    fieldLabel: 'Alder fra'
                 }
                 ,
                 {
                     xtype: 'label',
-                    text: 'til'
-                }
-                ,
-                {
-                    xtype: 'splitter'
+                    text: 'til',
+                    margins: '3 31 0 30'
                 }
                 ,
                 {
@@ -139,7 +169,7 @@ Ext.define('NAF.view.activity.Detail', {
                     name : 'age_to',
                     minValue:0,
                     maxValue:100,
-                    width: 50
+                    width: 90
                 }
             ]
         }
@@ -166,12 +196,18 @@ Ext.define('NAF.view.activity.Detail', {
         }
         ,
         {
+            xtype: 'splitter',
+            height: 10
+        }
+        ,
+        {
             name: 'contact_name',
             xtype: 'textfield',
             width: 350,
             fieldLabel: 'Kontakt navn'
         }
-        ,{
+        ,
+        {
             name: 'contact_email',
             xtype: 'textfield',
             width: 350,
@@ -191,6 +227,11 @@ Ext.define('NAF.view.activity.Detail', {
             grow: 'true',
             width: 350,
             fieldLabel: 'Kontakt info.'
+        }
+        ,
+        {
+            xtype: 'splitter',
+            height: 10
         }
         ,
         {
@@ -271,9 +312,9 @@ Ext.define('NAF.view.activity.Detail', {
             width: 350,
             vertical: true,
             items: [
-                { boxLabel: 'Inkl veileder', name: 'supervisor_included', inputValue: true, uncheckedValue: false },
                 { boxLabel: 'Gratis', name: 'free', inputValue: true, uncheckedValue: false },
-                { boxLabel: 'Inkl mva', name: 'mva', inputValue: true, uncheckedValue: false }
+                { boxLabel: 'Inkl mva', name: 'mva', inputValue: true, uncheckedValue: false },
+                { boxLabel: 'Inkl veileder', name: 'supervisor_included', inputValue: true, uncheckedValue: false }
             ]
         },
 

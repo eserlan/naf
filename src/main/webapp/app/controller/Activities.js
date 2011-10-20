@@ -17,11 +17,15 @@ Ext.define('NAF.controller.Activities', {
         },
         {
             ref: 'deleteBtn',
-            selector: 'activitylist button#removeButton'
+            selector: '#removeButton'
         },
         {
             ref: 'saveBtn',
-            selector: 'activitylist button#saveButton'
+            selector: '#saveButton'
+        },
+        {
+            ref: 'toggleActiveBtn',
+            selector: '#toggleActiveButton'
         },
         {
             ref: 'vehicleCombo',
@@ -65,6 +69,9 @@ Ext.define('NAF.controller.Activities', {
             'activitydetail #uploadBtn':{
                 click: this.uploadPhoto
             },
+            '#toggleActiveButton':{
+                toggle: this.toggleActiveButton
+            },
             'activitydetail #dtstart':{
                 change: this.changeMinValueForDtend
             },
@@ -93,6 +100,35 @@ Ext.define('NAF.controller.Activities', {
                 select: this.selectVehicle
             }
         });
+    },
+
+    toggleActiveButton: function(){
+        console.log('toggler');
+        var ad = this.getActivityDetail();
+        var form = ad.getForm();
+        var activity = form.getRecord();
+        var values = form.getValues();
+        var active = activity.get('active');
+        console.log(active);
+        var btn = this.getToggleActiveBtn();
+
+//        btn.toggle(!active);
+        if (active){
+            btn.setText('Aktiv');
+        } else {
+            btn.setText('Inaktiv');
+        }
+        activity.set('active', !active);
+        activity.commit();
+    },
+
+    setToggleActiveButtonState: function(){
+        var ad = this.getActivityDetail();
+        var activity = ad.getForm().getRecord();
+        var active = activity.get('active');
+        var btn = this.getToggleActiveBtn();
+
+//         btn.toggle(active);
     },
 
     accessControl: function(){
@@ -131,10 +167,7 @@ Ext.define('NAF.controller.Activities', {
         var summaryCmp = this.getSummary();
         summaryCmp.setRawValue('');
         ad.getForm().loadRecord(activity);
-
         ad.setDisabled(false);
-
-
         this.getActivitiesStore().add(activity);
     },
 
@@ -152,8 +185,6 @@ Ext.define('NAF.controller.Activities', {
         loc.setValue(record.get('location_id'));
         var v = this.getVehicleCombo();
         v.setValue(record.get('vehicle'));
-
-
     },
 
     setSummaryBlur: function(field) {
@@ -200,7 +231,7 @@ Ext.define('NAF.controller.Activities', {
 
     },
 
-    saveActivities: function (button) {
+    saveActivities: function () {
         var ad = this.getActivityDetail();
         var form = ad.getForm();
         var activity = form.getRecord();
@@ -307,6 +338,7 @@ Ext.define('NAF.controller.Activities', {
         var o = this.getOrganizerCombo();
         o.setValue(record.get('organizer_id'));
         this.accessControl();
+        this.setToggleActiveButtonState();
     },
 
     changeMinValueForDtend: function(field, newValue) {

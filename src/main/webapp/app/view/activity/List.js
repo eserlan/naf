@@ -17,7 +17,6 @@ Ext.define('NAF.view.activity.List', {
             xtype: 'toolbar',
             dock: 'top',
             items: [
-
                 {
                     xtype: 'combo',
                     store: 'ActivitiesSearch',
@@ -35,38 +34,6 @@ Ext.define('NAF.view.activity.List', {
                         minHeight: 200,
                         autoScroll: true
                     }
-                },
-
-                 '->',
-
-                {
-                    xtype: 'button',
-                    id: 'removeButton',
-                    text:'Slett',
-                    disabled: true,
-                    tooltip: 'Slett valgt aktivitet',
-                    action: 'delete'
-                },
-                {
-                    xtype: 'button',
-                    id: 'createBtn',
-                    text:'Opprett',
-                    tooltip: 'Opprett ny aktivitet',
-                    action: 'create'
-                },
-                {
-                    xtype: 'button',
-                    id: 'copyButton',
-                    text:'Kopier',
-                    tooltip: 'Kopier valgt aktivitet',
-                    action: 'copy'
-                },
-                {
-                    xtype: 'button',
-                    id: 'saveButton',
-                    disabled: true,
-                    text:'Lagre',
-                    action: 'save'
                 }
             ]
         }
@@ -78,7 +45,8 @@ Ext.define('NAF.view.activity.List', {
             {header: 'Navn',  dataIndex: 'summary',  flex: 1},
             {header: 'Arrangør',  dataIndex: 'organizer',  flex: 1},
             {header: 'Sted',  dataIndex: 'location',  flex: 1},
-            {header: 'Kategori', dataIndex: 'category_id', flex: 1, renderer: this.findCategoryName}
+            {header: 'Kategori', dataIndex: 'category_id', flex: 1, renderer: this.findCategoryName},
+            {header: 'Aktiv',  dataIndex: 'active',  width: 35, renderer: this.renderIcon}
         ];
         this.callParent(arguments);
     },
@@ -86,8 +54,15 @@ Ext.define('NAF.view.activity.List', {
     findCategoryName: function(value) {
         var store = Ext.getStore('Categories');
         var category = store.getById(value);
-        if (typeof category !== 'undefined' && category  !== null)
+        if (typeof category !== 'undefined' && category !== null)
             return category.get('name');
         return '';
+    },
+
+    renderIcon: function (value) {
+        if (value) {
+            return '<img src="img/icon_true.gif">';
+        } else {return ''}
     }
+
 });
