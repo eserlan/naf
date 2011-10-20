@@ -9,46 +9,45 @@ Ext.define('NAF.view.activity.Detail', {
     defaultType: 'textfield',
 
     dockedItems: [
-           {
-               xtype: 'toolbar',
-               dock: 'top',
-               items: [
+        {
+            xtype: 'toolbar',
+            dock: 'top',
+            items: [
 
-                    '->',
+                '->',
 
-                   {
-                       xtype: 'button',
-                       id: 'removeButton',
-                       text:'Slett',
-                       disabled: true,
-                       tooltip: 'Slett valgt aktivitet',
-                       action: 'delete'
-                   },
-                   {
-                       xtype: 'button',
-                       id: 'createBtn',
-                       text:'Opprett',
-                       tooltip: 'Opprett ny aktivitet',
-                       action: 'create'
-                   },
-                   {
-                       xtype: 'button',
-                       id: 'copyButton',
-                       text:'Kopier',
-                       tooltip: 'Kopier valgt aktivitet',
-                       action: 'copy'
-                   },
-                   {
-                       xtype: 'button',
-                       id: 'saveButton',
-                       disabled: true,
-                       text:'Lagre',
-                       action: 'save'
-                   }
-               ]
-           }
-       ],
-
+                {
+                    xtype: 'button',
+                    id: 'removeButton',
+                    text:'Slett',
+                    disabled: true,
+                    tooltip: 'Slett valgt aktivitet',
+                    action: 'delete'
+                },
+                {
+                    xtype: 'button',
+                    id: 'createBtn',
+                    text:'Opprett',
+                    tooltip: 'Opprett ny aktivitet',
+                    action: 'create'
+                },
+                {
+                    xtype: 'button',
+                    id: 'copyButton',
+                    text:'Kopier',
+                    tooltip: 'Kopier valgt aktivitet',
+                    action: 'copy'
+                },
+                {
+                    xtype: 'button',
+                    id: 'saveButton',
+                    disabled: true,
+                    text:'Lagre',
+                    action: 'save'
+                }
+            ]
+        }
+    ],
 
     items: [
         {
@@ -63,7 +62,7 @@ Ext.define('NAF.view.activity.Detail', {
         },
         {
             xtype: 'splitter',
-            heigth: 7
+            height: 10
         },
         {
             xtype: 'combo',
@@ -226,7 +225,7 @@ Ext.define('NAF.view.activity.Detail', {
             xtype: 'textareafield',
             grow: 'true',
             width: 350,
-            fieldLabel: 'Kontakt info.'
+            fieldLabel: 'Ytterligere info.'
         }
         ,
         {
@@ -279,13 +278,29 @@ Ext.define('NAF.view.activity.Detail', {
             fieldLabel: 'Adresse'
         },
 
+
         {
-            name: 'tags',
+            xtype: 'fieldcontainer',
             fieldLabel: 'Stikkord',
-            id: 'tags',
-            emptyText: 'Stikkord',
-            width: 350
+            layout: 'hbox',
+            items: [
+                {
+                    name: 'tags',
+                    xtype: 'textfield',
+                    emptyText: 'Stikkord',
+                    width: 245
+                },
+                {
+                    xtype: 'image',
+                    html: '<h1>abc</h1>',
+                    id: 'tagsHelpImage',
+                    margins: '0 0 0 5',
+                    src: 'img/HelpIcon.gif'
+                }
+            ]
         },
+
+
         {
             name: 'price',
             fieldLabel: 'Pris',

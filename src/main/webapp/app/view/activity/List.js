@@ -46,6 +46,7 @@ Ext.define('NAF.view.activity.List', {
             {header: 'Arrangør',  dataIndex: 'organizer',  flex: 1},
             {header: 'Sted',  dataIndex: 'location',  flex: 1},
             {header: 'Kategori', dataIndex: 'category_id', flex: 1, renderer: this.findCategoryName},
+            {header: 'Tilgang',  dataIndex: 'organizer_id',  width: 42, renderer: this.renderAccessIcon},
             {header: 'Aktiv',  dataIndex: 'active',  width: 35, renderer: this.renderIcon}
         ];
         this.callParent(arguments);
@@ -62,7 +63,20 @@ Ext.define('NAF.view.activity.List', {
     renderIcon: function (value) {
         if (value) {
             return '<img src="img/icon_true.gif">';
-        } else {return ''}
+        } else {
+            return ''
+        }
+    },
+
+    renderAccessIcon: function (organizer_id) {
+        var as = Ext.StoreManager.get('Accesses');
+        var accessIds = as.collect('access_id');
+        var access = accessIds.indexOf(organizer_id) > -1;
+        if (access) {
+            return '<img src="img/icon_true.gif">';
+        } else {
+            return ''
+        }
     }
 
 });
