@@ -35,6 +35,23 @@ Ext.define('NAF.view.activity.List', {
                         autoScroll: true
                     }
                 }
+
+                ,
+                '->' ,
+                {
+                    xtype: 'button',
+                    id: 'createBtn',
+                    text:'Opprett',
+                    tooltip: 'Opprett ny aktivitet',
+                    action: 'create'
+                },
+                {
+                    xtype: 'button',
+                    id: 'copyButton',
+                    text:'Kopier',
+                    tooltip: 'Kopier valgt aktivitet',
+                    action: 'copy'
+                }
             ]
         }
     ],
