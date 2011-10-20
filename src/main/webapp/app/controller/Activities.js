@@ -20,6 +20,10 @@ Ext.define('NAF.controller.Activities', {
             selector: 'activitylist button#removeButton'
         },
         {
+            ref: 'saveBtn',
+            selector: 'activitylist button#saveButton'
+        },
+        {
             ref: 'vehicleCombo',
             selector: '#vehicleCombo'
         },
@@ -99,8 +103,10 @@ Ext.define('NAF.controller.Activities', {
         var orgId = activity.get('organizer_id');
         if (accessIds.indexOf(orgId)>-1) {
             this.getDeleteBtn().setDisabled(false);
+            this.getSaveBtn().setDisabled(false);
         } else {
             this.getDeleteBtn().setDisabled(true);
+            this.getSaveBtn().setDisabled(true);
         }
 
     },

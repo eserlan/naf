@@ -43,7 +43,7 @@ Ext.define('NAF.view.activity.List', {
                     xtype: 'button',
                     id: 'removeButton',
                     text:'Slett',
-                    enabled: false,
+                    disabled: true,
                     tooltip: 'Slett valgt aktivitet',
                     action: 'delete'
                 },
@@ -56,14 +56,15 @@ Ext.define('NAF.view.activity.List', {
                 },
                 {
                     xtype: 'button',
-                    id: 'createButton',
+                    id: 'copyButton',
                     text:'Kopier',
                     tooltip: 'Kopier valgt aktivitet',
                     action: 'copy'
                 },
                 {
                     xtype: 'button',
-                    id: 'activityDetailSaveButton',
+                    id: 'saveButton',
+                    disabled: true,
                     text:'Lagre',
                     action: 'save'
                 }
