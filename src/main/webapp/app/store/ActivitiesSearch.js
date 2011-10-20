@@ -9,7 +9,7 @@ Ext.define('NAF.store.ActivitiesSearch', {
         type: 'rest',
         url: 'http://localhost:9090/aktivitets-admin/rest/activities',
         api: {
-            read: 'rest/activities/search'
+            read: 'rest/activities/search?admin=true'
         },
         reader: {
             type: 'json',

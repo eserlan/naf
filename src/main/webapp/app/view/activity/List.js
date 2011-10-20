@@ -26,7 +26,7 @@ Ext.define('NAF.view.activity.List', {
                     hideLabel: true,
                     hideTrigger:true,
                     width: 300,
-                    queryParam: 'admin:true&text',
+                    queryParam: 'text',
                     emptyText: 'Søk etter aktiviteter...',
                     listConfig: {
                         loadingText: 'Søker...',
