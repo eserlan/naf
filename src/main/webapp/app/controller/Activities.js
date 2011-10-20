@@ -54,16 +54,16 @@ Ext.define('NAF.controller.Activities', {
             'activitylist': {
                 select: this.changeDetail
             },
-            'activitylist button[action=save]':{
+            'button[action=save]':{
                 click: this.saveActivities
             },
-            'activitylist button[action=copy]':{
+            'button[action=copy]':{
                 click: this.copyActivity
             },
-            'activitylist button[action=delete]':{
+            'button[action=delete]':{
                 click: this.confirmDeleteActivity
             },
-            'activitylist button[action=create]':{
+            'button[action=create]':{
                 click: this.createActivity
             },
             'activitydetail #uploadBtn':{

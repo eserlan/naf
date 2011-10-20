@@ -386,14 +386,6 @@ Ext.define('NAF.view.activity.Detail', {
             fieldLabel: 'Link til video'
 
         }
-// TODO: Finn ut av!
-//        ,
-//        {
-//            xtype: 'displayfield',
-//            value: 'video',
-//            tpl: new Ext.XTemplate(this.videoTpl)
-//        }
-
 
         ,
         {
