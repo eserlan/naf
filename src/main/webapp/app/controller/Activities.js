@@ -16,8 +16,8 @@ Ext.define('NAF.controller.Activities', {
             selector: 'activitydetail'
         },
         {
-            ref: 'activityDetailSaveButton',
-            selector: 'activitydetail button#activityDetailSaveButton'
+            ref: 'deleteBtn',
+            selector: 'activitylist button#removeButton'
         },
         {
             ref: 'vehicleCombo',
@@ -91,6 +91,21 @@ Ext.define('NAF.controller.Activities', {
         });
     },
 
+    accessControl: function(){
+        console.log('har du tilgang?');
+        var as = this.getAccessesStore();
+        var accessIds = as.collect('access_id');
+        var ad = this.getActivityDetail();
+        var activity = ad.getForm().getRecord();
+        var orgId = activity.get('organizer_id');
+        if (accessIds.indexOf(orgId)>-1) {
+            console.log('ja det har du!');
+            this.getDeleteBtn().setDisabled(false);
+        } else {
+            this.getDeleteBtn().setDisabled(true);
+        }
+
+    },
 
     clearLocationsFilter: function(){
         var locationsStore = this.getLocationsStore();
@@ -287,6 +302,7 @@ Ext.define('NAF.controller.Activities', {
         v.setValue(record.get('vehicle'));
         var o = this.getOrganizerCombo();
         o.setValue(record.get('organizer_id'));
+        this.accessControl();
     },
 
     changeMinValueForDtend: function(field, newValue) {

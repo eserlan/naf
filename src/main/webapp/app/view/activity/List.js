@@ -9,16 +9,14 @@ Ext.define('NAF.view.activity.List', {
     dockedItems: [
         {
             xtype: 'pagingtoolbar',
-            store: 'Activities',   // same store GridPanel is using
+            store: 'Activities',
             dock: 'bottom',
             displayInfo: true
         },
         {
             xtype: 'toolbar',
             dock: 'top',
-            disabled: false,
             items: [
-                '->',
 
                 {
                     xtype: 'combo',
@@ -28,21 +26,24 @@ Ext.define('NAF.view.activity.List', {
                     typeAhead: false,
                     hideLabel: true,
                     hideTrigger:true,
+                    width: 300,
                     queryParam: 'admin:true&text',
                     emptyText: 'Søk etter aktiviteter...',
                     listConfig: {
                         loadingText: 'Søker...',
                         emptyText: 'Ingen treff.',
-                        width: 400,
                         minHeight: 200,
                         autoScroll: true
                     }
                 },
 
+                 '->',
+
                 {
                     xtype: 'button',
                     id: 'removeButton',
                     text:'Slett',
+                    enabled: false,
                     tooltip: 'Slett valgt aktivitet',
                     action: 'delete'
                 },
