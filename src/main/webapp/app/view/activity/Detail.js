@@ -267,7 +267,6 @@ Ext.define('NAF.view.activity.Detail', {
         {
             xtype: 'checkboxgroup',
             fieldLabel: 'Annet',
-            // Arrange radio buttons into two columns, distributed vertically
             columns: 1,
             width: 350,
             vertical: true,
