@@ -75,7 +75,7 @@ Ext.define('NAF.view.activity.Detail', {
             emptyText: 'Aktivitets navn',
             width: 350,
             enableKeyEvents: true,
-            queryParam: 'admin:true&text',
+            queryParam: 'text',
             allowBlank: false,
             invalidText: 'Feltet må være utfylt.',
             fieldStyle: {'font-weight': 'bold', 'height' : 30, 'color' : 'black'},
