@@ -92,14 +92,12 @@ Ext.define('NAF.controller.Activities', {
     },
 
     accessControl: function(){
-        console.log('har du tilgang?');
         var as = this.getAccessesStore();
         var accessIds = as.collect('access_id');
         var ad = this.getActivityDetail();
         var activity = ad.getForm().getRecord();
         var orgId = activity.get('organizer_id');
         if (accessIds.indexOf(orgId)>-1) {
-            console.log('ja det har du!');
             this.getDeleteBtn().setDisabled(false);
         } else {
             this.getDeleteBtn().setDisabled(true);
