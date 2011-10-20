@@ -94,7 +94,7 @@ Ext.define('NAF.controller.Activities', {
                 keyup : this.updateList
             },
             'activitydetail #activitiesSearchComboSummary':{
-                blur: this.setSummaryBlur
+                blur: this.setSummaryOnBlur
             },
             'activitydetail #vehicleCombo':{
                 select: this.selectVehicle
@@ -171,13 +171,13 @@ Ext.define('NAF.controller.Activities', {
         v.setValue(record.get('vehicle'));
     },
 
-    setSummaryBlur: function(field) {
+    setSummaryOnBlur: function(field) {
         var summary = field.getRawValue();
         var ad = this.getActivityDetail();
         var activeActivity = ad.getForm().getRecord();
         activeActivity.set('summary', summary);
         var values = ad.getForm().getValues();
-        values.push('summary', summary);
+        values['summary'] = summary;
         activeActivity.commit();
     },
 
