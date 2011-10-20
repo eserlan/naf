@@ -96,7 +96,7 @@ Ext.define('NAF.view.activity.Detail', {
                     xtype: 'timefield',
                     width: 65,
                     name: 'dtstart-time',
-//                    minValue: '06.00',
+                    minValue: '07.00',
                     increment: 30,
                     format: 'H.i',
                     altFormats: 'c'
@@ -121,6 +121,7 @@ Ext.define('NAF.view.activity.Detail', {
                 {
                     xtype: 'timefield',
                     width: 65,
+                    minValue: '07.00',
                     name: 'dtend-time',
                     increment: 30,
                     format: 'H.i',

@@ -102,23 +102,19 @@ Ext.define('NAF.controller.Activities', {
         });
     },
 
-    toggleActiveButton: function(){
-        console.log('toggler');
+    toggleActiveButton: function(btn){
         var ad = this.getActivityDetail();
         var form = ad.getForm();
         var activity = form.getRecord();
-        var values = form.getValues();
         var active = activity.get('active');
-        console.log(active);
-        var btn = this.getToggleActiveBtn();
-
-//        btn.toggle(!active);
-        if (active){
+        btn.toggle(!active, true);
+        if (!active){
             btn.setText('Aktiv');
         } else {
             btn.setText('Inaktiv');
         }
         activity.set('active', !active);
+        this.getActivitiesStore().update(activity);
         activity.commit();
     },
 
@@ -127,8 +123,12 @@ Ext.define('NAF.controller.Activities', {
         var activity = ad.getForm().getRecord();
         var active = activity.get('active');
         var btn = this.getToggleActiveBtn();
-
-//         btn.toggle(active);
+        btn.toggle(active, true);
+        if (active){
+            btn.setText('Aktiv');
+        } else {
+            btn.setText('Inaktiv');
+        }
     },
 
     clearLocationsFilter: function(){
