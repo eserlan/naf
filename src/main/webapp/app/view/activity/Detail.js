@@ -372,7 +372,6 @@ Ext.define('NAF.view.activity.Detail', {
             xtype: 'textfield',
             width: 350,
             fieldLabel: 'Link til video'
-
         }
 
         ,
@@ -405,11 +404,18 @@ Ext.define('NAF.view.activity.Detail', {
         },
 
         {
+            name: 'photo_id',
+            xtype: 'textfield',
+            width: 350,
+            fieldLabel: 'Foto id - TA BORT'
+
+        },
+
+        {
             xtype: 'image',
-            id: 'tagsHelpImage',
-            margins: '0 0 0 5',
-            hidden: this.getHidden,
-            src: this.getPhotoId
+            id: 'activityImage',
+            style: 'margins: 50 50 50 50',
+            src: ''
         }
 
         ,
@@ -522,24 +528,7 @@ Ext.define('NAF.view.activity.Detail', {
                 }
             ]
         }
-    ],
-
-    getPhotoId: function(){
-        var url = 'http://';
-        var form = this.getForm();
-        console.log(form);
-        var photoId = form.getRecord().get('photo_id');
-        return url + photoId;
-    },
-
-    getHidden: function(){
-        var hidden = true;
-        var photoId = this.getForm().getRecord().get('photo_id');
-        if (typeof photoId !== 'undefined' && photoId !== null)
-            hidden=true;
-        console.log(hidden);
-        return hidden;
-    }
+    ]
 
 
 

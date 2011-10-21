@@ -44,6 +44,10 @@ Ext.define('NAF.controller.Activities', {
             selector: '#activitiesSearchComboSummary'
         },
         {
+            ref: 'activityImage',
+            selector: '#activityImage'
+        },
+        {
             ref: 'fileUpload',
             selector: '#fileUpload'
         }
@@ -320,6 +324,13 @@ Ext.define('NAF.controller.Activities', {
         }
 
         ad.loadRecord(record);
+
+
+        var width = 200 + Math.floor(Math.random() * 41);
+        var heigth = 100 + Math.floor(Math.random() * 41);
+        var src1 = 'http://placehold.it/' + width + 'x' + heigth;
+
+        this.getActivityImage().setSrc(src1);
 
 
         var cat = ad.getComponent('categoryCombo');
