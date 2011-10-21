@@ -52,29 +52,36 @@ Ext.define('NAF.view.activity.Detail', {
             xtype: 'splitter',
             height: 10
         },
+
         {
-            xtype: 'combo',
-            store: 'ActivitiesSearch',
-            id: 'activitiesSearchComboSummary',
-            displayField: 'summary',
-            typeAhead: false,
-            hideLabel: true,
-            hideTrigger:true,
-            emptyText: 'Aktivitets navn',
-            width: 350,
-            enableKeyEvents: true,
-            queryParam: 'text',
-            allowBlank: false,
-            invalidText: 'Feltet må være utfylt.',
+            name: 'summary',
+            xtype: 'textfield',
             fieldStyle: {'font-weight': 'bold', 'height' : 30, 'color' : 'black'},
-            listConfig: {
-                loadingText: 'Søker...',
-                emptyText: 'Finner ikke aktivitet med angitt navn. Tryck "ESC" tast for å gå videre.',
-                width: 400,
-                minHeight: 200,
-                autoScroll: true
-            }
+            width: 350
         },
+//        {
+//            xtype: 'combo',
+//            store: 'ActivitiesSearch',
+//            id: 'activitiesSearchComboSummary',
+//            displayField: 'summary',
+//            typeAhead: false,
+//            hideLabel: true,
+//            hideTrigger:true,
+//            emptyText: 'Aktivitets navn',
+//            width: 350,
+//            enableKeyEvents: true,
+//            queryParam: 'text',
+//            allowBlank: false,
+//            invalidText: 'Feltet må være utfylt.',
+//            fieldStyle: {'font-weight': 'bold', 'height' : 30, 'color' : 'black'},
+//            listConfig: {
+//                loadingText: 'Søker...',
+//                emptyText: 'Finner ikke aktivitet med angitt navn. Tryck "ESC" tast for å gå videre.',
+//                width: 400,
+//                minHeight: 200,
+//                autoScroll: true
+//            }
+//        },
 
         {
             xtype: 'fieldcontainer',

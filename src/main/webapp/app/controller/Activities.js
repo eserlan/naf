@@ -160,17 +160,27 @@ Ext.define('NAF.controller.Activities', {
     },
 
     createActivity: function() {
+        console.log('oppretter helt ny aktivitet');
+
         var ad = this.getActivityDetail();
         var activity = Ext.create('NAF.model.Activity');
-        var summaryCmp = this.getSummary();
-        summaryCmp.setRawValue('');
-        ad.getForm().loadRecord(activity);
-        ad.setDisabled(false);
         var as = this.getActivitiesStore();
+
+        var summaryCmp = this.getSummary();
+        summaryCmp.setRawValue('Må få en verdi!');
+        ad.setDisabled(false);
+        activity.summary = 'Må få en verdi!';
+
+        console.log(activity.summary );
+
+        activity.commit();
+
 //        as.add(activity);
+//        as.sync();
+//        as.load();
         activity.setProxy(as.getProxy);
         activity.save();
-        activity.commit();
+        ad.getForm().loadRecord(activity);
     },
 
 
@@ -302,7 +312,6 @@ Ext.define('NAF.controller.Activities', {
         var index = this.getActivitiesStore().indexOf(originalActivity);
 
         var copiedActivity = originalActivity.copy();
-//         var id = 'random' + Math.floor(Math.random()*1111111);
         var id = Ext.data.Model.id(copiedActivity);
         copiedActivity.set('_id', id);
         copiedActivity.set('id', id);
@@ -355,11 +364,11 @@ Ext.define('NAF.controller.Activities', {
         this.getDeleteBtn().setDisabled(disabled);
         this.getSaveBtn().setDisabled(disabled);
 
-        var summary = record.get('summary');
-        var summaryCmp = this.getSummary();
-        summaryCmp.setRawValue(summary);
-
-        record.set('summary', summary);
+//        var summary = record.get('summary');
+//        var summaryCmp = this.getSummary();
+//        summaryCmp.setRawValue(summary);
+//
+//        record.set('summary', summary);
 
         var dtstart = record.get('dtstart');
 
