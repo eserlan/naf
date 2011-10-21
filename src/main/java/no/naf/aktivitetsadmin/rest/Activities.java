@@ -23,7 +23,7 @@ public class Activities {
         WebResource r = client.resource("http://naf.herokuapp.com/activities");
         r = r.queryParams(qp);
 
-        System.out.println("r = " + r);
+        System.out.println(r);
         return r.get(String.class);
 
     }
@@ -34,26 +34,14 @@ public class Activities {
     public String getSearchActivities(@Context UriInfo ui) {
         System.out.println("search activities GET");
         MultivaluedMap<String, String> qp = ui.getQueryParameters();
-        String keyToRemove = null;
-        String searchQuery = null;
-        for (String key : qp.keySet()) {
-            if (key.contains("admin")) {
-                keyToRemove = key;
-                searchQuery = qp.get(key).get(0);
-                break;
-            }
-        }
-        if (keyToRemove != null)
-            qp.remove(keyToRemove);
-        qp.add("admin", "true");
-        qp.add("text", searchQuery);
         qp.remove("limit");
         qp.remove("page");
+        qp.remove("_dc");
 
         WebResource r = client.resource("http://naf.herokuapp.com/activities/search");
         r = r.queryParams(qp);
 
-        System.out.println("r = " + r);
+        System.out.println(r);
         return r.get(String.class);
 
     }
@@ -69,7 +57,7 @@ public class Activities {
         if (nc.contains(",\"location\""))
             nc = StringUtils.substringBefore(nc, ",\"location\"") + "}";
 
-        nc = "{\"activity\":" + nc + "}";
+//        nc = "{\"activity\":" + nc + "}";
         nc = nc.replace(id, "");
         nc = nc.replace(",\"_id\":\"\"", "");
 
@@ -78,7 +66,8 @@ public class Activities {
 
         WebResource r = client.resource("http://naf.herokuapp.com/activities/" + id);
 
-        System.out.println("r = " + r);
+        System.out.println(r);
+
         String res = r.
                 type(MediaType.APPLICATION_JSON_TYPE).
                 accept(MediaType.APPLICATION_JSON_TYPE).
@@ -95,7 +84,7 @@ public class Activities {
     public void deleteActivity(@PathParam("id") String id) {
         System.out.println("activities DELETE");
         WebResource r = client.resource("http://naf.herokuapp.com/activities/" + id);
-        System.out.println("r = " + r);
+        System.out.println(r);
         r.delete();
 
     }
@@ -106,13 +95,14 @@ public class Activities {
     public void createActivity(String content, @Context UriInfo ui, @PathParam("id") String id) {
         System.out.println("activity POST");
 
-        System.out.println("ui = " + ui);
+        System.out.println("ui = " + ui.getRequestUri());
         MultivaluedMap<String, String> qp = null;
         if (ui != null) {
             qp = ui.getQueryParameters();
-            System.out.println("qp = " + qp);
+//            System.out.println("qp = " + qp);
         }
         String nc = StringUtils.substringBeforeLast(StringUtils.substringAfter(content, "\","), "}");
+//        String nc = content;
 
         if (nc.contains(",\"location\""))
             nc = StringUtils.substringBefore(nc, ",\"location\"") + "}";
@@ -120,7 +110,7 @@ public class Activities {
 
         nc = "{\"activity\":{" + nc + "}";
 
-        System.out.println("nc = " + nc);
+        System.out.println(nc);
 
 
         WebResource r = client.resource("http://naf.herokuapp.com/activities");

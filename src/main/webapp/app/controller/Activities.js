@@ -52,6 +52,10 @@ Ext.define('NAF.controller.Activities', {
             selector: '#activitiesSearchComboSummary'
         },
         {
+            ref: 'activityImage',
+            selector: '#activityImage'
+        },
+        {
             ref: 'fileUpload',
             selector: '#fileUpload'
         }
@@ -102,7 +106,7 @@ Ext.define('NAF.controller.Activities', {
                 keyup : this.updateList
             },
             'activitydetail #activitiesSearchComboSummary':{
-                blur: this.setSummaryBlur
+                blur: this.setSummaryOnBlur
             },
             'activitydetail #vehicleCombo':{
                 select: this.selectVehicle
@@ -110,36 +114,36 @@ Ext.define('NAF.controller.Activities', {
         });
     },
 
-    toggleActiveButton: function(){
-        console.log('toggler');
+    toggleActiveButton: function(btn) {
         var ad = this.getActivityDetail();
         var form = ad.getForm();
         var activity = form.getRecord();
-        var values = form.getValues();
         var active = activity.get('active');
-        console.log(active);
-        var btn = this.getToggleActiveBtn();
-
-//        btn.toggle(!active);
-        if (active){
+        btn.toggle(!active, true);
+        if (!active) {
             btn.setText('Aktiv');
         } else {
             btn.setText('Inaktiv');
         }
         activity.set('active', !active);
+        this.getActivitiesStore().update(activity);
         activity.commit();
     },
 
-    setToggleActiveButtonState: function(){
+    setToggleActiveButtonState: function() {
         var ad = this.getActivityDetail();
         var activity = ad.getForm().getRecord();
         var active = activity.get('active');
         var btn = this.getToggleActiveBtn();
-
-//         btn.toggle(active);
+        btn.toggle(active, true);
+        if (active) {
+            btn.setText('Aktiv');
+        } else {
+            btn.setText('Inaktiv');
+        }
     },
 
-    clearLocationsFilter: function(){
+    clearLocationsFilter: function() {
         var locationsStore = this.getLocationsStore();
         locationsStore.clearFilter();
     },
@@ -148,8 +152,8 @@ Ext.define('NAF.controller.Activities', {
         var as = this.getAccessesStore();
         var ls = this.getLocationsStore();
         var accessIds = as.collect('access_id');
-        ls.filterBy(function (record, id){
-            if (accessIds.indexOf(id)>-1) return true;
+        ls.filterBy(function (record, id) {
+            if (accessIds.indexOf(id) > -1) return true;
         });
     },
 
@@ -163,29 +167,15 @@ Ext.define('NAF.controller.Activities', {
         this.getActivitiesStore().add(activity);
     },
 
-    selectActivity: function(combo, records) {
-        var record = records[0];
-        var summary = record.get('summary');
-        var ad = this.getActivityDetail();
-        ad.setDisabled(false);
-        ad.loadRecord(record);
-        var summaryCmp = this.getSummary();
-        summaryCmp.setRawValue(summary);
-        var cat = ad.getComponent('categoryCombo');
-        cat.setValue(record.get('category_id'));
-        var loc = ad.getComponent('locationCombo');
-        loc.setValue(record.get('location_id'));
-        var v = this.getVehicleCombo();
-        v.setValue(record.get('vehicle'));
-    },
 
-    setSummaryBlur: function(field) {
+
+    setSummaryOnBlur: function(field) {
         var summary = field.getRawValue();
         var ad = this.getActivityDetail();
         var activeActivity = ad.getForm().getRecord();
         activeActivity.set('summary', summary);
         var values = ad.getForm().getValues();
-        values.push('summary', summary);
+        values['summary'] = summary;
         activeActivity.commit();
     },
 
@@ -250,8 +240,8 @@ Ext.define('NAF.controller.Activities', {
         }
 
 
-//        this.getActivitiesStore().update(activity);
-        this.getActivitiesStore().sync();
+        this.getActivitiesStore().update(activity);
+//        this.getActivitiesStore().sync();
 
         activity.commit();
 
@@ -259,42 +249,59 @@ Ext.define('NAF.controller.Activities', {
     },
 
     confirmDeleteActivity: function(button) {
-        Ext.Msg.confirm('Bekreft sletting', 'Bekreft at du ønsker å slette aktiviteten for godt?', this.deleteActivity, this);
+        Ext.Msg.confirm('Bekreft sletting', this.getDeleteConfirmationText(), this.deleteActivity, this);
     },
+
+
+    getDeleteConfirmationText: function() {
+        var ad = this.getActivityDetail();
+        var form = ad.getForm();
+        var activity = form.getRecord();
+        var summary = activity.get('summary');
+        return 'Er du sikker på at du ønsker å slette ' + summary + ' for godt?';
+    },
+
 
     deleteActivity: function (button) {
         if (button === 'yes') {
             var ad = this.getActivityDetail();
             var form = ad.getForm();
-            var record = form.getRecord();
-            this.getActivitiesStore().remove(record);
-            this.getActivitiesStore().sync();
+            var activity = form.getRecord();
+            this.getActivitiesStore().remove(activity);
+            var proxy = this.getActivitiesStore().getProxy();
+            activity.setProxy(proxy);
+            activity.destroy();
+            activity.commit();
         }
     },
 
     copyActivity: function (button) {
         var ad = this.getActivityDetail();
         var form = ad.getForm();
-        var record = form.getRecord();
-        var values = form.getValues();
-        record.set(values);
+        var originalActivity = form.getRecord();
+//        var values = form.getValues();
+//        record.set(values);
 
-        var index = this.getActivitiesStore().indexOf(record);
+        var index = this.getActivitiesStore().indexOf(originalActivity);
 
-        var newActivity = record.copy();
+        var copiedActivity = originalActivity.copy();
 //         var id = 'random' + Math.floor(Math.random()*1111111);
-        var id = Ext.data.Model.id(newActivity);
-        newActivity.set('_id', id);
-        newActivity.set('id', id);
-        newActivity.set('summary', 'Kopi av ' + record.get('summary'));
+        var id = Ext.data.Model.id(copiedActivity);
+        copiedActivity.set('_id', id);
+        copiedActivity.set('id', id);
+        copiedActivity.set('summary', 'Kopi av ' + originalActivity.get('summary'));
 
-        this.getActivitiesStore().insert(index + 1, newActivity);
-        this.getActivitiesStore().sync();
-        this.changeDetail(null, newActivity)
+        this.getActivitiesStore().insert(index + 1, copiedActivity);
+        copiedActivity.commit();
+        copiedActivity.setProxy(this.getActivitiesStore().getProxy());
+        copiedActivity.save();
+
+
+//        this.getActivitiesStore().sync();
+        this.changeDetail(null, copiedActivity)
     },
 
     changeDetail: function(grid, record) {
-        var summary = record.get('summary');
         var ad = this.getActivityDetail();
         var as = this.getAccessesStore();
         var orgIdIdx = as.find('access_id', record.get('organizer_id'))
@@ -306,10 +313,10 @@ Ext.define('NAF.controller.Activities', {
         this.getDeleteBtn().setDisabled(disabled);
         this.getSaveBtn().setDisabled(disabled);
 
+        var summary = record.get('summary');
         var summaryCmp = this.getSummary();
         summaryCmp.setRawValue(summary);
 
-        ad.loadRecord(record);
         record.set('summary', summary);
 
         var dtstart = record.get('dtstart');
@@ -326,6 +333,16 @@ Ext.define('NAF.controller.Activities', {
             var dtendTime = new Date(dtend.getTime());
             record.set('dtend-time', dtendTime);
         }
+
+        ad.loadRecord(record);
+
+
+        var width = 200 + Math.floor(Math.random() * 41);
+        var heigth = 100 + Math.floor(Math.random() * 41);
+        var src1 = 'http://placehold.it/' + width + 'x' + heigth;
+
+        this.getActivityImage().setSrc(src1);
+
 
         var cat = ad.getComponent('categoryCombo');
         cat.setValue(record.get('category_id'));
@@ -356,6 +373,22 @@ Ext.define('NAF.controller.Activities', {
             activity.set('category_id', newId);
             activity.set('category', newCategory);
         }
+    },
+
+    selectActivity: function(combo, records) {
+        var record = records[0];
+        var summary = record.get('summary');
+        var ad = this.getActivityDetail();
+        ad.setDisabled(false);
+        ad.loadRecord(record);
+        var summaryCmp = this.getSummary();
+        summaryCmp.setRawValue(summary);
+        var cat = ad.getComponent('categoryCombo');
+        cat.setValue(record.get('category_id'));
+        var loc = ad.getComponent('locationCombo');
+        loc.setValue(record.get('location_id'));
+        var v = this.getVehicleCombo();
+        v.setValue(record.get('vehicle'));
     },
 
     selectLocation: function(combo, selectedRecords) {

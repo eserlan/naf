@@ -17,6 +17,8 @@ Ext.define('NAF.view.activity.Detail', {
                 {
                     xtype: 'button',
                     id: 'removeButton',
+                    scale: 'medium',
+                    cls: 'nafMediumButton',
                     text:'Slett',
                     disabled: true,
                     tooltip: 'Slett valgt aktivitet',
@@ -24,6 +26,8 @@ Ext.define('NAF.view.activity.Detail', {
                 },
                 {
                     xtype: 'button',
+                    scale: 'medium',
+                    cls: 'nafMediumButton',
                     id: 'saveButton',
                     disabled: true,
                     text:'Lagre',
@@ -92,7 +96,7 @@ Ext.define('NAF.view.activity.Detail', {
                     xtype: 'timefield',
                     width: 65,
                     name: 'dtstart-time',
-//                    minValue: '06.00',
+                    minValue: '07.00',
                     increment: 30,
                     format: 'H.i',
                     altFormats: 'c'
@@ -117,6 +121,7 @@ Ext.define('NAF.view.activity.Detail', {
                 {
                     xtype: 'timefield',
                     width: 65,
+                    minValue: '07.00',
                     name: 'dtend-time',
                     increment: 30,
                     format: 'H.i',
@@ -276,7 +281,6 @@ Ext.define('NAF.view.activity.Detail', {
                 },
                 {
                     xtype: 'image',
-                    html: '<h1>abc</h1>',
                     id: 'tagsHelpImage',
                     margins: '0 0 0 5',
                     src: 'img/HelpIcon.gif'
@@ -368,7 +372,6 @@ Ext.define('NAF.view.activity.Detail', {
             xtype: 'textfield',
             width: 350,
             fieldLabel: 'Link til video'
-
         }
 
         ,
@@ -398,7 +401,23 @@ Ext.define('NAF.view.activity.Detail', {
                     action: 'upload'
                 }
             ]
+        },
+
+        {
+            name: 'photo_id',
+            xtype: 'textfield',
+            width: 350,
+            fieldLabel: 'Foto id - TA BORT'
+
+        },
+
+        {
+            xtype: 'image',
+            id: 'activityImage',
+            style: 'margins: 50 50 50 50',
+            src: ''
         }
+
         ,
         {
             xtype: 'form',
@@ -510,6 +529,7 @@ Ext.define('NAF.view.activity.Detail', {
             ]
         }
     ]
+
 
 
 });
