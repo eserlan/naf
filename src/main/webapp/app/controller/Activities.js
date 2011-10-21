@@ -379,7 +379,7 @@ Ext.define('NAF.controller.Activities', {
         ad.loadRecord(record);
 
         var photoUrl = record.get('photo_medium_url');
-        console.log(photoUrl);
+//        console.log(photoUrl);
         this.getActivityImage().setSrc(photoUrl);
 
 
