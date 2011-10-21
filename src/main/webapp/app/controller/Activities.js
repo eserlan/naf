@@ -1,3 +1,11 @@
+function authToken(){
+  try{
+    return FORM_AUTH_TOKEN;
+  }catch(e){
+    return ''
+  }
+}
+
 Ext.define('NAF.controller.Activities', {
     extend: 'Ext.app.Controller',
 
@@ -186,26 +194,29 @@ Ext.define('NAF.controller.Activities', {
     },
 
     uploadPhoto: function(button) {
-
-        console.log('hallo!?');
-        var win = button.up('activitydetail');
+       var win = button.up('activitydetail');
         var form = win.getForm();
         var hasUpload = form.hasUpload();
         var fu = this.getFileUpload();
         var v = fu.getValue();
-
-        var proxy = new Ext.data.proxy.Rest({
-            url: '/aktivitets-admin/rest/file/upload'
-
-        });
-
-//        proxy.
-
-//        form.submit({
-//            url: '/aktivitets-admin/rest/file/upload',
-//            waitMsg: 'Bildet lastes opp...'
-//        });
-
+        var that = this;
+        //var form = this.up('form').getForm();
+        if(form.isValid()){
+            form.submit({
+                params: {
+                  authenticity_token: authToken()
+                },
+                url: 'rest/activities/file_upload',
+                waitMsg: 'Vent mens bilde lastes opp...',
+                success: function(fp, o) {
+                    var photo_id = o.result.file._id;
+                    var url = o.result.file.photo.medium.url;
+                    that.getActivityImage().setSrc(url);
+                    form.findField('photo_id').setValue(photo_id);
+                    //Ext.Msg.alert('Success', 'Your photo "' + o.result.file + '" has been uploaded.');
+                }
+            });
+        }
 
     },
 
