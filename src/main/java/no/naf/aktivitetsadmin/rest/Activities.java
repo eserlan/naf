@@ -57,7 +57,7 @@ public class Activities {
         if (nc.contains(",\"location\""))
             nc = StringUtils.substringBefore(nc, ",\"location\"") + "}";
 
-        nc = "{\"activity\":" + nc + "}";
+//        nc = "{\"activity\":" + nc + "}";
         nc = nc.replace(id, "");
         nc = nc.replace(",\"_id\":\"\"", "");
 
@@ -67,6 +67,7 @@ public class Activities {
         WebResource r = client.resource("http://naf.herokuapp.com/activities/" + id);
 
         System.out.println(r);
+
         String res = r.
                 type(MediaType.APPLICATION_JSON_TYPE).
                 accept(MediaType.APPLICATION_JSON_TYPE).
@@ -94,19 +95,20 @@ public class Activities {
     public void createActivity(String content, @Context UriInfo ui, @PathParam("id") String id) {
         System.out.println("activity POST");
 
-        System.out.println("ui = " + ui);
+        System.out.println("ui = " + ui.getRequestUri());
         MultivaluedMap<String, String> qp = null;
         if (ui != null) {
             qp = ui.getQueryParameters();
 //            System.out.println("qp = " + qp);
         }
         String nc = StringUtils.substringBeforeLast(StringUtils.substringAfter(content, "\","), "}");
+//        String nc = content;
 
         if (nc.contains(",\"location\""))
             nc = StringUtils.substringBefore(nc, ",\"location\"") + "}";
 
 
-//        nc = "{\"activity\":{" + nc + "}";
+        nc = "{\"activity\":{" + nc + "}";
 
         System.out.println(nc);
 

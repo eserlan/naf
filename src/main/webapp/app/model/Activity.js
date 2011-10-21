@@ -26,6 +26,7 @@ Ext.define('NAF.model.Activity', {
         'url',
         'vehicle',
         'video',
+        'photo_id',
         'location_id',
         {name: 'location', mapping: 'location.name'},
         'address',

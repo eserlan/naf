@@ -281,7 +281,6 @@ Ext.define('NAF.view.activity.Detail', {
                 },
                 {
                     xtype: 'image',
-                    html: '<h1>abc</h1>',
                     id: 'tagsHelpImage',
                     margins: '0 0 0 5',
                     src: 'img/HelpIcon.gif'
@@ -403,7 +402,16 @@ Ext.define('NAF.view.activity.Detail', {
                     action: 'upload'
                 }
             ]
+        },
+
+        {
+            xtype: 'image',
+            id: 'tagsHelpImage',
+            margins: '0 0 0 5',
+            hidden: this.getHidden,
+            src: this.getPhotoId
         }
+
         ,
         {
             xtype: 'form',
@@ -514,7 +522,25 @@ Ext.define('NAF.view.activity.Detail', {
                 }
             ]
         }
-    ]
+    ],
+
+    getPhotoId: function(){
+        var url = 'http://';
+        var form = this.getForm();
+        console.log(form);
+        var photoId = form.getRecord().get('photo_id');
+        return url + photoId;
+    },
+
+    getHidden: function(){
+        var hidden = true;
+        var photoId = this.getForm().getRecord().get('photo_id');
+        if (typeof photoId !== 'undefined' && photoId !== null)
+            hidden=true;
+        console.log(hidden);
+        return hidden;
+    }
+
 
 
 });
