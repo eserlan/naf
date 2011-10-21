@@ -156,7 +156,11 @@ Ext.define('NAF.controller.Activities', {
         summaryCmp.setRawValue('');
         ad.getForm().loadRecord(activity);
         ad.setDisabled(false);
-        this.getActivitiesStore().add(activity);
+        var as = this.getActivitiesStore();
+//        as.add(activity);
+        activity.setProxy(as.getProxy);
+        activity.save();
+        activity.commit();
     },
 
 
@@ -230,7 +234,6 @@ Ext.define('NAF.controller.Activities', {
 
 
         this.getActivitiesStore().update(activity);
-//        this.getActivitiesStore().sync();
 
         activity.commit();
 
@@ -285,8 +288,6 @@ Ext.define('NAF.controller.Activities', {
         copiedActivity.setProxy(this.getActivitiesStore().getProxy());
         copiedActivity.save();
 
-
-//        this.getActivitiesStore().sync();
         this.changeDetail(null, copiedActivity)
     },
 
