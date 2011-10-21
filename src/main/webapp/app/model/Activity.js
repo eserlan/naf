@@ -2,7 +2,7 @@ Ext.define('NAF.model.Activity', {
     extend: 'Ext.data.Model',
     idProperty: '_id',
     fields: [
-        '_id',
+        {name: '_id', persist: false},
         'attendee',
         'category_id',
         'contact',
@@ -11,9 +11,9 @@ Ext.define('NAF.model.Activity', {
         'contact_phone',
         'description',
         {name: 'dtstart', type:'date'},
-        'dtstart-time',
+        {name: 'dtstart-time', type:'date', persist: false},
         {name: 'dtend', type:'date'},
-        'dtend-time',
+        {name: 'dtend-time', type:'date', persist: false},
         'own_vehicle',
         'price',
         'member_price',
@@ -27,8 +27,11 @@ Ext.define('NAF.model.Activity', {
         'vehicle',
         'video',
         'photo_id',
+        'photo_medium_url',
+        'photo_large_url',
+        'photo_thumb_url',
         'location_id',
-        {name: 'location', mapping: 'location.name'},
+        {name: 'location', convert: location},
         'address',
         'organizer_id',
         {name: 'organizer', mapping: 'organizer.name'},
@@ -49,3 +52,13 @@ Ext.define('NAF.model.Activity', {
         'media_url' ]
 
 });
+
+function location(v, record) {
+    var locationId = record.location_id;
+    if (typeof locationId !== 'undefined' && locationId !== null) {
+        //todo slå opp i locationstore
+        return 'espenstad';
+    }
+    return '';
+
+}

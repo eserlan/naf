@@ -1,9 +1,9 @@
-function authToken(){
-  try{
-    return FORM_AUTH_TOKEN;
-  }catch(e){
-    return ''
-  }
+function authToken() {
+    try {
+        return FORM_AUTH_TOKEN;
+    } catch(e) {
+        return ''
+    }
 }
 
 Ext.define('NAF.controller.Activities', {
@@ -65,9 +65,11 @@ Ext.define('NAF.controller.Activities', {
         this.control({
             'activitylist': {
                 select: this.changeDetail
+//                ,
+//                beforeselect: this.changeDetailCheck
             },
             'button[action=save]':{
-                click: this.saveActivities
+                click: this.saveActivity
             },
             'button[action=copy]':{
                 click: this.copyActivity
@@ -194,17 +196,17 @@ Ext.define('NAF.controller.Activities', {
     },
 
     uploadPhoto: function(button) {
-       var win = button.up('activitydetail');
+        var win = button.up('activitydetail');
         var form = win.getForm();
         var hasUpload = form.hasUpload();
         var fu = this.getFileUpload();
         var v = fu.getValue();
         var that = this;
         //var form = this.up('form').getForm();
-        if(form.isValid()){
+        if (form.isValid()) {
             form.submit({
                 params: {
-                  authenticity_token: authToken()
+                    authenticity_token: authToken()
                 },
                 url: 'rest/activities/file_upload',
                 waitMsg: 'Vent mens bilde lastes opp...',
@@ -220,7 +222,12 @@ Ext.define('NAF.controller.Activities', {
 
     },
 
-    saveActivities: function () {
+    saveActivity: function (btn) {
+
+        //todo ta bort?
+        if (typeof btn !== 'undefined' && btn !== null) {
+
+        }
         var ad = this.getActivityDetail();
         var form = ad.getForm();
         var activity = form.getRecord();
@@ -229,23 +236,26 @@ Ext.define('NAF.controller.Activities', {
 
         var dtstartForm = values['dtstart'];
 //        console.log(dtstartForm);
+        var dtstartTimeForm = null;
+        var dtendTimeForm = null
+        var d = null;
         if (typeof dtstartForm !== 'undefined' && dtstartForm !== null) {
-            var dtstartTimeForm = values['dtstart-time'];
-            var d = Ext.Date.parse(dtstartForm + ' ' + dtstartTimeForm, 'd.m.Y H.i');
+            dtstartTimeForm = values['dtstart-time'];
+            d = Ext.Date.parse(dtstartForm + ' ' + dtstartTimeForm, 'd.m.Y H.i');
             activity.set('dtstart', d);
+            activity.set('dtstart-time', dtstartTimeForm);
         }
 
         var dtendForm = values['dtend'];
 //        console.log(dtstartForm);
         if (typeof dtstartForm !== 'undefined' && dtstartForm !== null) {
-            var dtendTimeForm = values['dtend-time'];
-            var d = Ext.Date.parse(dtendForm + ' ' + dtendTimeForm, 'd.m.Y H.i');
+            dtendTimeForm = values['dtend-time'];
+            d = Ext.Date.parse(dtendForm + ' ' + dtendTimeForm, 'd.m.Y H.i');
             activity.set('dtend', d);
+            activity.set('dtend-time', dtendTimeForm);
         }
 
-
         this.getActivitiesStore().update(activity);
-
         activity.commit();
 
         Ext.Msg.alert('Lagret', activity.get('summary') + ' er lagret.');
@@ -262,6 +272,10 @@ Ext.define('NAF.controller.Activities', {
         var activity = form.getRecord();
         var summary = activity.get('summary');
         return 'Er du sikker på at du ønsker å slette ' + summary + ' for godt?';
+    }
+    ,
+    getSummaryText: function(activity) {
+        return activity.get('summary');
     },
 
 
@@ -270,7 +284,7 @@ Ext.define('NAF.controller.Activities', {
             var ad = this.getActivityDetail();
             var form = ad.getForm();
             var activity = form.getRecord();
-            this.getActivitiesStore().remove(activity);
+//            this.getActivitiesStore().remove(activity);
             var proxy = this.getActivitiesStore().getProxy();
             activity.setProxy(proxy);
             activity.destroy();
@@ -300,6 +314,33 @@ Ext.define('NAF.controller.Activities', {
         copiedActivity.save();
 
         this.changeDetail(null, copiedActivity)
+    },
+
+    changeDetailCheck: function(grid, activity) {
+
+        console.log('endret: ' + activity.dirty);
+
+
+        Ext.Msg.show({
+            title:'Lagre endringer?',
+            msg: this.getSummaryText(activity) + ' er endret. Lagre før du velger ny aktiviet?',
+            callback: this.saveActivityConfirm,
+            buttons: Ext.Msg.YESNOCANCEL,
+            icon: Ext.Msg.QUESTION
+        });
+
+//        return !activity.dirty;
+
+        return true;
+    },
+
+    saveActivityConfirm: function(btn) {
+        if (btn = 'yes') {
+            console.log('da lagrer vi');
+
+            return true;
+        }
+        return false;
     },
 
     changeDetail: function(grid, record) {
@@ -337,12 +378,9 @@ Ext.define('NAF.controller.Activities', {
 
         ad.loadRecord(record);
 
-
-        var width = 200 + Math.floor(Math.random() * 41);
-        var heigth = 100 + Math.floor(Math.random() * 41);
-        var src1 = 'http://placehold.it/' + width + 'x' + heigth;
-
-        this.getActivityImage().setSrc(src1);
+        var photoUrl = record.get('photo_medium_url');
+        console.log(photoUrl);
+        this.getActivityImage().setSrc(photoUrl);
 
 
         var cat = ad.getComponent('categoryCombo');

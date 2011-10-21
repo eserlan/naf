@@ -404,14 +404,6 @@ Ext.define('NAF.view.activity.Detail', {
         },
 
         {
-            name: 'photo_id',
-            xtype: 'textfield',
-            width: 350,
-            fieldLabel: 'Foto id - TA BORT'
-
-        },
-
-        {
             xtype: 'image',
             id: 'activityImage',
             style: 'margins: 50 50 50 50',
