@@ -93,44 +93,41 @@ Ext.define('NAF.view.activity.Detail', {
                     name: 'dtstart',
                     id: 'dtstart',
                     width: 95,
+                    allowBlank: false,
                     xtype: 'datefield'
                     ,
                     format: 'd.m.Y',
                     altFormats: 'c'
                 },
                 {
-                    xtype: 'splitter'
-                },
-                {
                     xtype: 'timefield',
                     width: 65,
+                    allowBlank: false,
+                    id: 'dtstart-time',
                     name: 'dtstart-time',
+                    margin: '0 0 0 2',
                     minValue: '07.00',
                     increment: 30,
                     format: 'H.i',
                     altFormats: 'c'
                 },
                 {
-                    xtype: 'splitter',
-                    width: 20
-                },
-                {
                     name: 'dtend',
+                    allowBlank: false,
                     id: 'dtend',
                     width: 95,
+                    margin: '0 0 0 11',
                     xtype: 'datefield',
                     format: 'd.m.Y',
                     altFormats: 'c'
-                }
-                ,
-                {
-                    xtype: 'splitter'
-                }
-                ,
+                },
                 {
                     xtype: 'timefield',
                     width: 65,
+                    allowBlank: false,
+                    margin: '0 0 0 2',
                     minValue: '07.00',
+                    id: 'dtend-time',
                     name: 'dtend-time',
                     increment: 30,
                     format: 'H.i',
