@@ -1,11 +1,17 @@
 package no.naf.aktivitetsadmin.rest;
 
 import org.apache.commons.io.FileUtils;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ActivitiesTest {
 
@@ -29,6 +35,7 @@ public class ActivitiesTest {
         a.updateActivity(content, "4e8c5996f295f80006000009");
 
     }
+
     @Test
     @Ignore
     public void testUpdateActivityKunOppdaterteFelter() throws Exception {
@@ -44,13 +51,13 @@ public class ActivitiesTest {
     @Test
     @Ignore
     public void testCreateActivity() throws IOException {
-       String c =  FileUtils.readFileToString(new File("src/main/webapp/data/t.json"));
+        String c = FileUtils.readFileToString(new File("src/main/webapp/data/t.json"));
         a.createActivity(c, null, "abc");
     }
 
     @Test
     @Ignore
-    public void testDeleteActivity(){
+    public void testDeleteActivity() {
 
 
         a.deleteActivity("4e955d459b8e800001000003");
@@ -58,7 +65,46 @@ public class ActivitiesTest {
     }
 
 
+    @Test
+    public void testGson() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> userData = mapper.readValue(new File("src/main/webapp/data/activities2.json"), Map.class);
 
+        System.out.println("userData = " + userData);
+
+        List<LinkedHashMap> list = (List) userData.get("activities");
+
+        for (LinkedHashMap map : list) {
+            map.remove("_id");
+        }
+
+
+
+        Writer content = new StringWriter();
+        mapper.writeValue(content, userData);
+
+        System.out.println("content = " + content);
+
+    }
+
+     @Test
+    public void testJson2() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> userData = mapper.readValue(new File("src/main/webapp/data/activities3.json"), Map.class);
+
+        System.out.println("userData = " + userData);
+
+        LinkedHashMap map = (LinkedHashMap) userData.get("activity");
+
+            map.remove("_id");
+
+
+        Writer content = new StringWriter();
+        mapper.writeValue(content, userData);
+
+        System.out.println("content = " + content);
+
+    }
 
 
 }

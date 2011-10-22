@@ -106,7 +106,7 @@
         "contact_email":"",
         "contact_name":"",
         "contact_phone":"",
-        "description":"Beskrivelse aktivitet 98\nAktivitet 98 i Skien",
+        "description":"Beskrivelse aktivitet 98\nAktivitet 98 i Skien\n\naaaa bbbbbb",
         "dtend":"2011-10-26T16:09:00+00:00",
         "dtstart":"2011-10-24T20:09:00+00:00",
         "free":false,
@@ -117,7 +117,7 @@
             "name":"MC Mj\u00f8sa",
             "region_id":"4e9c06f137a9cb0006000003"
         },
-        "location_id":"4e9d689a05e3370005000079",
+        "location_id":"4e9d689a05e3370005000030",
         "media_outlet":"",
         "media_title":"",
         "media_url":"",
@@ -130,7 +130,7 @@
             "name":"NAF Senter Lillestr\u00f8m",
             "region_id":"4e9c06f137a9cb0006000005"
         },
-        "organizer_id":"4e9d689a05e3370005000030",
+        "organizer_id":"4e9d689a05e337000500002a",
         "own_vehicle":false,
         "participants_count":0,
         "photo_id":"4ea1621a14c6920001000001",

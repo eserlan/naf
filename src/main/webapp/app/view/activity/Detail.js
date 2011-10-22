@@ -276,24 +276,31 @@ Ext.define('NAF.view.activity.Detail', {
 
 
         {
-            xtype: 'fieldcontainer',
+            name: 'tags',
             fieldLabel: 'Stikkord',
-            layout: 'hbox',
-            items: [
-                {
-                    name: 'tags',
-                    xtype: 'textfield',
-                    emptyText: 'Stikkord',
-                    width: 245
-                },
-                {
-                    xtype: 'image',
-                    id: 'tagsHelpImage',
-                    margins: '0 0 0 5',
-                    src: 'img/HelpIcon.gif'
-                }
-            ]
+            xtype: 'textfield',
+            emptyText: 'Stikkord',
+            width: 350
         },
+//        {
+//            xtype: 'fieldcontainer',
+//            fieldLabel: 'Stikkord',
+//            layout: 'hbox',
+//            items: [
+//                {
+//                    name: 'tags',
+//                    xtype: 'textfield',
+//                    emptyText: 'Stikkord',
+//                    width: 245
+//                },
+//                {
+//                    xtype: 'image',
+//                    id: 'tagsHelpImage',
+//                    margins: '0 0 0 5',
+//                    src: 'img/HelpIcon.gif'
+//                }
+//            ]
+//        },
 
 
         {

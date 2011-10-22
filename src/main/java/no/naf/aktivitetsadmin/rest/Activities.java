@@ -2,18 +2,25 @@ package no.naf.aktivitetsadmin.rest;
 
 
 import com.sun.jersey.api.client.WebResource;
-import org.apache.commons.lang3.StringUtils;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.UriInfo;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import static no.naf.aktivitetsadmin.ClientContainer.client;
 
 @Path("/activities")
 public class Activities {
+
+    public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -49,20 +56,22 @@ public class Activities {
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void updateActivity(String content, @PathParam("id") String id) {
+    public void updateActivity(String content, @PathParam("id") String id) throws IOException {
         System.out.println("activities PUT");
 
-        String nc = StringUtils.substringBeforeLast(StringUtils.substringAfter(content, "\":"), "}");
 
-        if (nc.contains(",\"location\""))
-            nc = StringUtils.substringBefore(nc, ",\"location\"") + "}";
+        @SuppressWarnings({"unchecked"})
+        Map<String, Object> userData = OBJECT_MAPPER.readValue(content, Map.class);
 
-//        nc = "{\"activity\":" + nc + "}";
-        nc = nc.replace(id, "");
-        nc = nc.replace(",\"_id\":\"\"", "");
+        LinkedHashMap map = (LinkedHashMap) userData.get("activity");
+        map.remove("_id");
 
+        Writer contentWriter = new StringWriter();
+        OBJECT_MAPPER.writeValue(contentWriter, userData);
 
-        System.out.println("nc = " + nc);
+        content = contentWriter.toString();
+
+        System.out.println(content);
 
         WebResource r = client.resource("http://naf.herokuapp.com/activities/" + id);
 
@@ -71,7 +80,7 @@ public class Activities {
         String res = r.
                 type(MediaType.APPLICATION_JSON_TYPE).
                 accept(MediaType.APPLICATION_JSON_TYPE).
-                entity(nc, MediaType.APPLICATION_JSON_TYPE).
+                entity(content, MediaType.APPLICATION_JSON_TYPE).
                 put(String.class);
         System.out.println("res = " + res);
 
@@ -119,13 +128,13 @@ public class Activities {
 
         System.out.println(r);
         String res = null;
-            WebResource.Builder entity = r.
-                    type(MediaType.APPLICATION_JSON_TYPE).
+        WebResource.Builder entity = r.
+                type(MediaType.APPLICATION_JSON_TYPE).
 //                    accept(MediaType.APPLICATION_JSON_TYPE).
-                    entity(nc, MediaType.APPLICATION_JSON);
+        entity(nc, MediaType.APPLICATION_JSON);
 //            System.out.println("entity = " + entity);
-            res = entity.
-                    post(String.class);
+        res = entity.
+                post(String.class);
 
 
     }

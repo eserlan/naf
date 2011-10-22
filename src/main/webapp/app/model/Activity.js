@@ -31,10 +31,10 @@ Ext.define('NAF.model.Activity', {
         'photo_large_url',
         'photo_thumb_url',
         'location_id',
-        {name: 'location', convert: location},
+        {name: 'location', convert: location, persist: false},
         'address',
         'organizer_id',
-        {name: 'organizer', mapping: 'organizer.name'},
+        {name: 'organizer', mapping: 'organizer.name', persist: false},
         'active',
         'region',
         'age_from',
@@ -49,16 +49,16 @@ Ext.define('NAF.model.Activity', {
         'potential_improvements',
         'media_title',
         'media_outlet',
-        'media_url' ]
+        'media_url'
+    ]
 
 });
 
-function location(v, record) {
-    var locationId = record.location_id;
-    if (typeof locationId !== 'undefined' && locationId !== null) {
-        //todo slå opp i locationstore
-        return 'espenstad';
+function location(v) {
+    if (v.latitude != null) {
+        return v.name;
+    } else {
+        return v;
     }
-    return '';
 
 }

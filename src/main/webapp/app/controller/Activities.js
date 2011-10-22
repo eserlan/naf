@@ -265,7 +265,8 @@ Ext.define('NAF.controller.Activities', {
             activity.set('dtend-time', dtendTimeForm);
         }
 
-        this.getActivitiesStore().update(activity);
+//        this.getActivitiesStore().update(activity);
+        this.getActivitiesStore().sync();
         activity.commit();
 
         Ext.Msg.alert('Lagret', activity.get('summary') + ' er lagret.');
