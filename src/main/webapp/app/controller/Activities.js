@@ -326,8 +326,16 @@ Ext.define('NAF.controller.Activities', {
 //            activity.setProxy(proxy);
 //            activity.destroy();
             activity.commit();
-            this.getActivitiesStore().remove(activity);
-            this.getActivitiesStore().sync();
+            var as = this.getActivitiesStore();
+            var index = as.indexOf(activity);
+            as.remove(activity);
+            as.sync();
+            var previousActivity = as.getAt(index-1);
+
+            var al = this.getActivityList();
+            al.getSelectionModel().select(previousActivity);
+            this.changeDetail(null, previousActivity);
+
 
         }
     },
@@ -351,8 +359,9 @@ Ext.define('NAF.controller.Activities', {
 //        copiedActivity.save();
 //
 //
-//        copiedActivity.unjoin(this.getActivitiesStore());
+        copiedActivity.unjoin(this.getActivitiesStore());
         this.getActivitiesStore().sync();
+        copiedActivity.commit();
 
         var al = this.getActivityList();
         al.getSelectionModel().select(copiedActivity);
