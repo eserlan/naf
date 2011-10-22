@@ -4,3 +4,5 @@ aktivitets-admin.iws
 target
 src/main/webapp/extjs
 src/main/webapp/admin/access.json
+src/main/webapp/all-classes.js
+src/main/webapp/app-all.js
