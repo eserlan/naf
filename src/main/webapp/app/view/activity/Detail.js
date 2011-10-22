@@ -54,8 +54,10 @@ Ext.define('NAF.view.activity.Detail', {
         },
 
         {
+            id: 'summary',
             name: 'summary',
             xtype: 'textfield',
+            enableKeyEvents: true,
             fieldStyle: {'font-weight': 'bold', 'height' : 30, 'color' : 'black'},
             width: 350
         },

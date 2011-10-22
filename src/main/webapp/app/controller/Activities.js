@@ -24,6 +24,10 @@ Ext.define('NAF.controller.Activities', {
             selector: 'activitydetail'
         },
         {
+            ref: 'activityList',
+            selector: 'activitylist'
+        },
+        {
             ref: 'deleteBtn',
             selector: '#removeButton'
         },
@@ -100,7 +104,7 @@ Ext.define('NAF.controller.Activities', {
             },
             'activitydetail #organizerCombo':{
                 select: this.selectOrganizer,
-                expand: this.filterOrganizersByAccess,
+                expand: this.filterOrganizersComboByAccess,
                 collapse: this.clearLocationsFilter
             },
             'activitylist #activitiesSearchCombo':{
@@ -150,13 +154,15 @@ Ext.define('NAF.controller.Activities', {
         locationsStore.clearFilter();
     },
 
-    filterOrganizersByAccess: function () {
+    filterOrganizersComboByAccess: function () {
         var as = this.getAccessesStore();
-        var ls = this.getLocationsStore();
-        var accessIds = as.collect('access_id');
-        ls.filterBy(function (record, id) {
-            if (accessIds.indexOf(id) > -1) return true;
-        });
+        if (as.find('access_id', 'super') == -1) {
+            var accessIds = as.collect('access_id');
+            var ls = this.getLocationsStore();
+            ls.filterBy(function (record, id) {
+                if (accessIds.indexOf(id) > -1) return true;
+            });
+        }
     },
 
     createActivity: function() {
@@ -171,7 +177,7 @@ Ext.define('NAF.controller.Activities', {
         ad.setDisabled(false);
         activity.summary = 'Må få en verdi!';
 
-        console.log(activity.summary );
+        console.log(activity.summary);
 
         activity.commit();
 
@@ -232,12 +238,7 @@ Ext.define('NAF.controller.Activities', {
 
     },
 
-    saveActivity: function (btn) {
-
-        //todo ta bort?
-        if (typeof btn !== 'undefined' && btn !== null) {
-
-        }
+    saveActivity: function () {
         var ad = this.getActivityDetail();
         var form = ad.getForm();
         var activity = form.getRecord();
@@ -245,7 +246,6 @@ Ext.define('NAF.controller.Activities', {
         activity.set(values);
 
         var dtstartForm = values['dtstart'];
-//        console.log(dtstartForm);
         var dtstartTimeForm = null;
         var dtendTimeForm = null
         var d = null;
@@ -257,7 +257,6 @@ Ext.define('NAF.controller.Activities', {
         }
 
         var dtendForm = values['dtend'];
-//        console.log(dtstartForm);
         if (typeof dtstartForm !== 'undefined' && dtstartForm !== null) {
             dtendTimeForm = values['dtend-time'];
             d = Ext.Date.parse(dtendForm + ' ' + dtendTimeForm, 'd.m.Y H.i');
@@ -265,9 +264,13 @@ Ext.define('NAF.controller.Activities', {
             activity.set('dtend-time', dtendTimeForm);
         }
 
+//        activity.setProxy(this.getActivitiesStore().getProxy());
+//        activity.save();
+
 //        this.getActivitiesStore().update(activity);
-        this.getActivitiesStore().sync();
         activity.commit();
+
+        this.getActivitiesStore().sync();
 
         Ext.Msg.alert('Lagret', activity.get('summary') + ' er lagret.');
     },
@@ -295,11 +298,13 @@ Ext.define('NAF.controller.Activities', {
             var ad = this.getActivityDetail();
             var form = ad.getForm();
             var activity = form.getRecord();
-//            this.getActivitiesStore().remove(activity);
-            var proxy = this.getActivitiesStore().getProxy();
-            activity.setProxy(proxy);
-            activity.destroy();
+//            var proxy = this.getActivitiesStore().getProxy();
+//            activity.setProxy(proxy);
+//            activity.destroy();
             activity.commit();
+            this.getActivitiesStore().remove(activity);
+            this.getActivitiesStore().sync();
+
         }
     },
 
@@ -307,8 +312,6 @@ Ext.define('NAF.controller.Activities', {
         var ad = this.getActivityDetail();
         var form = ad.getForm();
         var originalActivity = form.getRecord();
-//        var values = form.getValues();
-//        record.set(values);
 
         var index = this.getActivitiesStore().indexOf(originalActivity);
 
@@ -319,9 +322,16 @@ Ext.define('NAF.controller.Activities', {
         copiedActivity.set('summary', 'Kopi av ' + originalActivity.get('summary'));
 
         this.getActivitiesStore().insert(index + 1, copiedActivity);
-        copiedActivity.commit();
-        copiedActivity.setProxy(this.getActivitiesStore().getProxy());
-        copiedActivity.save();
+//        copiedActivity.commit();
+//        copiedActivity.setProxy(this.getActivitiesStore().getProxy());
+//        copiedActivity.save();
+//
+//
+//        copiedActivity.unjoin(this.getActivitiesStore());
+        this.getActivitiesStore().sync();
+
+        var al = this.getActivityList();
+        al.getSelectionModel().select(copiedActivity);
 
         this.changeDetail(null, copiedActivity)
     },
