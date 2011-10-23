@@ -94,7 +94,7 @@ Ext.define('NAF.view.activity.List', {
         var as = Ext.StoreManager.get('Accesses');
         var accessIds = as.collect('access_id');
 
-        var access = (accessIds.indexOf(organizer_id) > -1 || as.find('access_id', 'super') > -1);
+        var access = (Ext.Array.indexOf(accessIds, organizer_id) > -1 || as.find('access_id', 'super') > -1);
         if (access) {
             return '<img src="img/icon_true.gif">';
         } else {

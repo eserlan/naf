@@ -1,3 +1,12 @@
+function location(v) {
+    if (v.latitude != null) {
+        return v.name;
+    } else {
+        return v;
+    }
+}
+
+
 Ext.define('NAF.model.Activity', {
     extend: 'Ext.data.Model',
     idProperty: '_id',
@@ -60,5 +69,4 @@ function location(v) {
     } else {
         return v;
     }
-
-}
+};

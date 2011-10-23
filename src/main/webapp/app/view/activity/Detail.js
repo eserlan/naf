@@ -195,33 +195,45 @@ Ext.define('NAF.view.activity.Detail', {
         }
         ,
         {
-            name: 'contact_name',
-            xtype: 'textfield',
-            width: 350,
-            fieldLabel: 'Kontakt navn'
-        }
-        ,
-        {
-            name: 'contact_email',
-            xtype: 'textfield',
-            width: 350,
-            fieldLabel: 'Kontakt epost'
-        }
-        ,
-        {
-            name: 'contact_phone',
-            xtype: 'textfield',
-            width: 350,
-            fieldLabel: 'Kontakt tlf.'
-        }
-        ,
-        {
-            name: 'contact',
-            xtype: 'textareafield',
-            grow: 'true',
-            width: 350,
-            fieldLabel: 'Ytterligere info.'
-        }
+            xtype: 'fieldset',
+            title: 'Kontakt',
+            collapsible: true,
+            width: 361,
+            defaults: {
+                labelWidth: 89,
+                anchor: '100%',
+                layout: {
+                    type: 'hbox',
+                    defaultMargins: {top: 0, right: 5, bottom: 0, left: 0}
+                }
+            },
+            items: [
+                {
+                    name: 'contact_name',
+                    xtype: 'textfield',
+                    fieldLabel: 'Navn'
+                }
+                ,
+                {
+                    name: 'contact_email',
+                    xtype: 'textfield',
+                    fieldLabel: 'Epost'
+                }
+                ,
+                {
+                    name: 'contact_phone',
+                    xtype: 'textfield',
+                    fieldLabel: 'Telefon'
+                }
+                ,
+                {
+                    name: 'contact',
+                    xtype: 'textareafield',
+                    grow: 'true',
+//                    width: 340,
+                    fieldLabel: 'Ytterligere info.'
+                }
+            ]}
         ,
         {
             xtype: 'splitter',

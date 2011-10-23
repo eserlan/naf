@@ -53,7 +53,7 @@ Ext.define('NAF.controller.Activities', {
         },
         {
             ref: 'summary',
-            selector: '#activitiesSearchComboSummary'
+            selector: '#summary'
         },
         {
             ref: 'activityImage',
@@ -192,22 +192,26 @@ Ext.define('NAF.controller.Activities', {
         var ad = this.getActivityDetail();
         var activity = Ext.create('NAF.model.Activity');
         var as = this.getActivitiesStore();
+        var summary = this.getSummary();
+        summary.blankText = 'Aktivitetsnavn må være utfylt.';
+        activity.set('summary', 'Aktivitetsnavn må være utfylt.');
+        activity.set('dtstart', new Date());
+        activity.set('dtend', new Date());
 
-        var summaryCmp = this.getSummary();
-        summaryCmp.setRawValue('Må få en verdi!');
+
+//        summaryCmp.setRawValue('Må få en verdi!');
+//        activity.summary = 'Må få en verdi!';
+
         ad.setDisabled(false);
-        activity.summary = 'Må få en verdi!';
 
-        console.log(activity.summary);
 
         activity.commit();
 
-//        as.add(activity);
-//        as.sync();
-//        as.load();
-        activity.setProxy(as.getProxy);
-        activity.save();
+        as.add(activity);
+        as.sync();
+
         ad.getForm().loadRecord(activity);
+        as.load();
     },
 
 
@@ -283,11 +287,8 @@ Ext.define('NAF.controller.Activities', {
             activity.set('dtend', de);
             activity.set('dtend-time', dtendTimeForm);
         }
-//        activity.setProxy(this.getActivitiesStore().getProxy());
-//        activity.save();
 
         var as = this.getActivitiesStore();
-//        as.update(activity);
         as.sync();
 
         activity.set('dtstart', Ext.Date.add(ds, Ext.Date.HOUR, 2));
@@ -372,11 +373,6 @@ Ext.define('NAF.controller.Activities', {
                 al.getSelectionModel().select(a);
             }
         });
-
-//        var al = this.getActivityList();
-//        al.getSelectionModel().select(copiedActivity);
-
-//        this.changeDetail(null, copiedActivity)
     },
 
     changeDetailCheck: function(grid, activity) {

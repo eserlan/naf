@@ -103,12 +103,9 @@ public class Activities {
     @Consumes(MediaType.APPLICATION_JSON)
     public String createActivity(String content, @Context UriInfo ui, @PathParam("id") String id) throws IOException {
         System.out.println("activity POST");
-        System.out.println(content);
-
         WebResource r = client.resource("http://naf.herokuapp.com/activities");
-
         System.out.println(r);
-
+        System.out.println(content);
         WebResource.Builder entity = r.
                 type(MediaType.APPLICATION_JSON_TYPE).
                 accept(MediaType.APPLICATION_JSON_TYPE).
@@ -148,7 +145,7 @@ public class Activities {
                 accept(MediaType.APPLICATION_JSON_TYPE).
                 entity(content, MediaType.APPLICATION_JSON_TYPE).
                 post(String.class);
-//        System.out.println("res = " + res);
+        System.out.println("res = " + res);
 
 
     }
