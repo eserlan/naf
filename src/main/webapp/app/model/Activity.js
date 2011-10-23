@@ -1,13 +1,3 @@
-function location(v) {
-    'use strict';
-    if (v.latitude !== null) {
-        return v.name;
-    } else {
-        return v;
-    }
-}
-
-
 Ext.define('NAF.model.Activity', {
     extend: 'Ext.data.Model',
     idProperty: '_id',
@@ -41,7 +31,14 @@ Ext.define('NAF.model.Activity', {
         'photo_large_url',
         'photo_thumb_url',
         'location_id',
-        {name: 'location', convert: location, persist: false},
+        {name: 'location', convert: function(v) {
+            'use strict';
+            if (v.latitude !== null) {
+                return v.name;
+            } else {
+                return v;
+            }
+        }, persist: false},
         'address',
         'organizer_id',
         {name: 'organizer', mapping: 'organizer.name', persist: false},
