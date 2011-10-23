@@ -359,12 +359,19 @@ Ext.define('NAF.controller.Activities', {
         copiedActivity.set('dtstart', dtstartPlus2Hours);
         var end = copiedActivity.get('dtend');
         var dtendPluss2Hours = Ext.Date.add(end, Ext.Date.HOUR, -2);
-        copiedActivity.set('dtend',dtendPluss2Hours);
+        copiedActivity.set('dtend', dtendPluss2Hours);
 
         copiedActivity.commit();
         as.sync();
 
-        as.load();
+        as.load({
+            scope   : this,
+            callback: function(records, operation, success) {
+                var al = this.getActivityList();
+                var a = records[index+1];
+                al.getSelectionModel().select(a);
+            }
+        });
 
 //        var al = this.getActivityList();
 //        al.getSelectionModel().select(copiedActivity);
