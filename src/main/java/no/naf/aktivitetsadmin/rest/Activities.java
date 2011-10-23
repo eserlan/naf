@@ -101,42 +101,22 @@ public class Activities {
     @POST
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void createActivity(String content, @Context UriInfo ui, @PathParam("id") String id) {
+    public String createActivity(String content, @Context UriInfo ui, @PathParam("id") String id) throws IOException {
         System.out.println("activity POST");
-
-//        System.out.println("ui = " + ui.getRequestUri());
-        MultivaluedMap<String, String> qp = null;
-        if (ui != null) {
-            qp = ui.getQueryParameters();
-//            System.out.println("qp = " + qp);
-        }
-//        String nc = StringUtils.substringBeforeLast(StringUtils.substringAfter(content, "\","), "}");
-//        String nc = content;
-
-//        if (nc.contains(",\"location\""))
-//            nc = StringUtils.substringBefore(nc, ",\"location\"") + "}";
-
-
-//        nc = "{\"activity\":{" + nc + "}";
-
-        String nc = content;
-
-        System.out.println(nc);
-
+        System.out.println(content);
 
         WebResource r = client.resource("http://naf.herokuapp.com/activities");
 
         System.out.println(r);
-        String res = null;
+
         WebResource.Builder entity = r.
                 type(MediaType.APPLICATION_JSON_TYPE).
-//                    accept(MediaType.APPLICATION_JSON_TYPE).
-        entity(nc, MediaType.APPLICATION_JSON);
-//            System.out.println("entity = " + entity);
-        res = entity.
-                post(String.class);
-
-
+                accept(MediaType.APPLICATION_JSON_TYPE).
+                entity(content, MediaType.APPLICATION_JSON);
+        String res = entity.post(String.class);
+        Map<String, Object> userData = OBJECT_MAPPER.readValue(res, Map.class);
+        String activityId = (String) userData.get("_id");
+        return "{\"_id\":\"" + activityId + "\"}";
     }
 
     @POST

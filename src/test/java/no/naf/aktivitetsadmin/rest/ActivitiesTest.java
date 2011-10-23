@@ -1,5 +1,6 @@
 package no.naf.aktivitetsadmin.rest;
 
+import junit.framework.Assert;
 import org.apache.commons.io.FileUtils;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Ignore;
@@ -92,7 +93,7 @@ public class ActivitiesTest {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> userData = mapper.readValue(new File("src/main/webapp/data/activities3.json"), Map.class);
 
-        System.out.println("userData = " + userData);
+//        System.out.println("userData = " + userData);
 
         LinkedHashMap map = (LinkedHashMap) userData.get("activity");
 
@@ -103,6 +104,21 @@ public class ActivitiesTest {
         mapper.writeValue(content, userData);
 
         System.out.println("content = " + content);
+
+    }
+
+     @Test
+    public void testResJson() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> userData = mapper.readValue(new File("src/test/resources/res.json"), Map.class);
+
+        System.out.println("userData = " + userData);
+
+        String id = (String) userData.get("_id");
+
+         Assert.assertEquals("4ea2f48e81e1000001000003", id);
+
+
 
     }
 
