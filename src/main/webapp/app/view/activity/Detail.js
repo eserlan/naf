@@ -187,13 +187,9 @@ Ext.define('NAF.view.activity.Detail', {
             grow: 'true',
             width: 350,
             fieldLabel: 'Beskrivelse'
-        }
-        ,
-        {
-            xtype: 'splitter',
-            height: 10
-        }
-        ,
+        },
+
+
         {
             xtype: 'fieldset',
             title: 'Kontakt',
@@ -231,15 +227,12 @@ Ext.define('NAF.view.activity.Detail', {
                     xtype: 'textareafield',
                     grow: 'true',
 //                    width: 340,
-                    fieldLabel: 'Ytterligere info.'
+                    fieldLabel: 'Ytterligere informasjon'
                 }
-            ]}
-        ,
-        {
-            xtype: 'splitter',
-            height: 10
-        }
-        ,
+            ]
+        },
+
+
         {
             name: 'attendee',
             xtype: 'textfield',
@@ -437,11 +430,20 @@ Ext.define('NAF.view.activity.Detail', {
 
         ,
         {
-            xtype: 'form',
+            xtype: 'fieldset',
             title: 'Politisk aktivitet',
-            bodyPadding: 5,
             collapsible: true,
+            width: 361,
             collapsed: true,
+            margin: '5 0 0 0 ',
+            defaults: {
+                labelWidth: 89,
+                anchor: '100%',
+                layout: {
+                    type: 'hbox',
+                    defaultMargins: {top: 0, right: 5, bottom: 0, left: 0}
+                }
+            },
             items: [
                 {
                     name: 'political_contact',
@@ -454,20 +456,27 @@ Ext.define('NAF.view.activity.Detail', {
                     name: 'response_result',
                     xtype: 'textareafield',
                     width: 350,
-                    fieldLabel: 'Respons/Resultat'
+                    fieldLabel: 'Respons/ Resultat'
 
                 }
             ]
-        }
+        },
 
-        ,
         {
-            xtype: 'form',
-            title: 'Interninformasjon',
-            bodyPadding: 5,
+            xtype: 'fieldset',
+            title: 'Intern informasjon',
             collapsible: true,
             collapsed: true,
-
+            margin: '5 0 0 0 ',
+            width: 361,
+            defaults: {
+                labelWidth: 89,
+                anchor: '100%',
+                layout: {
+                    type: 'hbox',
+                    defaultMargins: {top: 0, right: 5, bottom: 0, left: 0}
+                }
+            },
             items: [
                 {
                     name: 'volunteers_involved_count',
@@ -487,7 +496,7 @@ Ext.define('NAF.view.activity.Detail', {
                     name: 'competence_needs',
                     xtype: 'textareafield',
                     width: 350,
-                    fieldLabel: 'Kompetansebehov'
+                    fieldLabel: 'Kompetanse-behov'
 
                 },
                 {
@@ -516,11 +525,20 @@ Ext.define('NAF.view.activity.Detail', {
 
         ,
         {
-            xtype: 'form',
+            xtype: 'fieldset',
             title: 'Media',
-            bodyPadding: 5,
-            collapsible: true,
             collapsed: true,
+            margin: '5 0 0 0 ',
+            collapsible: true,
+            width: 361,
+            defaults: {
+                labelWidth: 89,
+                anchor: '100%',
+                layout: {
+                    type: 'hbox',
+                    defaultMargins: {top: 0, right: 5, bottom: 0, left: 0}
+                }
+            },
             items: [
                 {
                     name: 'media_title',
