@@ -1,5 +1,6 @@
 function location(v) {
-    if (v.latitude != null) {
+    'use strict';
+    if (v.latitude !== null) {
         return v.name;
     } else {
         return v;
@@ -19,10 +20,10 @@ Ext.define('NAF.model.Activity', {
         'contact_email',
         'contact_phone',
         'description',
-        {name: 'dtstart', type:'date'},
-        {name: 'dtstart-time', type:'date', persist: false},
-        {name: 'dtend', type:'date'},
-        {name: 'dtend-time', type:'date', persist: false},
+        {name: 'dtstart', type: 'date', dateFormat: 'c'},
+        {name: 'dtstart-time', type: 'date', dateFormat: 'c', persist: false},
+        {name: 'dtend', type: 'date', dateFormat: 'c'},
+        {name: 'dtend-time', type: 'date', dateFormat: 'c', persist: false},
         'own_vehicle',
         'price',
         'member_price',
@@ -60,13 +61,4 @@ Ext.define('NAF.model.Activity', {
         'media_outlet',
         'media_url'
     ]
-
 });
-
-function location(v) {
-    if (v.latitude != null) {
-        return v.name;
-    } else {
-        return v;
-    }
-};
