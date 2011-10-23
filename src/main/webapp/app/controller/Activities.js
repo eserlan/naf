@@ -470,8 +470,8 @@ Ext.define('NAF.controller.Activities', {
         var ad = this.getActivityDetail();
         ad.setDisabled(false);
         ad.loadRecord(record);
-        var summaryCmp = this.getSummary();
-        summaryCmp.setRawValue(summary);
+//        var summaryCmp = this.getSummary();
+//        summaryCmp.setRawValue(summary);
         var cat = ad.getComponent('categoryCombo');
         cat.setValue(record.get('category_id'));
         var loc = ad.getComponent('locationCombo');

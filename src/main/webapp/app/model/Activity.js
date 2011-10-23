@@ -31,7 +31,7 @@ Ext.define('NAF.model.Activity', {
         'photo_large_url',
         'photo_thumb_url',
         'location_id',
-        {name: 'location', convert: function(v) {
+        {name: 'location', convert: function (v) {
             'use strict';
             if (v.latitude !== null) {
                 return v.name;
