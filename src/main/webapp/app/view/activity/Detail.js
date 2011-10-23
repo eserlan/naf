@@ -43,6 +43,8 @@ Ext.define('NAF.view.activity.Detail', {
             id: 'toggleActiveButton',
             text:'Aktiv',
             enableToggle: true,
+            emptyText: 'Aktivitets navn',
+            allowBlank: false,
             scale: 'large',
             width: 350,
             cls: 'activeButton',
@@ -310,7 +312,7 @@ Ext.define('NAF.view.activity.Detail', {
         {
             name: 'price',
             fieldLabel: 'Pris',
-            xtype: 'textfield',
+            xtype: 'numberfield',
             id: 'price',
             emptyText: 'Pris',
             width: 350
@@ -320,7 +322,7 @@ Ext.define('NAF.view.activity.Detail', {
         {
             name: 'member_price',
             fieldLabel: 'Medlemspris',
-            xtype: 'textfield',
+            xtype: 'numberfield',
             emptyText: 'Medlemspris',
             width: 350
         }

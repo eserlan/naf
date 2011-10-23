@@ -67,59 +67,44 @@ public class ActivitiesTest {
 
 
     @Test
-    public void testGson() throws IOException {
+    public void testRemoveId() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> userData = mapper.readValue(new File("src/main/webapp/data/activities2.json"), Map.class);
-
-        System.out.println("userData = " + userData);
-
+//        System.out.println("userData = " + userData);
         List<LinkedHashMap> list = (List) userData.get("activities");
-
+        String id = "";
         for (LinkedHashMap map : list) {
+            id = (String) map.get("_id");
             map.remove("_id");
         }
-
-
-
         Writer content = new StringWriter();
         mapper.writeValue(content, userData);
-
-        System.out.println("content = " + content);
-
+        String cleanedContent = content.toString();
+//        System.out.println("cleanedContent = " + cleanedContent);
+        Assert.assertFalse(cleanedContent.contains(id));
     }
 
-     @Test
+    @Test
     public void testJson2() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> userData = mapper.readValue(new File("src/main/webapp/data/activities3.json"), Map.class);
-
 //        System.out.println("userData = " + userData);
-
         LinkedHashMap map = (LinkedHashMap) userData.get("activity");
-
-            map.remove("_id");
-
-
+        String id = (String) map.get("_id");
+        map.remove("_id");
         Writer content = new StringWriter();
         mapper.writeValue(content, userData);
-
-        System.out.println("content = " + content);
-
+        Assert.assertFalse(content.toString().contains(id));
+//        System.out.println("content = " + content);
     }
 
-     @Test
+    @Test
     public void testResJson() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> userData = mapper.readValue(new File("src/test/resources/res.json"), Map.class);
-
-        System.out.println("userData = " + userData);
-
+//        System.out.println("userData = " + userData);
         String id = (String) userData.get("_id");
-
-         Assert.assertEquals("4ea2f48e81e1000001000003", id);
-
-
-
+        Assert.assertEquals("4ea2f48e81e1000001000003", id);
     }
 
 
