@@ -3,7 +3,7 @@ Ext.define('NAF.view.activity.List', {
     alias : 'widget.activitylist',
     store: 'Activities',
     collapsible: true,
-
+    resizable: true,
     title : 'Alle aktiviteter',
 
     dockedItems: [

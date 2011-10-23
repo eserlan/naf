@@ -123,14 +123,14 @@ Ext.define('NAF.controller.Activities', {
         });
     },
 
-    updateTime: function(field, newValue){
-       var id = field.getId();
+    updateTime: function(field, newValue) {
+        var id = field.getId();
         var win = field.up('activitydetail');
         var form = win.getForm();
         var record = form.getRecord();
         record.set(id, newValue);
 
-        var dtid = id.replace('-time','');
+        var dtid = id.replace('-time', '');
         var dt = record.get(dtid);
 
         if (typeof dt !== 'undefined' && dt !== null) {
@@ -235,11 +235,7 @@ Ext.define('NAF.controller.Activities', {
     uploadPhoto: function(button) {
         var win = button.up('activitydetail');
         var form = win.getForm();
-        var hasUpload = form.hasUpload();
-        var fu = this.getFileUpload();
-        var v = fu.getValue();
         var that = this;
-        //var form = this.up('form').getForm();
         if (form.isValid()) {
             form.submit({
                 params: {
@@ -258,6 +254,8 @@ Ext.define('NAF.controller.Activities', {
         }
 
     },
+
+
 
     saveActivity: function () {
         var ad = this.getActivityDetail();
@@ -288,8 +286,9 @@ Ext.define('NAF.controller.Activities', {
 //        activity.setProxy(this.getActivitiesStore().getProxy());
 //        activity.save();
 
-        this.getActivitiesStore().update(activity);
-        this.getActivitiesStore().sync();
+        var as = this.getActivitiesStore();
+//        as.update(activity);
+        as.sync();
 
         activity.set('dtstart', Ext.Date.add(ds, Ext.Date.HOUR, 2));
         activity.set('dtend', Ext.Date.add(de, Ext.Date.HOUR, 2));
@@ -330,13 +329,12 @@ Ext.define('NAF.controller.Activities', {
             var index = as.indexOf(activity);
             as.remove(activity);
             as.sync();
-            var previousActivity = as.getAt(index-1);
-
-            var al = this.getActivityList();
-            al.getSelectionModel().select(previousActivity);
-            this.changeDetail(null, previousActivity);
-
-
+            if (index > -1) {
+                var previousActivity = as.getAt(index - 1);
+                var al = this.getActivityList();
+                al.getSelectionModel().select(previousActivity);
+                this.changeDetail(null, previousActivity);
+            }
         }
     },
 
@@ -345,7 +343,8 @@ Ext.define('NAF.controller.Activities', {
         var form = ad.getForm();
         var originalActivity = form.getRecord();
 
-        var index = this.getActivitiesStore().indexOf(originalActivity);
+        var as = this.getActivitiesStore();
+        var index = as.indexOf(originalActivity);
 
         var copiedActivity = originalActivity.copy();
         var id = Ext.data.Model.id(copiedActivity);
@@ -353,20 +352,24 @@ Ext.define('NAF.controller.Activities', {
         copiedActivity.set('id', id);
         copiedActivity.set('summary', 'Kopi av ' + originalActivity.get('summary'));
 
-        this.getActivitiesStore().insert(index + 1, copiedActivity);
-//        copiedActivity.commit();
-//        copiedActivity.setProxy(this.getActivitiesStore().getProxy());
-//        copiedActivity.save();
-//
-//
-        copiedActivity.unjoin(this.getActivitiesStore());
-        this.getActivitiesStore().sync();
+        as.insert(index + 1, copiedActivity);
+
+        var start = copiedActivity.get('dtstart');
+        var dtstartPlus2Hours = Ext.Date.add(start, Ext.Date.HOUR, -2);
+        copiedActivity.set('dtstart', dtstartPlus2Hours);
+        var end = copiedActivity.get('dtend');
+        var dtendPluss2Hours = Ext.Date.add(end, Ext.Date.HOUR, -2);
+        copiedActivity.set('dtend',dtendPluss2Hours);
+
         copiedActivity.commit();
+        as.sync();
 
-        var al = this.getActivityList();
-        al.getSelectionModel().select(copiedActivity);
+        as.load();
 
-        this.changeDetail(null, copiedActivity)
+//        var al = this.getActivityList();
+//        al.getSelectionModel().select(copiedActivity);
+
+//        this.changeDetail(null, copiedActivity)
     },
 
     changeDetailCheck: function(grid, activity) {
