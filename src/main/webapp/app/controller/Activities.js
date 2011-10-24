@@ -102,6 +102,9 @@ Ext.define('NAF.controller.Activities', {
             'activitydetail timefield':{
                 change : this.updateTime
             },
+            'activitydetail datefield':{
+                change : this.updateDate
+            },
             'activitydetail #locationCombo':{
                 select: this.selectLocation
             },
@@ -137,6 +140,24 @@ Ext.define('NAF.controller.Activities', {
             var d = null;
             d = Ext.Date.parse(Ext.Date.format(dt, 'd.m.Y') + ' ' + Ext.Date.format(newValue, 'H.i'), 'd.m.Y H.i');
             record.set(dtid, d);
+        }
+        record.commit();
+    },
+
+   updateDate: function(field, newValue) {
+        var id = field.getId();
+        var win = field.up('activitydetail');
+        var form = win.getForm();
+        var record = form.getRecord();
+        record.set(id, newValue);
+
+        var dtid = id + '-time';
+        var dt = record.get(dtid);
+
+        if (typeof dt !== 'undefined' && dt !== null) {
+            var d = null;
+            d = Ext.Date.parse(Ext.Date.format(newValue, 'd.m.Y') + ' ' + Ext.Date.format(dt, 'H.i'), 'd.m.Y H.i');
+            record.set(id, d);
         }
         record.commit();
     },
@@ -193,22 +214,12 @@ Ext.define('NAF.controller.Activities', {
 //        activity.set('summary', 'Aktivitetsnavn må være utfylt.');
         activity.set('dtstart', new Date());
         activity.set('dtend', new Date());
-
         ad.setDisabled(false);
-
-
         activity.commit();
-
         as.add(activity);
-
         var al = this.getActivityList();
         al.getSelectionModel().select(activity);
-
-
         ad.getForm().loadRecord(activity);
-
-
-
     },
 
 
@@ -236,6 +247,9 @@ Ext.define('NAF.controller.Activities', {
     uploadPhoto: function(button) {
         var win = button.up('activitydetail');
         var form = win.getForm();
+        var hasUpload = form.hasUpload();
+        var fu = this.getFileUpload();
+        var v = fu.getValue();
         var that = this;
         if (form.isValid()) {
             form.submit({
