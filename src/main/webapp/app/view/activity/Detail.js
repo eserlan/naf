@@ -179,6 +179,7 @@ Ext.define('NAF.view.activity.Detail', {
             valueField: '_id',
             store: 'Categories',
             displayField: 'name',
+            allowBlank: false,
             typeAhead: true,
             width: 350,
             fieldLabel: 'Kategori'
@@ -216,7 +217,8 @@ Ext.define('NAF.view.activity.Detail', {
                 {
                     name: 'contact_email',
                     xtype: 'textfield',
-                    fieldLabel: 'Epost'
+                    fieldLabel: 'Epost' ,
+                    vtype: 'email'
                 }
                 ,
                 {
