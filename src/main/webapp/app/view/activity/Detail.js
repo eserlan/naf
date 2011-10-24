@@ -59,6 +59,7 @@ Ext.define('NAF.view.activity.Detail', {
             id: 'summary',
             name: 'summary',
             xtype: 'textfield',
+            allowBlank: false,
             enableKeyEvents: true,
             fieldStyle: {'font-weight': 'bold', 'height' : 30, 'color' : 'black'},
             width: 350
@@ -245,6 +246,7 @@ Ext.define('NAF.view.activity.Detail', {
         {
             name: 'organizer2',
             id: 'organizerCombo',
+            allowBlank: false,
             xtype: 'combo',
             width: 350,
             valueField: '_id',
@@ -261,6 +263,7 @@ Ext.define('NAF.view.activity.Detail', {
             name: 'location2',
             id: 'locationCombo',
             xtype: 'combo',
+            allowBlank: false,
             width: 350,
             valueField: '_id',
             store: 'Locations',
