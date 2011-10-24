@@ -501,8 +501,8 @@ Ext.define('NAF.controller.Activities', {
             var newId = selectedRecords[0].get('_id');
             var newLocationName = selectedRecords[0].get('name');
             activity.set('location_id', newId);
+            var loc = activity.get('location');
             activity.set('location', newLocationName);
-
         }
     },
     selectOrganizer: function(combo, selectedRecords) {

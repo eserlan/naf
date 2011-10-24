@@ -33,11 +33,13 @@ Ext.define('NAF.model.Activity', {
         'location_id',
         {name: 'location', convert: function (v) {
             'use strict';
-            if (v.latitude !== null) {
-                return v.name;
-            } else {
-                return v;
+            var res = "må settes";
+            if (v.latitude != null) {
+                res = v.name;
+            } else if (v != null){
+                res = v;
             }
+            return res;
         }, persist: false},
         'address',
         'organizer_id',
