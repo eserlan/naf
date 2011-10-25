@@ -40,6 +40,10 @@ Ext.define('NAF.controller.Activities', {
             selector: '#toggleActiveButton'
         },
         {
+            ref: 'trafficSafetyCheck',
+            selector: '#trafficSafetyCheck'
+        },
+        {
             ref: 'categoryCombo',
             selector: '#categoryCombo'
         },
@@ -130,8 +134,22 @@ Ext.define('NAF.controller.Activities', {
             },
             'activitydetail #vehicleCombo':{
                 select: this.selectVehicle
+            },
+            'activitydetail checkboxfield':{
+                change: this.updateList
             }
+
         });
+    },
+
+    checkTrafficSafety: function(f, n, o) {
+        var id = f.getId();
+        var win = f.up('activitydetail');
+        var form = win.getForm();
+        var record = form.getRecord();
+        record.set(id, n);
+        record.commit();
+
     },
 
     updateTime: function(field, newValue) {
@@ -152,22 +170,22 @@ Ext.define('NAF.controller.Activities', {
         record.commit();
     },
 
-   updateDate: function(field, newValue) {
+    updateDate: function(field, newValue) {
         var id = field.getId();
         var win = field.up('activitydetail');
         var form = win.getForm();
-        var record = form.getRecord();
-        record.set(id, newValue);
+        var activity = form.getRecord();
+        activity.set(id, newValue);
 
         var dtid = id + '-time';
-        var dt = record.get(dtid);
+        var dt = activity.get(dtid);
 
         if (typeof dt !== 'undefined' && dt !== null) {
             var d = null;
             d = Ext.Date.parse(Ext.Date.format(newValue, 'd.m.Y') + ' ' + Ext.Date.format(dt, 'H.i'), 'd.m.Y H.i');
-            record.set(id, d);
+            activity.set(id, d);
         }
-        record.commit();
+        activity.commit();
     },
 
     toggleActiveButton: function(btn) {
@@ -307,7 +325,7 @@ Ext.define('NAF.controller.Activities', {
             activity.set('dtend-time', dtendTimeForm);
         }
 
-        if (!form.isValid()){
+        if (!form.isValid()) {
             Ext.Msg.alert('Validerer ikke', 'Aktiviteten har ugyldige felter.');
             return;
         }
@@ -393,7 +411,7 @@ Ext.define('NAF.controller.Activities', {
             scope   : this,
             callback: function(records, operation, success) {
                 var al = this.getActivityList();
-                var a = records[index+1];
+                var a = records[index + 1];
                 al.getSelectionModel().select(a);
             }
         });
