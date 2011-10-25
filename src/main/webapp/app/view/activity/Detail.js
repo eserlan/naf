@@ -145,8 +145,8 @@ Ext.define('NAF.view.activity.Detail', {
             xtype: 'checkboxfield',
             name      : 'traffic_safety',
             fieldLabel: 'Trafikksikkerhets-aktivitet',
-            uncheckedValue : 'false',
-            inputValue: 'true'
+            uncheckedValue : false,
+            inputValue: true
         },
 
         {

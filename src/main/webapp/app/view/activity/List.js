@@ -68,6 +68,7 @@ Ext.define('NAF.view.activity.List', {
             {header: 'Arrangør',  dataIndex: 'organizer',  flex: 1},
             {header: 'Sted',  dataIndex: 'location',  flex: 1},
             {header: 'Kategori', dataIndex: 'category_id', flex: 1, renderer: this.findCategoryName},
+            {header: 'Traf. sikkerhet',  dataIndex: 'traffic_safety',  width: 82, renderer: this.renderIcon},
             {header: 'Tilgang',  dataIndex: 'organizer_id',  width: 42, renderer: this.renderAccessIcon},
             {header: 'Aktiv',  dataIndex: 'active',  width: 35, renderer: this.renderIcon}
         ];
