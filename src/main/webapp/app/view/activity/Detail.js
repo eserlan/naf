@@ -141,6 +141,13 @@ Ext.define('NAF.view.activity.Detail', {
             ]
         }
         ,
+        {
+            xtype: 'checkboxfield',
+            name      : 'traffic_safety',
+            fieldLabel: 'Trafikksikkerhets-aktivitet',
+            uncheckedValue : 'false',
+            inputValue: 'true'
+        },
 
         {
             xtype: 'fieldcontainer',
@@ -175,7 +182,6 @@ Ext.define('NAF.view.activity.Detail', {
         ,
 
         {
-            name: 'category2',
             id: 'categoryCombo',
             xtype: 'combo',
             allowBlank: false,
@@ -264,7 +270,6 @@ Ext.define('NAF.view.activity.Detail', {
             },
             items: [
                 {
-                    name: 'organizer2',
                     id: 'organizerCombo',
                     xtype: 'combo',
                     width: 350,
@@ -280,7 +285,6 @@ Ext.define('NAF.view.activity.Detail', {
                 }
                 ,
                 {
-                    name: 'location2',
                     id: 'locationCombo',
                     xtype: 'combo',
                     width: 350,

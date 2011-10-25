@@ -40,12 +40,20 @@ Ext.define('NAF.controller.Activities', {
             selector: '#toggleActiveButton'
         },
         {
+            ref: 'categoryCombo',
+            selector: '#categoryCombo'
+        },
+        {
             ref: 'vehicleCombo',
             selector: '#vehicleCombo'
         },
         {
             ref: 'organizerCombo',
             selector: '#organizerCombo'
+        },
+        {
+            ref: 'locationCombo',
+            selector: '#locationCombo'
         },
         {
             ref: 'dateEnd',
@@ -452,9 +460,9 @@ Ext.define('NAF.controller.Activities', {
         this.getActivityImage().setSrc(photoUrl);
 
 
-        var cat = ad.getComponent('categoryCombo');
+        var cat = this.getCategoryCombo();
         cat.setValue(record.get('category_id'));
-        var loc = ad.getComponent('locationCombo');
+        var loc = this.getLocationCombo();
         loc.setValue(record.get('location_id'));
         var v = this.getVehicleCombo();
         v.setValue(record.get('vehicle'));
@@ -485,15 +493,12 @@ Ext.define('NAF.controller.Activities', {
 
     selectActivity: function(combo, records) {
         var record = records[0];
-        var summary = record.get('summary');
         var ad = this.getActivityDetail();
         ad.setDisabled(false);
         ad.loadRecord(record);
-//        var summaryCmp = this.getSummary();
-//        summaryCmp.setRawValue(summary);
-        var cat = ad.getComponent('categoryCombo');
+        var cat = this.getCategoryCombo();
         cat.setValue(record.get('category_id'));
-        var loc = ad.getComponent('locationCombo');
+        var loc = this.getLocationCombo();
         loc.setValue(record.get('location_id'));
         var v = this.getVehicleCombo();
         v.setValue(record.get('vehicle'));

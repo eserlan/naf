@@ -4,6 +4,7 @@ Ext.define('NAF.model.Activity', {
     fields: [
         {name: '_id', persist: false},
         'attendee',
+        'traffic_safety',
         'category_id',
         'contact',
         'contact_name',
