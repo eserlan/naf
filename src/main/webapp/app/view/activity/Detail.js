@@ -58,6 +58,7 @@ Ext.define('NAF.view.activity.Detail', {
         {
             id: 'summary',
             name: 'summary',
+            allowBlank: false,
             xtype: 'textfield',
             enableKeyEvents: true,
             fieldStyle: {'font-weight': 'bold', 'height' : 30, 'color' : 'black'},
@@ -175,6 +176,7 @@ Ext.define('NAF.view.activity.Detail', {
             name: 'category2',
             id: 'categoryCombo',
             xtype: 'combo',
+            allowBlank: false,
             valueField: '_id',
             store: 'Categories',
             displayField: 'name',
@@ -215,6 +217,7 @@ Ext.define('NAF.view.activity.Detail', {
                 {
                     name: 'contact_email',
                     xtype: 'textfield',
+                    vtype: 'email',
                     fieldLabel: 'Epost'
                 }
                 ,
@@ -247,6 +250,7 @@ Ext.define('NAF.view.activity.Detail', {
             id: 'organizerCombo',
             xtype: 'combo',
             width: 350,
+            allowBlank: false,
             valueField: '_id',
             store: 'Locations',
             displayField: 'name',
@@ -262,6 +266,7 @@ Ext.define('NAF.view.activity.Detail', {
             id: 'locationCombo',
             xtype: 'combo',
             width: 350,
+            allowBlank: false,
             valueField: '_id',
             store: 'Locations',
             displayField: 'name',
@@ -404,10 +409,9 @@ Ext.define('NAF.view.activity.Detail', {
                     name: 'photo',
                     id: 'fileUpload',
                     fieldLabel: 'Finn bilde',
-                    tooltip: 'får vi noe her?',
                     msgTarget: 'side',
                     width: 350,
-                    allowBlank: false,
+                    allowBlank: true,
                     buttonText: 'Velg foto...'
                 },
                 {

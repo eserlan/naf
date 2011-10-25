@@ -299,6 +299,11 @@ Ext.define('NAF.controller.Activities', {
             activity.set('dtend-time', dtendTimeForm);
         }
 
+        if (!form.isValid()){
+            Ext.Msg.alert('Validerer ikke', 'Aktiviteten har ugyldige felter.');
+            return;
+        }
+
         var as = this.getActivitiesStore();
         as.sync();
 

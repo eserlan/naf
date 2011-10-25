@@ -41,9 +41,9 @@ Ext.define('NAF.model.Activity', {
             }
             return res;
         }, persist: false},
-        'address',
         'organizer_id',
         {name: 'organizer', mapping: 'organizer.name', persist: false},
+        'address',
         'active',
         'region',
         'age_from',
