@@ -469,13 +469,13 @@ Ext.define('NAF.view.activity.Detail', {
         },
 
         {
-            xtype: 'image',
-            id: 'activityImage',
-            style: 'margins: 50 50 50 50',
-            src: ''
-        }
+            xtype: 'box',
+            id: 'actImg',
+            autoEl: {tag: 'img', src: ''}
 
-        ,
+        },
+
+
         {
             xtype: 'fieldset',
             title: 'Politisk aktivitet',
