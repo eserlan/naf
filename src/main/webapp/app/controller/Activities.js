@@ -160,6 +160,13 @@ Ext.define('NAF.controller.Activities', {
             var d = null;
             d = Ext.Date.parse(Ext.Date.format(dt, 'd.m.Y') + ' ' + Ext.Date.format(newValue, 'H.i'), 'd.m.Y H.i');
             record.set(dtid, d);
+            if (dtid = 'dtstart') {
+                var dtend = record.get('dtend');
+                if (dtend.getTime() < d.getTime()){
+                    record.set('dtend', d);
+                    form.findField('dtend-time').setValue(Ext.Date.format(d, 'H.i'));
+                }
+            }
         }
         record.commit();
     },
