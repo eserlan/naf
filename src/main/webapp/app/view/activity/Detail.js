@@ -609,6 +609,10 @@ Ext.define('NAF.view.activity.Detail', {
 
                 }
             ]
+        },
+        {
+            name: 'photo_id',
+            xtype: 'hiddenfield'
         }
     ]
 

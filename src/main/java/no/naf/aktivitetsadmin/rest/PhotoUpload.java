@@ -12,7 +12,7 @@ import java.io.File;
 @Path("/file")
 public class PhotoUpload {
     @POST
-    @Path("/upload")
+    @Path("/file_upload")
     @Consumes("multipart/form-data")
     @Produces("text/plain")
     public String uploadFile(@FormDataParam("file") File file, @FormDataParam("file") FormDataContentDisposition fcdsFile) {

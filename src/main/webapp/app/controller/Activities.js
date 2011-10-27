@@ -473,9 +473,12 @@ Ext.define('NAF.controller.Activities', {
         ad.loadRecord(record);
 
         var photoUrl = record.get('photo_medium_url');
-//        console.log(photoUrl);
-        this.getActivityImage().setSrc(photoUrl);
-
+        if (photoUrl == ''){
+            this.getActivityImage().hide();
+        } else {
+            this.getActivityImage().setSrc(photoUrl);
+            this.getActivityImage().show();
+        }
 
         var cat = this.getCategoryCombo();
         cat.setValue(record.get('category_id'));

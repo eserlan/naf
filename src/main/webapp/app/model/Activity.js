@@ -28,9 +28,9 @@ Ext.define('NAF.model.Activity', {
         'vehicle',
         'video',
         'photo_id',
-        'photo_medium_url',
-        'photo_large_url',
-        'photo_thumb_url',
+        {name: 'photo_medium_url', persist: false},
+        {name: 'photo_large_url', persist: false},
+        {name: 'photo_thumb_url', persist: false},
         'location_id',
         {name: 'location', convert: function (v) {
             'use strict';
@@ -46,7 +46,7 @@ Ext.define('NAF.model.Activity', {
         {name: 'organizer', mapping: 'organizer.name', persist: false},
         'address',
         'active',
-        'region',
+        {name: 'region', persist: false},
         'age_from',
         'age_to',
         'political_contact',
