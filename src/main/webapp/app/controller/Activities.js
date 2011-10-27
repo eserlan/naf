@@ -178,7 +178,16 @@ Ext.define('NAF.controller.Activities', {
             var d = null;
             d = Ext.Date.parse(Ext.Date.format(newValue, 'd.m.Y') + ' ' + Ext.Date.format(dt, 'H.i'), 'd.m.Y H.i');
             activity.set(id, d);
+            if (id = 'dtstart') {
+                var dtend = activity.get('dtend');
+                if (dtend.getTime() < d.getTime()){
+                    activity.set('dtend', d);
+                    form.findField('dtend').setValue(Ext.Date.format(d, 'd.m.Y'));
+                }
+            }
         }
+
+
         activity.commit();
     },
 
@@ -448,7 +457,7 @@ Ext.define('NAF.controller.Activities', {
 
         var photoUrl = record.get('photo_medium_url');
 
-        if (photoUrl == ''){
+        if (photoUrl == '') {
             Ext.getCmp('actImg').hide();
         } else {
             Ext.getCmp('actImg').getEl().dom.src = photoUrl;
