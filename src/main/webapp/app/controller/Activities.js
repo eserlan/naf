@@ -163,8 +163,9 @@ Ext.define('NAF.controller.Activities', {
             if (dtid = 'dtstart') {
                 var dtend = record.get('dtend');
                 if (dtend.getTime() < d.getTime()){
-                    record.set('dtend', d);
-                    form.findField('dtend-time').setValue(Ext.Date.format(d, 'H.i'));
+                    var plusOneHour = Ext.Date.add(d, Ext.Date.HOUR, 1);
+                    record.set('dtend', plusOneHour);
+                    form.findField('dtend-time').setValue(Ext.Date.format(plusOneHour, 'H.i'));
                 }
             }
         }
