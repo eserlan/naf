@@ -287,8 +287,6 @@ Ext.define('NAF.controller.Activities', {
                     var url = o.result.file.photo.medium.url;
                     that.getActivityImage().setSrc(url);
                     form.findField('photo_id').setValue(photo_id);
-                    form.getRecord().set('photo_id', photo_id);
-                    form.getRecord().commit();
                 }
             });
         }
