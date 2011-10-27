@@ -523,7 +523,7 @@ Ext.define('NAF.controller.Activities', {
     },
 
     selectLocation: function(combo, selectedRecords) {
-        var ad = combo.up();
+        var ad = this.getActivityDetail();
         if (ad != null) {
             var activity = ad.getRecord();
             var newId = selectedRecords[0].get('_id');
@@ -534,7 +534,7 @@ Ext.define('NAF.controller.Activities', {
         }
     },
     selectOrganizer: function(combo, selectedRecords) {
-        var ad = combo.up();
+        var ad = this.getActivityDetail();
         if (ad != null) {
             var activity = ad.getRecord();
             var newId = selectedRecords[0].get('_id');
