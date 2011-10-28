@@ -297,6 +297,7 @@ Ext.define('NAF.controller.Activities', {
                     var photo_id = o.result.file._id;
                     var url = o.result.file.photo.medium.url;
                     Ext.getCmp('actImg').getEl().dom.src = url;
+                    Ext.getCmp('actImg').show();
                     form.findField('photo_id').setValue(photo_id);
                 }
             });
